@@ -1,0 +1,94 @@
+.outlineButton {
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  padding: 1.2rem 2.4rem;
+
+  margin-left: 15px;
+
+  border: 1px solid var(--brand);
+  background: transparent;
+  color: var(--brand);
+  font-size: var(--text-sm);
+  border-radius: 20px;
+
+  position: relative;
+  z-index: 20;
+
+  overflow: hidden;
+
+  // transition: 0.2s color;
+  transition: all 300ms ease;
+}
+
+.btn {
+  font-weight: 600;
+  transition: all 300ms ease;
+  padding: 10rem;
+  width: 8rem;
+  border-radius: 2rem;
+}
+
+.outlineButton::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--brand);
+
+  height: 100%;
+  width: 100%;
+
+  left: -100%;
+  top: -100%;
+
+  transition: 0.2s left, 0.2s top;
+}
+
+.outlineButton:hover {
+  color: var(--background-dark);
+}
+
+.outlineButton:hover::before {
+  left: 0;
+  top: 0;
+}
+
+
+
+
+.btn {
+  font-weight: 600;
+  transition: all 300ms ease;
+  padding: 1rem;
+  width: 8rem;
+  border-radius: 2rem;
+}
+
+.btn-color-1,
+.btn-color-2 {
+  border: rgb(53, 53, 53) 0.1rem solid;
+}
+
+.btn-color-1:hover,
+.btn-color-2:hover {
+  cursor: pointer;
+}
+
+.btn-color-1,
+.btn-color-2:hover {
+  background: rgb(53, 53, 53);
+  color: white;
+}
+
+.btn-color-1:hover {
+  background: rgb(0, 0, 0);
+}
+
+.btn-color-2 {
+  background: none;
+}
+
+.btn-color-2:hover {
+  border: rgb(255, 255, 255) 0.1rem solid;
+}
