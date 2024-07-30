@@ -13,39 +13,48 @@ export const About = () => {
         <div>
           <Reveal>
             <div className={styles.square}>
-              <div className={styles.boxImg}>
-                <img src="/project-imgs/about-pic.png" alt="About Picture" />
+              <div className={styles.boxImgContainer}>
+                <img
+                  className={styles.boxImg}
+                  src="/project-imgs/about-pic.png"
+                  alt="About Picture"
+                />
               </div>
               <p
                 className={`${styles.aboutText} ${styles.highlightFirstLetter} boxP`}
               >
-                Hey! I&apos;m Bob, if you haven&apos;t already gathered that by
-                now. I&apos;m a painter turned software engineer from Daytona,
-                Florida. I specialize in the backend, primarily Node and Rust,
-                but love building with whatever tools are right for the job.
+                Hello and nice to meet you! As Jay-Z famously said, "
+                <i>Allow me to reintroduce myself.</i>" I'm Aisha Evering, and
+                I’ve recently focused on advancing my expertise in data science
+                through a range of certifications and hands-on projects. I hold
+                both Data Science and Associate Data Science certifications from
+                Datacamp, as well as an AWS Cloud Practitioner certification.
+                Currently, I’m working towards my AWS Machine Learning
+                certification. My ambition is to become a Machine Learning
+                Engineer, and I have a deep passion for Machine Learning with
+                Python.
               </p>
             </div>
           </Reveal>
           <Reveal>
             <p className={styles.aboutText}>
-              I currently work for Google on Google Photos. I also toss in my ¢2
-              with the design systems teams from time to time (once an artist,
-              always an artist, amirite?).
+              My professional experience lies in Software Engineering, where I
+              have specialized in developing applications using technologies
+              such as Dart, C#, Java, and JavaScript. I am proficient in React
+              as well as JSON manipulation.
             </p>
           </Reveal>
           <Reveal>
             <p className={styles.aboutText}>
-              Outside of work, I still love to paint. Any given Sunday
-              you&apos;ll find me scribbling some happy clouds with my son ☁️ I
-              even teach courses online if you&apos;re looking to learn!
-            </p>
-          </Reveal>
-          <Reveal>
-            <p className={styles.aboutText}>
-              I&apos;m passively looking for new positions where I can merge my
-              love for code with my love for the canvas. If you think
-              you&apos;ve got an opening that I might like, let&apos;s connect
-              🔗
+              When I’m not studying and building machine learning projects, I
+              enjoy building Lego towers{" "}
+              <img
+                className={styles.emoji}
+                src="/project-imgs/lego.png"
+                alt="Lego Emoji"
+              />{" "}
+              with my children. I am eager to apply my strong analytical skills
+              and programming expertise in a data-driven role.
             </p>
           </Reveal>
           <Reveal>

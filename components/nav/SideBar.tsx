@@ -32,9 +32,14 @@ export const SideBar = () => {
       transition={{ duration: 0.5 }}
       className={styles.sideBar}
     >
-      <span className={styles.logo}>
+      <motion.span
+        drag
+        dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}
+        dragElastic={0.9}
+        className={styles.logo}
+      >
         AE<span>.</span>
-      </span>
+      </motion.span>
       <motion.a
         initial={{ x: -70 }}
         animate={{ x: 0 }}

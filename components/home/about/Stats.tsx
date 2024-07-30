@@ -18,14 +18,14 @@ export const Stats = () => {
             <span className="chip">CSS</span>
             <span className="chip">React</span>
             <span className="chip">Redux</span>
-            <span className="chip">NodeJS</span>
-            <span className="chip">Express</span>
-            <span className="chip">Postgres</span>
-            <span className="chip">MongoDB</span>
+            <span className="chip">Dart</span>
+            <span className="chip">Java</span>
+            <span className="chip">C#</span>
             <span className="chip">GitHub</span>
             <span className="chip">Jira</span>
-            <span className="chip">Heroku</span>
             <span className="chip">AWS</span>
+            <span className="chip">SQL</span>
+            <span className="chip">T-SQL</span>
           </div>
         </div>
       </Reveal>
@@ -36,16 +36,14 @@ export const Stats = () => {
             <span>Use for fun</span>
           </h4>
           <div className={styles.statGrid}>
-            <span className="chip">Rust</span>
-            <span className="chip">Tailwind</span>
-            <span className="chip">Java</span>
-            <span className="chip">Spring</span>
+            <span className="chip">Pandas</span>
+            <span className="chip">PyTorch</span>
+            <span className="chip">Scikit-Learn</span>
+            <span className="chip">Tensorflow</span>
             <span className="chip">Figma</span>
-            <span className="chip">Whimsical</span>
-            <span className="chip">Planetscale</span>
-            <span className="chip">GraphQL</span>
-            <span className="chip">Python</span>
-            <span className="chip">FastAPI</span>
+            <span className="chip">Numpy</span>
+            <span className="chip">Matplotlib</span>
+            <span className="chip">Seaborn</span>
           </div>
         </div>
       </Reveal>
