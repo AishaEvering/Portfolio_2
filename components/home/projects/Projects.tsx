@@ -18,114 +18,92 @@ export const Projects = () => {
 
 const projects = [
   {
-    title: "Paint.app",
-    imgSrc: "project-imgs/example-project.jpg",
-    code: "https://www.github.com",
-    projectLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    tech: ["Flutter", "MUI", "Python", "FastAPI"],
+    title: "Art Geek",
+    projectType: "art_geek",
+    imgSrc: "project-imgs/Mona.png",
+    code: "https://github.com/AishaEvering/Art_Geek",
+    projectLink: "https://aishae-art-geek.hf.space",
+    tech: ["Python", "PyTorch", "Pandas", "Numpy", "Matplotlib"],
     description:
-      "A real-time coaching app for students learning to paint. This app is my baby, designed and built on my own.",
+      "A refined Vision Transformer (ViT) feature extractor model for computer vision that accurately predicts the genre and style of art pieces.",
     modalContent: (
       <>
         <p>
-          Pain.app is a real-time coaching app for students learning to paint.
-          This app is my baby, designed and built on my own.
+          I'm diving into the world of art classification with cutting-edge
+          neural networks! This project leverages the diverse WikiArt dataset
+          from Hugging Face to train models that classify artworks into multiple
+          categories, including genre and style. Unlike traditional single-label
+          tasks, my approach tackles the complexity of multi-class
+          classification, predicting multiple attributes of each piece to
+          provide a rich, nuanced understanding of artistic creations.
         </p>
         <p>
-          The tech stack is based on top of Flutter for the mobile app,
-          connected to a Python & FastAPI backend, with data stored in Postgres,
-          deployed on Heroku.
-        </p>
-        <p>
-          Because this isn&apos;t real, here&apos;s some gibberish to fill space{" "}
-          {":)"}
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur
-          quia officia odio nulla consectetur aperiam ad tempora magni magnam
-          nesciunt.
-        </p>
-        <p>
-          Fuga id sapiente facere ipsa eius exercitationem officiis deleniti,
-          rerum dolorum. Deserunt soluta modi culpa animi.
-        </p>
-      </>
-    ),
-  },
-  {
-    title: "The Canvas Club",
-    imgSrc: "project-imgs/example-project.jpg",
-    code: "https://www.github.com",
-    projectLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    tech: ["Node", "Express", "Postgres", "Kafka", "Redis"],
-    description:
-      "A social community for painters to connect with others in their community. I handle everything backend (50K monthly active users).",
-    modalContent: (
-      <>
-        <p>
-          The Canvas Club is a social community for painters to connect with
-          others in their community.
-        </p>
-        <p>
-          I work primarily on the backend, a collection of Node & Express
-          microservices. Data is stored primarily in Postgres & cached in Redis.
-        </p>
-        <p>
-          The team in total consists of 5 developers. This is a passion project
-          for all of us.
-        </p>
-        <p>
-          Because this isn&apos;t real, here&apos;s some gibberish to fill space{" "}
-          {":)"}
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur
-          quia officia odio nulla consectetur aperiam ad tempora magni magnam
-          nesciunt.
-        </p>
-        <p>
-          Fuga id sapiente facere ipsa eius exercitationem officiis deleniti,
-          rerum dolorum. Deserunt soluta modi culpa animi.
-        </p>
-      </>
-    ),
-  },
-  {
-    title: "BrushWire",
-    imgSrc: "project-imgs/example-project.jpg",
-    code: "https://www.github.com",
-    projectLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    tech: ["NextJS", "Java", "Spring", "AWS Aurora"],
-    description:
-      "Think Zapier but for paint. Built with a team of four college friends and scaled to > 1 billion requests per day. This was a fun one.",
-    modalContent: (
-      <>
-        <p>
-          Brush wire is essentially Zapier but for paint. Built with a team of
-          four college friends and scaled to {">"} 1 billion requests per day.
-          This was a fun one.
-        </p>
-        <p>
-          Since &quot;Zapier for paint&quot; doesn&apos;t mean anything, be
-          creative {":)"}
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur
-          quia officia odio nulla consectetur aperiam ad tempora magni magnam
-          nesciunt.
-        </p>
-        <p>
-          Fuga id sapiente facere ipsa eius exercitationem officiis deleniti,
-          rerum dolorum. Deserunt soluta modi culpa animi.
+          For a detailed account of the decisions I made, the challenges I
+          encountered, and the insights I gained, please refer to the full
+          README available through the source code link.
         </p>
       </>
     ),
   },
   {
     title: "Paint Reference 4",
+    projectType: "default",
     imgSrc: "project-imgs/example-project.jpg",
     code: "https://www.github.com",
-    projectLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    projectLink: "https://github.com/AishaEvering/RecipeDiscovery/tree/main",
+    tech: ["Node", "Express", "Postgres", "Kafka", "Redis"],
+    description:
+      "A social community for painters to connect with others in their community. I handle everything backend (50K monthly active users).",
+    modalContent: (
+      <>
+        <p>
+          This project serves as an capstone endeavor undertaken to advance
+          towards achieving my MIT Applied Data Science certification. In this
+          project I had to select a dataset and train custom models and use
+          tranfer learning to classify images. The final portion of the final
+          consisted of me giving a live presenation on the resulting metrics for
+          each experiment.
+        </p>
+        <p>
+          For a comprehensive overview of the decisions I made, the challenges I
+          faced, and the lessons I learned, please refer to the full README
+          available at the ."
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Emotion Detection",
+    projectType: "default",
+    imgSrc: "project-imgs/EmotionDetection.png",
+    code: "https://github.com/AishaEvering/Emotion_Detection",
+    projectLink: "",
+    tech: ["Python", "TensorFlow", "Pandas", "Numpy", "Matplotlib"],
+    description:
+      "A multi-class classification model designed to identify emotions—sad, happy, surprised, and neutral—across various facial expressions.",
+    modalContent: (
+      <>
+        <p>
+          This project serves as a capstone endeavor towards earning my MIT
+          Applied Data Science certification. In this project, I selected a
+          dataset, trained custom models, and employed transfer learning to
+          classify images. The final stage involved presenting the resulting
+          metrics for each experiment in a live presentation.
+        </p>
+        <p>
+          For a detailed account of the decisions I made, the challenges I
+          encountered, and the insights I gained, please refer to the full
+          README available through the source code link.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Recipe Discovery",
+    projectType: "default",
+    imgSrc: "project-imgs/pancakes.jpg",
+    code: "https://www.github.com",
+    projectLink: "https://github.com/AishaEvering/RecipeDiscovery/tree/main",
     tech: ["Python", "FastAPI", "SQLAlchemy"],
     description:
       "I couldn't think of another paint reference app, so here we are. I think you get the idea, right? Use your imagination 🌈",

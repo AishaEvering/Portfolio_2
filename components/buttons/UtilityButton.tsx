@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import styles from "./standardbutton.module.scss";
+import styles from "./utilitybutton.module.scss";
 
 interface Props {
   children: string | JSX.Element;
@@ -7,12 +7,12 @@ interface Props {
   isDisabled?: boolean;
 }
 
-export const StandardButton = ({ children, onClick, isDisabled }: Props) => {
+export const UtilityButton = ({ children, onClick, isDisabled }: Props) => {
   return (
     <button
       onClick={onClick}
       disabled={isDisabled}
-      className={styles.standardButton}
+      className={styles.utilityButton}
     >
       {children}
     </button>

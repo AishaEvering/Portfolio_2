@@ -1,0 +1,41 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid  #76c7c0;
+  border-radius: 15px;
+  padding: 12px;
+  margin-bottom: 10px;
+  align-items: center;
+  gap: 10px;
+  min-width: 300px;
+}
+
+.legend {
+  font-size: 1.3rem;
+  padding: 0 10px;
+  color:  #76c7c0;
+}
+
+.subTitle{
+  width: 100%;
+  font-weight: bold;
+  font-size: small;
+  margin-bottom: 2px;
+}
+
+.innerTitle{
+  width: 100%;
+  text-align: right;
+  font-size: small;
+  margin-bottom: 2px;
+}
+
+.content{
+  width: 100%;
+  border: 1px solid  #76c7c0;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: small;
+  align-items: left;
+}

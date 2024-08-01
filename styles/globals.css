@@ -1,8 +1,11 @@
+/* styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 :root {
   font-size: 62.5%;
 
   --background: white;
-  --bg-opaque: white;
+  --bg-opaque: rgb(255, 255, 255);
   --background-light: rgb(234, 229, 229);
   --background-dark: white;
 

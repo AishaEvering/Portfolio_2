@@ -7,7 +7,8 @@
 
   height: 100vh;
   padding: 4.8rem 1.2rem;
-  background: var(--bg-opaque);
+
+  // background: var(--bg-opaque);
   backdrop-filter: blur(12px);
 
   overflow-y: scroll;
@@ -108,4 +109,56 @@
   right: 1.2rem;
 
   cursor: pointer;
+}
+
+.appStyles{
+  background-color: var(--bg-opaque);
+  border-radius: 4px;
+  padding: 30px;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.dropzoneStyles{
+  border: 2px dashed;
+  border-color: var(--brand);
+  color: grey;
+  font-size: medium;
+  border-radius: 4px;
+  width: 70%;
+  text-align: center;
+  height: 300px;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+.imageStyles {
+  max-width: 100%;
+  max-height: 280px;
+  margin-top: 10px;
+}
+
+.examplesStyles {
+  margin-top: 20px;
+}
+
+.examplesStyles p{
+  font-size: x-small;
+  margin-bottom: 15px;
+}
+
+.examplesImages{
+  overflow: hidden;
+}
+
+.predContainer{
+  overflow: hidden;
+}
+
+.predChild{
+  float:left;
 }

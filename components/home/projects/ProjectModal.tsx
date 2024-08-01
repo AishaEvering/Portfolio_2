@@ -12,14 +12,14 @@ interface Props {
   title: string;
   imgSrc: string;
   code: string;
-  projectLink: string;
+  projectLink?: string;
   tech: string[];
   modalContent: JSX.Element;
 }
 
 export const ProjectModal = ({
   modalContent,
-  projectLink,
+  projectLink = "",
   setIsOpen,
   imgSrc,
   isOpen,
@@ -42,7 +42,6 @@ export const ProjectModal = ({
       <button className={styles.closeModalBtn}>
         <MdClose />
       </button>
-
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -54,6 +53,7 @@ export const ProjectModal = ({
           src={imgSrc}
           alt={`An image of the ${title} project.`}
         />
+
         <div className={styles.modalContent}>
           <h4>{title}</h4>
           <div className={styles.modalTech}>{tech.join(" - ")}</div>
@@ -68,9 +68,11 @@ export const ProjectModal = ({
               <Link target="_blank" rel="nofollow" href={code}>
                 <AiFillGithub /> source code
               </Link>
-              <Link target="_blank" rel="nofollow" href={projectLink}>
-                <AiOutlineExport /> live project
-              </Link>
+              {projectLink.length > 0 && (
+                <Link target="_blank" rel="nofollow" href={projectLink}>
+                  <AiOutlineExport /> live project
+                </Link>
+              )}
             </div>
           </div>
         </div>
