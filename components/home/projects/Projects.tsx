@@ -23,6 +23,7 @@ const projects = [
     imgSrc: "project-imgs/Mona.png",
     code: "https://github.com/AishaEvering/Art_Geek",
     projectLink: "https://aishae-art-geek.hf.space",
+    liveDemo: true,
     tech: ["Python", "PyTorch", "Pandas", "Numpy", "Matplotlib"],
     description:
       "A refined Vision Transformer (ViT) feature extractor model for computer vision that accurately predicts the genre and style of art pieces.",
@@ -57,6 +58,7 @@ const projects = [
     imgSrc: "project-imgs/example-project.jpg",
     code: "https://www.github.com",
     projectLink: "https://github.com/AishaEvering/RecipeDiscovery/tree/main",
+    liveDemo: true,
     tech: ["Node", "Express", "Postgres", "Kafka", "Redis"],
     description:
       "A social community for painters to connect with others in their community. I handle everything backend (50K monthly active users).",
@@ -84,6 +86,7 @@ const projects = [
     imgSrc: "project-imgs/EmotionDetection.png",
     code: "https://github.com/AishaEvering/Emotion_Detection",
     projectLink: "",
+    liveDemo: false,
     tech: ["Python", "TensorFlow", "Pandas", "Numpy", "Matplotlib"],
     description:
       "A multi-class classification model designed to identify emotions—sad, happy, surprised, and neutral—across various facial expressions.",
@@ -110,6 +113,7 @@ const projects = [
     imgSrc: "project-imgs/pancakes.jpg",
     code: "https://www.github.com",
     projectLink: "https://github.com/AishaEvering/RecipeDiscovery/tree/main",
+    liveDemo: false,
     tech: ["Python", "FastAPI", "SQLAlchemy"],
     description:
       "I couldn't think of another paint reference app, so here we are. I think you get the idea, right? Use your imagination 🌈",

@@ -3,16 +3,15 @@
     align-items: center;
     width: 50%;
     float: left;
-    padding: 20px;
+    padding-left: 20px;
     position: relative;
-    min-width: 320px;
+    min-width: 300px;
   }
   
   .prediction {
     margin: 10px 0;
     width: 100%;
     max-width: 300px;
-    background-color: chartreuse;
   }
   
   .placeholder {

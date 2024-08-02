@@ -15,6 +15,7 @@ interface Props {
   tech: string[];
   title: string;
   code: string;
+  liveDemo: boolean;
   projectType: string;
 }
 
@@ -26,6 +27,7 @@ export const Project = ({
   title,
   code,
   tech,
+  liveDemo,
   projectType = "default",
 }: Props) => {
   const [hovered, setHovered] = useState(false);
@@ -81,11 +83,11 @@ export const Project = ({
               <Link href={code} target="_blank" rel="nofollow">
                 <AiFillGithub size="2.8rem" />
               </Link>
-              {projectLink.length > 0 && (
+              {/* {projectLink.length > 0 && (
                 <Link href={projectLink} target="_blank" rel="nofollow">
                   <AiOutlineExport size="2.8rem" />
                 </Link>
-              )}
+              )} */}
             </div>
           </Reveal>
           <Reveal>
@@ -94,7 +96,9 @@ export const Project = ({
           <Reveal>
             <p className={styles.projectDescription}>
               {description}{" "}
-              <span onClick={() => setIsOpen(true)}>Learn more {">"}</span>
+              <span onClick={() => setIsOpen(true)}>
+                {liveDemo ? "Learn more with live demo >" : "Learn more>"}
+              </span>
             </p>
           </Reveal>
         </div>
