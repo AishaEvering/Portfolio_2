@@ -38,6 +38,12 @@ const projects = [
           provide a rich, nuanced understanding of artistic creations.
         </p>
         <p>
+          The live demo above showcases my custom React interface, which
+          interacts with my trained model for inference via an API hosted on
+          Hugging Face. To explore my Hugging Face space and check out other
+          spaces I’ve created, simply click the link below.
+        </p>
+        <p>
           For a detailed account of the decisions I made, the challenges I
           encountered, and the insights I gained, please refer to the full
           README available through the source code link.

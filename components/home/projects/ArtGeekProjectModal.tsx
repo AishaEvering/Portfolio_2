@@ -50,7 +50,7 @@ export const ArtGeekProjectModal = ({
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [predictionInput, setPredictionInput] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [reset, setReset] = useState(false);
 
   // Handle image drop
   const { getRootProps, getInputProps } = useDropzone({
@@ -77,6 +77,7 @@ export const ArtGeekProjectModal = ({
   const handlePredict = () => {
     if (imageFile == null) return;
     setPredictionInput(imageFile);
+    setReset(false);
   };
 
   async function fetchImage(url: string): Promise<File | null> {
@@ -108,10 +109,7 @@ export const ArtGeekProjectModal = ({
   const handleClearImg = () => {
     setImageUrl("");
     setImageFile(null);
-  };
-
-  const handleLoadingChange = (loading: boolean) => {
-    setIsLoading(loading);
+    setReset(true);
   };
 
   const content = (
@@ -145,17 +143,15 @@ export const ArtGeekProjectModal = ({
               <UtilityButton onClick={handleClearImg}>Clear</UtilityButton>
               <UtilityButton onClick={handlePredict}>Predict</UtilityButton>
             </div>
-            <PredictionsDisplay
-              imageFile={predictionInput}
-              onLoadingChange={handleLoadingChange}
-            ></PredictionsDisplay>
+            <PredictionsDisplay reset={reset} imageFile={predictionInput} />
           </div>
           {/* Example Inputs */}
           <div className={styles.examplesStyles}>
             <p>Examples:</p>
             <div className={styles.examplesImages}>
-              {examples.map((path) => (
+              {examples.map((path, index) => (
                 <ImageButton
+                  key={index}
                   onClick={() => {
                     handleExample(path);
                   }}

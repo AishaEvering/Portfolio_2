@@ -13,33 +13,52 @@ type DataItem = {
 };
 
 interface Props {
+  id: number;
   title: string;
   data: DataItem | null;
+  expanded: false | number;
+  isLoading: boolean;
+  reset: boolean;
+  onExpandedChange: (loading: false | number) => void;
 }
 
-export const LabelPredictionDisplay = ({ title, data }: Props) => {
-  if (!data) {
-    return <div>No data available</div>;
-  }
-
-  const confidences = data.confidences || [];
+export const LabelPredictionDisplay = ({
+  id,
+  title,
+  data,
+  expanded,
+  isLoading,
+  reset,
+  onExpandedChange,
+}: Props) => {
+  const confidences = (data != null && data.confidences) || [];
 
   return (
-    <SectionBox title={title} subtitle={data.label} inBorder>
-      {confidences.length > 0 ? (
-        <div>
-          {confidences.map((confidence, index) => (
-            <div key={index}>
-              <ProgressBar
-                label={confidence.label}
-                confidence={confidence.confidence}
-              />
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div>No confidences available</div>
-      )}
-    </SectionBox>
+    <>
+      <SectionBox
+        id={id}
+        expanded={expanded}
+        onExpandedChange={onExpandedChange}
+        title={title}
+        subtitle={data != null ? data.label : ""}
+        isLoading={isLoading}
+        reset={reset}
+      >
+        {confidences.length > 0 ? (
+          <div>
+            {confidences.map((confidence, index) => (
+              <div key={index}>
+                <ProgressBar
+                  label={confidence.label}
+                  confidence={confidence.confidence}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div>No confidences available</div>
+        )}
+      </SectionBox>
+    </>
   );
 };

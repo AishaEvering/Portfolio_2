@@ -1,14 +1,16 @@
 
 .container {
-  display: flex;
+  // display: flex;
   flex-direction: column;
   border: 1px solid  #76c7c0;
   border-radius: 15px;
   padding: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  // margin-left: 10px;
   align-items: center;
+  text-align: left;
   gap: 10px;
-  min-width: 300px;
+  // min-width: 100px;
 }
 
 .legend {
@@ -18,9 +20,9 @@
 }
 
 .subTitle{
-  width: 100%;
   font-weight: bold;
   font-size: small;
+  text-align: left;
   margin-bottom: 2px;
 }
 
@@ -29,6 +31,7 @@
   text-align: right;
   font-size: small;
   margin-bottom: 2px;
+  vertical-align: bottom;
 }
 
 .content{
@@ -38,4 +41,30 @@
   padding: 5px;
   font-size: small;
   align-items: left;
+  min-width: 280px;
+}
+
+.header {
+  display: flex;
+  // align-items: center;
+  gap: 3px; // Adjust spacing between subtitle and linkButton
+}
+
+.linkButton {
+  font-size: x-small;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: var(--brand);
+  text-decoration: none;
+  text-align: left;
+  vertical-align: middle;
+  margin: 0;
+  line-height:2;
+  cursor: pointer;
+  // width: 300px;
+}
+
+.linkButton:hover{
+  text-decoration: underline;
 }
