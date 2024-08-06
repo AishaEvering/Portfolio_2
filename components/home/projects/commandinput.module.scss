@@ -1,0 +1,72 @@
+.formGroup{
+  width: 100%;
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+}
+
+.formInput{
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+  border: none;
+  outline: none;
+}
+
+.formInput__error{
+  color: red;
+  display: block;
+  font-size: small;
+  margin-top: 5px;
+}
+
+.formLabel{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid grey;
+}
+
+.formLabel::after{
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid #76c7c0;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.formLabelContent{
+  position: absolute;
+  font-size: mediumd;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.5s ease;
+}
+
+.formInput:focus + .formLabel .formLabelContent, 
+.formInput:valid + .formLabel .formLabelContent{
+  transform: translateY(-150%);
+  font-size: 14px;
+  color: #76c7c0;
+}
+
+.formInput:focus + .formLabel::after,
+.formInput:valid + .formLabel::after{
+  transform: translateX(0%);
+}
+
+.buttonContainer{
+  margin:0px;
+  padding: 0px;
+  width: 100%;
+  position: relative;
+  text-align: right;
+}
+

@@ -1,0 +1,78 @@
+import { useForm } from "react-hook-form";
+import styles from "./commandinput.module.scss";
+import React, { useEffect } from "react";
+import { UtilityButton } from "@/components/buttons/UtilityButton";
+
+interface Props {
+  onSubmit: (command: string) => void;
+  onClear: () => void;
+  initialCommand: string;
+}
+
+export default function CommandForm({
+  onSubmit,
+  onClear,
+  initialCommand,
+}: Props) {
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm<{ command: string }>({
+    defaultValues: {
+      command: initialCommand,
+    },
+  });
+
+  useEffect(() => {
+    reset({ command: initialCommand });
+  }, [initialCommand, reset]);
+
+  function onFormSubmit(data: { command: string }) {
+    onSubmit(data.command);
+  }
+
+  const handleClear = (event: any) => {
+    event?.preventDefault();
+    const formElement = document.getElementById(
+      "commandForm"
+    ) as HTMLFormElement;
+    formElement?.reset();
+    onClear();
+  };
+
+  return (
+    <form id="commandForm" onSubmit={handleSubmit(onFormSubmit)} noValidate>
+      <div className={styles.formGroup}>
+        <input
+          type="text"
+          id="command"
+          autoComplete="off"
+          required
+          className={styles.formInput}
+          {...register("command", {
+            required: "This is required",
+            minLength: { value: 4, message: "Minimum length should be 4" },
+            maxLength: { value: 100, message: "Maximum length is 100" },
+          })}
+        />
+        <label htmlFor="command" className={styles.formLabel}>
+          <span className={styles.formLabelContent}>How can I help you?</span>
+        </label>
+      </div>
+      {errors?.command && (
+        <span className={styles.formInput__error}>
+          {errors?.command?.message}
+        </span>
+      )}
+
+      <div className={styles.buttonContainer}>
+        <UtilityButton type="button" onClick={handleClear}>
+          Clear
+        </UtilityButton>
+        <UtilityButton type="submit">Predict</UtilityButton>
+      </div>
+    </form>
+  );
+}

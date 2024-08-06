@@ -24,7 +24,7 @@ const projects = [
     code: "https://github.com/AishaEvering/Art_Geek",
     projectLink: "https://aishae-art-geek.hf.space",
     liveDemo: true,
-    tech: ["Python", "PyTorch", "Pandas", "Numpy", "Matplotlib"],
+    tech: ["PyTorch", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
       "A refined Vision Transformer (ViT) feature extractor model for computer vision that accurately predicts the genre and style of art pieces.",
     modalContent: (
@@ -44,38 +44,53 @@ const projects = [
           Hugging Face. To explore my Hugging Face space and check out other
           spaces I’ve created, simply click the link below.
         </p>
-        <p>
-          For a detailed account of the decisions I made, the challenges I
-          encountered, and the insights I gained, please refer to the full
-          README available through the source code link.
-        </p>
       </>
     ),
   },
   {
-    title: "Paint Reference 4",
-    projectType: "default",
-    imgSrc: "project-imgs/example-project.jpg",
-    code: "https://www.github.com",
-    projectLink: "https://github.com/AishaEvering/RecipeDiscovery/tree/main",
+    title: "My Assistant",
+    projectType: "my_assistant",
+    imgSrc: "project-imgs/my_assistant_header.png",
+    code: "https://github.com/AishaEvering/My_Assistant",
+    projectLink: "https://huggingface.co/spaces/AishaE/My_Assistant",
     liveDemo: true,
-    tech: ["Node", "Express", "Postgres", "Kafka", "Redis"],
+    tech: ["TensorFlow", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
-      "A social community for painters to connect with others in their community. I handle everything backend (50K monthly active users).",
+      "A fine-tuned BERT transformer model that predicts the intent behind the user's commands.",
     modalContent: (
       <>
         <p>
-          This project serves as an capstone endeavor undertaken to advance
-          towards achieving my MIT Applied Data Science certification. In this
-          project I had to select a dataset and train custom models and use
-          tranfer learning to classify images. The final portion of the final
-          consisted of me giving a live presenation on the resulting metrics for
-          each experiment.
+          In our fast-paced world, having a personal assistant can make life
+          significantly easier. While some are fortunate enough to have one,
+          most of us rely on virtual assistants like Alexa, Siri, Google
+          Assistant, and now, My Assistant.
         </p>
         <p>
-          For a comprehensive overview of the decisions I made, the challenges I
-          faced, and the lessons I learned, please refer to the full README
-          available at the ."
+          My Assistant is a fine-tuned DistilBERT model optimized for multiclass
+          text classification. Trained on the{" "}
+          <a
+            target="_blank"
+            rel="nofollow"
+            href="https://huggingface.co/datasets/Bhuvaneshwari/intent_classification"
+          >
+            Bhuvaneshwari/intent_classification dataset
+          </a>
+          from Hugging Face, it accurately predicts customer intents across a
+          range of categories, including:
+        </p>
+        <p>
+          [
+          <i>
+            Add To Playlist, Affirmation, Book Meeting, Book Restaurant,
+            Cancellation, Excitment, Get Weather, Greetings, Play Music, Rate
+            Book, Search Creative Work, Search Screening Event
+          </i>
+          ]
+        </p>
+        <p>
+          <i>Okay Okay Okay</i> it doesn't actually complete the task. But it
+          means well and in this demo it acknowleges that you asked by showing
+          you what it would do maybe some time in the future. You never know.
         </p>
       </>
     ),
@@ -87,7 +102,7 @@ const projects = [
     code: "https://github.com/AishaEvering/Emotion_Detection",
     projectLink: "",
     liveDemo: false,
-    tech: ["Python", "TensorFlow", "Pandas", "Numpy", "Matplotlib"],
+    tech: ["TensorFlow", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
       "A multi-class classification model designed to identify emotions—sad, happy, surprised, and neutral—across various facial expressions.",
     modalContent: (

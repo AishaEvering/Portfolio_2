@@ -28,17 +28,12 @@
   color: var(--brand);
 }
 
-.highlightFirstLetter:first-letter {
-  background: var(--background-light);
-  padding: 1rem;
-  border-radius: 0.4rem;
-
-  font-size: var(--text-md);
+.subhead::first-letter {
+  -webkit-initial-letter: 3;
+  initial-letter: 3;
+  color: var(--brand);
   font-weight: bold;
-
-  margin-right: 0.6rem;
-
-  float: left;
+  margin-right: .75em;
 }
 
 .boxImgContainer{

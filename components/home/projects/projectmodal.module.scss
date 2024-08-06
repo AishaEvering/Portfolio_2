@@ -60,7 +60,16 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+
   font-size: var(--text-xs);
+  a{
+    padding-left: 3px;
+    padding-right: 3px;
+    text-decoration: underline;
+  }
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .modalFooter {
@@ -89,6 +98,25 @@
 
     font-size: var(--text-xs);
     color: var(--brand);
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.readMeImg{
+  vertical-align: bottom;
+  padding-left: 4px;
+  padding-right: 1px;
+}
+
+
+.readme{
+  color: var(--brand);
+
+  a {
+    text-decoration: none;
   }
 
   a:hover {
@@ -164,4 +192,11 @@
   width: 50%;
   min-width: 320px;
   padding: 10px;
+}
+
+.container {
+  padding: 1rem; /* 4 in Chakra UI units is equivalent to 1rem */
+  width: 90%;
+  margin: 2rem auto;
+  position: relative;
 }

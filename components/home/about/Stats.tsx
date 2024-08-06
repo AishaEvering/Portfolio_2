@@ -39,7 +39,7 @@ export const Stats = () => {
             <span className="chip">Pandas</span>
             <span className="chip">PyTorch</span>
             <span className="chip">Scikit-Learn</span>
-            <span className="chip">Tensorflow</span>
+            <span className="chip">TensorFlow</span>
             <span className="chip">Figma</span>
             <span className="chip">Numpy</span>
             <span className="chip">Matplotlib</span>

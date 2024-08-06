@@ -9,8 +9,12 @@ import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { UtilityButton } from "@/components/buttons/UtilityButton";
 import { ImageButton } from "@/components/buttons/ImageButton";
-import { createFileFromPath } from "@/components/utils/createFileFromPath";
-import { ArtGeekPredictionsDisplay } from "./ArtGeekPredictionsComponent";
+import { Form, FormProvider, useForm } from "react-hook-form";
+import { MyAssistantPredictionsDisplay } from "./MyAssistantPredictionsComponent";
+import CommandForm from "./CommandInputComponent";
+import HookForm from "./CommandInputComponent";
+import { TabComponent } from "@/components/utils/TabComponent";
+import { Examples } from "@/components/utils/CommandExamples";
 
 interface Props {
   isOpen: boolean;
@@ -22,7 +26,7 @@ interface Props {
   modalContent: JSX.Element;
 }
 
-export const ArtGeekProjectModal = ({
+export const MyAssistantProjectModal = ({
   modalContent,
   projectLink = "",
   setIsOpen,
@@ -47,69 +51,36 @@ export const ArtGeekProjectModal = ({
     }
   }, [isOpen]);
 
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [predictionInput, setPredictionInput] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [command, setCommand] = useState<string>("");
+  const [predictionInput, setPredictionInput] = useState<string | null>(null);
+  const [selectedExample, setSelectedExample] = useState<string>("");
   const [reset, setReset] = useState(false);
 
-  // Handle image drop
-  const { getRootProps, getInputProps } = useDropzone({
-    accept: {
-      "image/png": [".png"],
-      "image/jpg": [".jpg"],
-      "image/jpeg": [".jpeg"],
-    },
-    onDrop: (acceptedFiles) => {
-      const file = acceptedFiles[0];
-      setImageFile(file);
-      setImageUrl(URL.createObjectURL(file));
-    },
-  });
-
-  const examples: string[] = [
-    "/project-imgs/examples_beach.jpeg",
-    "/project-imgs/examples_boats.jpeg",
-    "/project-imgs/examples_flowers.png",
-    "/project-imgs/examples_Mona.png",
-    "/project-imgs/examples_portrait.jpeg",
-  ];
+  const methods = useForm();
 
   const handlePredict = () => {
-    if (imageFile == null) return;
-    setPredictionInput(imageFile);
+    if (command == null) return;
+    methods.reset();
+    setPredictionInput(command);
     setReset(false);
   };
 
-  async function fetchImage(url: string): Promise<File | null> {
-    let retVal: File | null = null;
-
-    try {
-      retVal = await createFileFromPath(url, "tempImg");
-    } catch (error) {
-      console.error("Error creating file from path:", error);
-    }
-
-    return retVal;
-  }
-
-  const handleExample = async (url: string) => {
-    setImageUrl(url);
-
-    try {
-      const file = await fetchImage(url);
-
-      if (file !== null) {
-        setImageFile(file);
-      }
-    } catch (error) {
-      console.error("Error handling example:", error);
-    }
+  const handleSubmit = (command: string) => {
+    // console.log(command);
+    // setCommand("");
+    // setReset(true);
   };
 
-  const handleClearImg = () => {
-    setImageUrl("");
-    setImageFile(null);
+  const handleSelectExample = (command: string) => {
+    console.log("Sent Parent has value: " + command);
+    setSelectedExample(command);
+  };
+
+  const handleClearCommand = () => {
+    setSelectedExample("");
+    setCommand("");
     setReset(true);
+    // console.log("Command: " + command);
   };
 
   const content = (
@@ -117,39 +88,38 @@ export const ArtGeekProjectModal = ({
       <button className={styles.closeModalBtn}>
         <MdClose />
       </button>
-
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         onClick={(e) => e.stopPropagation()}
         className={styles.modalCard}
       >
+        <TabComponent
+          title="Examples"
+          items={Examples}
+          onSelect={handleSelectExample}
+        ></TabComponent>
         <div className={styles.appStyles}>
           <div className={styles.predContainer}>
             <div className={styles.predChild}>
-              {/* Drag-and-Drop Area */}
-              <div {...getRootProps()} className={styles.dropzoneStyles}>
-                <input {...getInputProps()} />
-                {imageUrl ? (
-                  <img
-                    src={imageUrl}
-                    alt="Uploaded"
-                    className={styles.imageStyles}
-                  />
-                ) : (
-                  <p>Drag and drop an image here, or click to select one</p>
-                )}
+              {/* Action Image Area */}
+              <div className={styles.actionImgStyles}>
+                <span>TBD</span>
               </div>
-              <UtilityButton onClick={handleClearImg}>Clear</UtilityButton>
-              <UtilityButton onClick={handlePredict}>Predict</UtilityButton>
             </div>
-            <ArtGeekPredictionsDisplay
-              reset={reset}
-              imageFile={predictionInput}
-            />
+            <MyAssistantPredictionsDisplay command={command} reset={reset} />
           </div>
+          <CommandForm
+            onSubmit={handleSubmit}
+            onClear={handleClearCommand}
+            initialCommand={selectedExample}
+          ></CommandForm>
+          {/* <CommandInputComponent
+            onCommand={(commandText: string) => setCommand(commandText)}
+          /> */}
+
           {/* Example Inputs */}
-          <div className={styles.examplesStyles}>
+          {/* <div className={styles.examplesStyles}>
             <p>Examples:</p>
             <div className={styles.examplesImages}>
               {examples.map((path, index) => (
@@ -162,7 +132,7 @@ export const ArtGeekProjectModal = ({
                 />
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
         <div className={styles.modalContent}>
           <h4>{title}</h4>

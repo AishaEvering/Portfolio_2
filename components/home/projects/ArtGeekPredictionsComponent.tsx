@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Text } from "@chakra-ui/react";
 import styles from "./predictionsdisplay.module.scss";
 import useArtGeek from "@/hooks/useArtGeek";
 import { LabelPredictionDisplay } from "./LabelPredictionsDisplayComponent";
 
-interface PredictionsDisplayProps {
+interface Props {
   imageFile: File | null;
   reset: boolean;
 }
 
-export const PredictionsDisplay = ({
-  imageFile,
-  reset,
-}: PredictionsDisplayProps) => {
+export const ArtGeekPredictionsDisplay = ({ imageFile, reset }: Props) => {
   const { data, error, isLoading } = useArtGeek(imageFile);
 
   const [expanded, setExpanded] = useState<false | number>(0);

@@ -6,6 +6,7 @@ import { AiFillGithub, AiOutlineExport } from "react-icons/ai";
 import { ProjectModal } from "./ProjectModal";
 import { ArtGeekProjectModal } from "./ArtGeekProjectModal";
 import styles from "./projects.module.scss";
+import { MyAssistantProjectModal } from "./MyAssistantProjectModal";
 
 interface Props {
   modalContent: JSX.Element;
@@ -83,11 +84,6 @@ export const Project = ({
               <Link href={code} target="_blank" rel="nofollow">
                 <AiFillGithub size="2.8rem" />
               </Link>
-              {/* {projectLink.length > 0 && (
-                <Link href={projectLink} target="_blank" rel="nofollow">
-                  <AiOutlineExport size="2.8rem" />
-                </Link>
-              )} */}
             </div>
           </Reveal>
           <Reveal>
@@ -117,6 +113,17 @@ export const Project = ({
       )}
       {projectType == "art_geek" && (
         <ArtGeekProjectModal
+          modalContent={modalContent}
+          projectLink={projectLink}
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
+          title={title}
+          code={code}
+          tech={tech}
+        />
+      )}
+      {projectType == "my_assistant" && (
+        <MyAssistantProjectModal
           modalContent={modalContent}
           projectLink={projectLink}
           setIsOpen={setIsOpen}

@@ -58,8 +58,25 @@ export const ProjectModal = ({
           <h4>{title}</h4>
           <div className={styles.modalTech}>{tech.join(" - ")}</div>
 
-          <div className={styles.suppliedContent}>{modalContent}</div>
-
+          <div className={styles.suppliedContent}>
+            {modalContent}
+            <p>
+              For a comprehensive overview of the decisions I made, the
+              challenges I faced, and the lessons I learned, please refer to the
+              full
+              <span className={styles.readme}>
+                <a target="_blank" rel="nofollow" href={code}>
+                  <img
+                    src="/project-imgs/readme.png"
+                    className={styles.readMeImg}
+                    alt="read me"
+                  />
+                  ReadMe
+                </a>
+              </span>
+              .
+            </p>
+          </div>
           <div className={styles.modalFooter}>
             <p className={styles.linksText}>
               Project Links<span>.</span>

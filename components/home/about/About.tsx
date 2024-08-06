@@ -20,9 +20,7 @@ export const About = () => {
                   alt="About Picture"
                 />
               </div>
-              <p
-                className={`${styles.aboutText} ${styles.highlightFirstLetter} boxP`}
-              >
+              <p className={`${styles.aboutText} ${styles.subhead} boxP`}>
                 Hello and nice to meet you! As Jay-Z famously said, "
                 <i>Allow me to reintroduce myself.</i>" I'm Aisha Evering, and
                 I’ve recently focused on advancing my expertise in data science
