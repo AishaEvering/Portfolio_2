@@ -11,10 +11,11 @@ import { UtilityButton } from "@/components/buttons/UtilityButton";
 import { ImageButton } from "@/components/buttons/ImageButton";
 import { createFileFromPath } from "@/components/utils/createFileFromPath";
 import { ArtGeekPredictionsDisplay } from "./ArtGeekPredictionsComponent";
+import { ArtExamples } from "@/components/utils/HelperData";
 
 interface Props {
   isOpen: boolean;
-  setIsOpen: Function;
+  setIsOpen: (isOpen: boolean) => void;
   title: string;
   code: string;
   projectLink?: string;
@@ -35,12 +36,11 @@ export const ArtGeekProjectModal = ({
     const body = document.querySelector("body");
 
     if (isOpen) {
-      body!.style.overflowY = "hidden";
+      if (body) body.style.overflowY = "hidden";
     } else {
-      body!.style.overflowY = "scroll";
+      if (body) body.style.overflowY = "scroll";
 
       const existingElement = document.querySelector("gradio-app");
-
       if (existingElement) {
         document.body.removeChild(existingElement);
       }
@@ -49,8 +49,9 @@ export const ArtGeekProjectModal = ({
 
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [predictionInput, setPredictionInput] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string>();
   const [reset, setReset] = useState(false);
+  const [error, setError] = useState<string>("");
 
   // Handle image drop
   const { getRootProps, getInputProps } = useDropzone({
@@ -66,16 +67,8 @@ export const ArtGeekProjectModal = ({
     },
   });
 
-  const examples: string[] = [
-    "/project-imgs/examples_beach.jpeg",
-    "/project-imgs/examples_boats.jpeg",
-    "/project-imgs/examples_flowers.png",
-    "/project-imgs/examples_Mona.png",
-    "/project-imgs/examples_portrait.jpeg",
-  ];
-
   const handlePredict = () => {
-    if (imageFile == null) return;
+    if (!imageFile) return;
     setPredictionInput(imageFile);
     setReset(false);
   };
@@ -98,7 +91,7 @@ export const ArtGeekProjectModal = ({
     try {
       const file = await fetchImage(url);
 
-      if (file !== null) {
+      if (file) {
         setImageFile(file);
       }
     } catch (error) {
@@ -114,7 +107,7 @@ export const ArtGeekProjectModal = ({
 
   const content = (
     <div className={styles.modal} onClick={() => setIsOpen(false)}>
-      <button className={styles.closeModalBtn}>
+      <button className={styles.closeModalBtn} onClick={() => setIsOpen(false)}>
         <MdClose />
       </button>
 
@@ -125,44 +118,53 @@ export const ArtGeekProjectModal = ({
         className={styles.modalCard}
       >
         <div className={styles.appStyles}>
-          <div className={styles.predContainer}>
-            <div className={styles.predChild}>
-              {/* Drag-and-Drop Area */}
-              <div {...getRootProps()} className={styles.dropzoneStyles}>
-                <input {...getInputProps()} />
-                {imageUrl ? (
-                  <img
-                    src={imageUrl}
-                    alt="Uploaded"
-                    className={styles.imageStyles}
-                  />
-                ) : (
-                  <p>Drag and drop an image here, or click to select one</p>
-                )}
-              </div>
-              <UtilityButton onClick={handleClearImg}>Clear</UtilityButton>
-              <UtilityButton onClick={handlePredict}>Predict</UtilityButton>
-            </div>
-            <ArtGeekPredictionsDisplay
-              reset={reset}
-              imageFile={predictionInput}
+          {error ? (
+            <img
+              className={styles.art_error}
+              src="/project-imgs/art_error.jpeg"
+              alt="Art App Error"
             />
-          </div>
-          {/* Example Inputs */}
-          <div className={styles.examplesStyles}>
-            <p>Examples:</p>
-            <div className={styles.examplesImages}>
-              {examples.map((path, index) => (
-                <ImageButton
-                  key={index}
-                  onClick={() => {
-                    handleExample(path);
-                  }}
-                  imageurl={path}
+          ) : (
+            <>
+              <div className={styles.predContainer}>
+                <div className={styles.predChild}>
+                  {/* Drag-and-Drop Area */}
+                  <div {...getRootProps()} className={styles.dropzoneStyles}>
+                    <input {...getInputProps()} />
+                    {imageUrl ? (
+                      <img
+                        src={imageUrl}
+                        alt="Uploaded"
+                        className={styles.imageStyles}
+                      />
+                    ) : (
+                      <p>Drag and drop an image here, or click to select one</p>
+                    )}
+                  </div>
+                  <UtilityButton onClick={handleClearImg}>Clear</UtilityButton>
+                  <UtilityButton onClick={handlePredict}>Predict</UtilityButton>
+                </div>
+                <ArtGeekPredictionsDisplay
+                  reset={reset}
+                  onError={setError}
+                  imageFile={predictionInput}
                 />
-              ))}
-            </div>
-          </div>
+              </div>
+              {/* Example Inputs */}
+              <div className={styles.examplesStyles}>
+                <p>Examples:</p>
+                <div className={styles.examplesImages}>
+                  {ArtExamples.map((path, index) => (
+                    <ImageButton
+                      key={index}
+                      onClick={() => handleExample(path)}
+                      imageurl={path}
+                    />
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </div>
         <div className={styles.modalContent}>
           <h4>{title}</h4>
@@ -196,7 +198,7 @@ export const ArtGeekProjectModal = ({
               <Link target="_blank" rel="nofollow" href={code}>
                 <AiFillGithub /> source code
               </Link>
-              {projectLink.length > 0 && (
+              {projectLink && (
                 <Link target="_blank" rel="nofollow" href={projectLink}>
                   <AiOutlineExport /> live project
                 </Link>
@@ -208,8 +210,7 @@ export const ArtGeekProjectModal = ({
     </div>
   );
 
-  if (!isOpen) return <></>;
+  if (!isOpen) return null;
 
-  // @ts-ignore
-  return ReactDOM.createPortal(content, document.getElementById("root"));
+  return ReactDOM.createPortal(content, document.getElementById("root")!);
 };

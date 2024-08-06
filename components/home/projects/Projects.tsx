@@ -42,7 +42,15 @@ const projects = [
           The live demo above showcases my custom React interface, which
           interacts with my trained model for inference via an API hosted on
           Hugging Face. To explore my Hugging Face space and check out other
-          spaces I’ve created, simply click the link below.
+          spaces I’ve created,{" "}
+          <a
+            target="_blank"
+            rel="nofollow"
+            href="https://aishae-art-geek.hf.space"
+          >
+            click here
+          </a>
+          .
         </p>
       </>
     ),
@@ -50,9 +58,9 @@ const projects = [
   {
     title: "My Assistant",
     projectType: "my_assistant",
-    imgSrc: "project-imgs/my_assistant_header.png",
+    imgSrc: "project-imgs/how_can_I_help_you.jpeg",
     code: "https://github.com/AishaEvering/My_Assistant",
-    projectLink: "https://huggingface.co/spaces/AishaE/My_Assistant",
+    projectLink: "https://aishae-my-assistant.hf.space/",
     liveDemo: true,
     tech: ["TensorFlow", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
@@ -92,6 +100,20 @@ const projects = [
           means well and in this demo it acknowleges that you asked by showing
           you what it would do maybe some time in the future. You never know.
         </p>
+        <p>
+          The live demo above showcases my custom React interface, which
+          interacts with my trained model for inference via an API hosted on
+          Hugging Face. To explore my Hugging Face space and check out other
+          spaces I’ve created,
+          <a
+            target="_blank"
+            rel="nofollow"
+            href="https://aishae-my-assistant.hf.space/"
+          >
+            click here
+          </a>
+          .
+        </p>
       </>
     ),
   },
@@ -125,7 +147,7 @@ const projects = [
   {
     title: "Recipe Discovery",
     projectType: "default",
-    imgSrc: "project-imgs/pancakes.jpg",
+    imgSrc: "project-imgs/recipe_loader.jpeg",
     code: "https://www.github.com",
     projectLink: "https://github.com/AishaEvering/RecipeDiscovery/tree/main",
     liveDemo: false,

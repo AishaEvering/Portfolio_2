@@ -14,7 +14,7 @@ const useMyAssistant = (command?: string | null) => {
     const [isLoading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        if (command == "") {
+        if (!command) {
             setData(null);
             setError("");
             setLoading(false);

@@ -53,7 +53,7 @@ export default function CommandForm({
           className={styles.formInput}
           {...register("command", {
             required: "This is required",
-            minLength: { value: 4, message: "Minimum length should be 4" },
+            minLength: { value: 2, message: "Minimum length should be 2" },
             maxLength: { value: 100, message: "Maximum length is 100" },
           })}
         />

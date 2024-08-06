@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Text } from "@chakra-ui/react";
 import styles from "./predictionsdisplay.module.scss";
 import { LabelPredictionDisplay } from "./LabelPredictionsDisplayComponent";
 import useMyAssistant from "@/hooks/useMyAssistant";
+import { CommandPredictionImgs } from "@/components/utils/HelperData";
+import { motion } from "framer-motion";
 
 interface Props {
   command: string | null;
@@ -10,37 +11,71 @@ interface Props {
 }
 
 export const MyAssistantPredictionsDisplay = ({ command, reset }: Props) => {
-  // console.log("Command: " + command);
   const { data, error, isLoading } = useMyAssistant(command);
 
-  const [expanded, setExpanded] = useState<false | number>(0);
+  const [predImage, setPredImage] = useState<string>("");
 
-  if (error) return <Text>{error}</Text>;
-  // console.log(data);
+  const errorImg = "/project-imgs/pop_art_error.jpeg";
+
+  function getRandomImage(prediction: string): string | null {
+    if (CommandPredictionImgs.length === 0 || prediction.length == 0)
+      return errorImg;
+
+    const formattedPrediction: string = prediction
+      .toLocaleLowerCase()
+      .replace(/ /g, "_");
+
+    const matchingImages = CommandPredictionImgs.filter((image) =>
+      image.includes(formattedPrediction)
+    );
+
+    const randomIndex = Math.floor(Math.random() * matchingImages.length);
+    console.log(formattedPrediction);
+    console.log(matchingImages[randomIndex]);
+    return matchingImages[randomIndex];
+  }
+
   return (
-    <div className={styles.predictionsContainer}>
-      {/* <LabelPredictionDisplay
-        title="Genre"
-        data={data != null ? (data as any)[0] : null}
-        id={1}
-        reset={reset}
-        expanded={expanded}
-        isLoading={isLoading}
-        onExpandedChange={setExpanded}
+    <div className={styles.assistant_container}>
+      <img
+        className={styles.assistant_background}
+        src="/project-imgs/pop_art_background.avif"
+        alt="Assistant Background"
       />
-      <LabelPredictionDisplay
-        title="Style"
-        data={data != null ? (data as any)[1] : null}
-        id={2}
-        reset={reset}
-        expanded={expanded}
-        isLoading={isLoading}
-        onExpandedChange={setExpanded}
-      /> */}
-      {data != null && isLoading == false && reset == false && (
-        <span className={styles.meticMsg}>
-          Prediction time (seconds): <b>{(data as any)[1]}</b>
-        </span>
+      {error ? (
+        <img
+          className={styles.assistant_error}
+          src={errorImg}
+          alt="Assistant App Error"
+        />
+      ) : (
+        <>
+          {data != null && isLoading == false && reset == false && (
+            <>
+              <motion.div
+                className={styles.assistant_predictionContainer}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 2 }}
+              >
+                <span className={styles.assistant_predictionLabel}>
+                  {(data as any)[0]}
+                </span>
+                <img
+                  className={styles.assistant_predImg}
+                  src={getRandomImage((data as any)[0]) || ""}
+                  alt="Predicted Intent Img"
+                />
+              </motion.div>
+              <span className={styles.assistant_meticMsg}>
+                Prediction time (seconds): <b>{(data as any)[1]}</b>
+              </span>
+            </>
+          )}
+          {isLoading == true && (
+            <span className={styles.assistant_loading}>Loading</span>
+          )}
+        </>
       )}
     </div>
   );

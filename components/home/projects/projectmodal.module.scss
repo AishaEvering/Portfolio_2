@@ -185,6 +185,7 @@
 
 .predContainer{
   overflow: hidden;
+  // position: relative;
 }
 
 .predChild{
@@ -199,4 +200,13 @@
   width: 90%;
   margin: 2rem auto;
   position: relative;
+}
+
+.art_error{
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
 }

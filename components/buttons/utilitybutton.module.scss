@@ -7,8 +7,12 @@
   border-color: var(--brand);
   background: var(--brand);
   color:white;
-  font-size: var(--text-xs);
-  border-radius: 20px;
+  font-size: small;
+  font-weight: 500;
+  text-transform: uppercase;
+  // font-size: var(--text-xs);
+  // border-radius: 20px;
+  border-radius: 10px;
   width: 10rem;
 
   position: relative;
