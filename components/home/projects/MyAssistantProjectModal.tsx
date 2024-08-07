@@ -41,7 +41,7 @@ export const MyAssistantProjectModal = ({
       body!.style.overflowY = "hidden";
     } else {
       body!.style.overflowY = "scroll";
-      // clearAll();
+      clearAll();
     }
   }, [isOpen]);
 

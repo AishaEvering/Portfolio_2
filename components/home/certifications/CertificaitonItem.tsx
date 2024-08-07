@@ -9,7 +9,7 @@ interface Props {
   img: string;
   issuer: string;
   link: string;
-  description: string;
+  description: JSX.Element;
   id: number;
   expanded: false | number;
   onExpandedChange: (loading: false | number) => void;
@@ -56,7 +56,9 @@ export const CertificationItem = ({
 
       <div className={styles.heading}>
         <Reveal>
-          <span className={styles.issuer}>{issuer}</span>
+          <Link href={link} target="_blank" rel="nofollow">
+            <span className={styles.issuer}>{issuer}</span>
+          </Link>
         </Reveal>
       </div>
       {isOpen && (
@@ -67,7 +69,7 @@ export const CertificationItem = ({
                 <img className={styles.detailsImg} src={img} />
               </Link>
             </div>
-            <p className={styles.description}>{description}</p>
+            <div className={styles.description}>{description}</div>
           </>
         </CollapsableContent>
       )}

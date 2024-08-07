@@ -32,6 +32,12 @@ export const ArtGeekProjectModal = ({
   code,
   tech,
 }: Props) => {
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [predictionInput, setPredictionInput] = useState<File | null>(null);
+  const [imageUrl, setImageUrl] = useState<string>();
+  const [reset, setReset] = useState(false);
+  const [error, setError] = useState<string>("");
+
   useEffect(() => {
     const body = document.querySelector("body");
 
@@ -39,19 +45,11 @@ export const ArtGeekProjectModal = ({
       if (body) body.style.overflowY = "hidden";
     } else {
       if (body) body.style.overflowY = "scroll";
-
-      const existingElement = document.querySelector("gradio-app");
-      if (existingElement) {
-        document.body.removeChild(existingElement);
-      }
+      setImageUrl("");
+      setImageFile(null);
+      setReset(true);
     }
   }, [isOpen]);
-
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [predictionInput, setPredictionInput] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState<string>();
-  const [reset, setReset] = useState(false);
-  const [error, setError] = useState<string>("");
 
   // Handle image drop
   const { getRootProps, getInputProps } = useDropzone({

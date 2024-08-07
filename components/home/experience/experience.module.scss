@@ -16,6 +16,7 @@
 .title {
   font-size: var(--text-md);
   font-weight: bold;
+  margin-right: 5px;
 }
 
 .position {
@@ -26,10 +27,44 @@
 .description {
   margin-bottom: 1.8rem;
   font-weight: 200;
+  // font-size: var(--text-xs);
 }
 
 .tech {
   display: flex;
   flex-wrap: wrap;
   gap: 1.2rem;
+}
+
+.details {
+  font-weight: 200;
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--brand);
+  cursor: pointer;
+  padding-left: 5px;
+}
+
+.details:hover {
+  text-decoration: underline;
+}
+
+.linkButton {
+  font-size: var(--text-xs);
+  font-weight: 400;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: var(--brand);
+  text-decoration: none;
+  text-align: left;
+  vertical-align: baseline;
+  margin: 0;
+  line-height:2;
+  cursor: pointer;
+}
+
+.linkButton:hover{
+  text-decoration: underline;
 }

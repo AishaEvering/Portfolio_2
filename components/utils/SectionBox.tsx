@@ -43,7 +43,7 @@ export const SectionBox = ({
                   onClick={() => onExpandedChange(isOpen ? false : id)}
                   className={styles.linkButton}
                 >
-                  (see details)
+                  [see details]
                 </motion.button>
               )}
         </div>

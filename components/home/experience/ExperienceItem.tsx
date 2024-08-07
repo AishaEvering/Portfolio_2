@@ -1,5 +1,7 @@
 import { Reveal } from "@/components/utils/Reveal";
 import styles from "./experience.module.scss";
+import { motion } from "framer-motion";
+import { CollapsableContent } from "@/components/utils/CollapsableContent";
 
 interface Props {
   title: string;
@@ -8,9 +10,15 @@ interface Props {
   location: string;
   description: string;
   tech: string[];
+  id: number;
+  expanded: false | number;
+  onExpandedChange: (loading: false | number) => void;
 }
 
 export const ExperienceItem = ({
+  id,
+  expanded,
+  onExpandedChange,
   title,
   position,
   time,
@@ -18,11 +26,23 @@ export const ExperienceItem = ({
   description,
   tech,
 }: Props) => {
+  const isOpen = id === expanded;
+
   return (
     <div className={styles.experience}>
       <div className={styles.heading}>
         <Reveal>
-          <span className={styles.title}>{title}</span>
+          <>
+            <span className={styles.title}>{title}</span>
+            <motion.button
+              initial={false}
+              animate={{ color: isOpen ? "#c3c4c3" : "#E118B2" }}
+              onClick={() => onExpandedChange(isOpen ? false : id)}
+              className={styles.linkButton}
+            >
+              [See details]
+            </motion.button>
+          </>
         </Reveal>
         <Reveal>
           <span>{time}</span>
@@ -37,18 +57,20 @@ export const ExperienceItem = ({
           <span>{location}</span>
         </Reveal>
       </div>
-      <Reveal>
-        <p className={styles.description}>{description}</p>
-      </Reveal>
-      <Reveal>
-        <div className={styles.tech}>
-          {tech.map((item) => (
-            <span key={item} className="chip">
-              {item}
-            </span>
-          ))}
-        </div>
-      </Reveal>
+      {isOpen && (
+        <CollapsableContent>
+          <>
+            <p className={styles.description}>{description}</p>
+            <div className={styles.tech}>
+              {tech.map((item) => (
+                <span key={item} className="chip">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </>
+        </CollapsableContent>
+      )}
     </div>
   );
 };
