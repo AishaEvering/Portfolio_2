@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
 import styles from "./predictionsdisplay.module.scss";
-import { LabelPredictionDisplay } from "./LabelPredictionsDisplayComponent";
 import useMyAssistant from "@/hooks/useMyAssistant";
 import { CommandPredictionImgs } from "@/components/utils/HelperData";
 import { motion } from "framer-motion";
@@ -12,8 +10,6 @@ interface Props {
 
 export const MyAssistantPredictionsDisplay = ({ command, reset }: Props) => {
   const { data, error, isLoading } = useMyAssistant(command);
-
-  const [predImage, setPredImage] = useState<string>("");
 
   const errorImg = "/project-imgs/pop_art_error.jpeg";
 
@@ -30,8 +26,6 @@ export const MyAssistantPredictionsDisplay = ({ command, reset }: Props) => {
     );
 
     const randomIndex = Math.floor(Math.random() * matchingImages.length);
-    console.log(formattedPrediction);
-    console.log(matchingImages[randomIndex]);
     return matchingImages[randomIndex];
   }
 

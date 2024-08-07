@@ -45,7 +45,6 @@ export const CommandExamples: string[] = [
     "/project-imgs/my-assistant-imgs/play_music_1.jpeg",
     "/project-imgs/my-assistant-imgs/play_music_2.jpeg",
     "/project-imgs/my-assistant-imgs/play_music_3.jpeg",
-    "/project-imgs/my-assistant-imgs/play_music_4.jpeg",
     "/project-imgs/my-assistant-imgs/rate_book_1.jpeg",
     "/project-imgs/my-assistant-imgs/rate_book_2.jpeg",
     "/project-imgs/my-assistant-imgs/rate_book_3.jpeg",

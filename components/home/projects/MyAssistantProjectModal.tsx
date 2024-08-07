@@ -30,6 +30,10 @@ export const MyAssistantProjectModal = ({
   code,
   tech,
 }: Props) => {
+  const [command, setCommand] = useState<string>("");
+  const [selectedExample, setSelectedExample] = useState<string>("");
+  const [reset, setReset] = useState(false);
+
   useEffect(() => {
     const body = document.querySelector("body");
 
@@ -37,37 +41,30 @@ export const MyAssistantProjectModal = ({
       body!.style.overflowY = "hidden";
     } else {
       body!.style.overflowY = "scroll";
-
-      const existingElement = document.querySelector("gradio-app");
-
-      if (existingElement) {
-        document.body.removeChild(existingElement);
-      }
+      // clearAll();
     }
   }, [isOpen]);
 
-  const [command, setCommand] = useState<string>("");
-  const [predictionInput, setPredictionInput] = useState<string | null>(null);
-  const [selectedExample, setSelectedExample] = useState<string>("");
-  const [reset, setReset] = useState(false);
-
   const handleSubmit = (command: string) => {
-    console.log("Calling handleSubmit: " + command);
     if (command == null) return;
     setReset(false);
-    setPredictionInput(command);
+    setCommand(command);
   };
 
   const handleSelectExample = (command: string) => {
     setReset(false);
     setSelectedExample(command);
-    setPredictionInput(command);
+    setCommand(command);
   };
 
   const handleClearCommand = () => {
-    setSelectedExample("");
-    setCommand("");
+    clearAll();
     setReset(true);
+  };
+
+  const clearAll = () => {
+    setCommand("");
+    setSelectedExample("");
   };
 
   const content = (
@@ -88,10 +85,7 @@ export const MyAssistantProjectModal = ({
         ></TabComponent>
         <div className={styles.appStyles}>
           <div className={styles.predContainer}>
-            <MyAssistantPredictionsDisplay
-              command={predictionInput}
-              reset={reset}
-            />
+            <MyAssistantPredictionsDisplay command={command} reset={reset} />
           </div>
           <CommandForm
             onSubmit={handleSubmit}

@@ -136,11 +136,6 @@ const projects = [
           classify images. The final stage involved presenting the resulting
           metrics for each experiment in a live presentation.
         </p>
-        <p>
-          For a detailed account of the decisions I made, the challenges I
-          encountered, and the insights I gained, please refer to the full
-          README available through the source code link.
-        </p>
       </>
     ),
   },
@@ -148,28 +143,27 @@ const projects = [
     title: "Recipe Discovery",
     projectType: "default",
     imgSrc: "project-imgs/recipe_loader.jpeg",
-    code: "https://www.github.com",
-    projectLink: "https://github.com/AishaEvering/RecipeDiscovery/tree/main",
+    code: "https://github.com/AishaEvering/RecipeDiscovery",
+    projectLink: "",
     liveDemo: false,
-    tech: ["Python", "FastAPI", "SQLAlchemy"],
+    tech: ["Scikit-Learn", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
-      "I couldn't think of another paint reference app, so here we are. I think you get the idea, right? Use your imagination 🌈",
+      "Solving a binary classification problem to predict which recipes will lead to high web traffic using logistic regression models.",
     modalContent: (
       <>
-        <p>Alright, you got me. I&apos;m all out of paint references.</p>
         <p>
-          Point is, use this space to explain a bit further WHAT this project
-          is, as well as what YOU contributed to it.
-        </p>
-        <p>You get the idea. Now more lorem {":)"}</p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur
-          quia officia odio nulla consectetur aperiam ad tempora magni magnam
-          nesciunt.
+          This is my final project for obtaining the Data Science Certification
+          from DataCamp. In this project, I was provided with a dataset
+          containing recipes, their details, and whether they generated high web
+          traffic. My task was to predict which types of recipes would drive
+          high traffic in the future, aiming for at least 80% accuracy
         </p>
         <p>
-          Fuga id sapiente facere ipsa eius exercitationem officiis deleniti,
-          rerum dolorum. Deserunt soluta modi culpa animi.
+          The project involved training two models: a baseline model and a
+          comparison model. I demonstrated techniques for data validation and
+          cleaning, and shared insights from exploratory data analysis (EDA).
+          After developing and training the models, I presented my findings. You
+          can view that presentaion in my GitHub repository.
         </p>
       </>
     ),
