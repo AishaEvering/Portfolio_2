@@ -1,54 +1,76 @@
 import { Reveal } from "@/components/utils/Reveal";
 import styles from "./certifications.module.scss";
+import { CollapsableContent } from "@/components/utils/CollapsableContent";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface Props {
   title: string;
-  position: string;
-  time: string;
-  location: string;
+  img: string;
+  issuer: string;
+  link: string;
   description: string;
-  tech: string[];
+  id: number;
+  expanded: false | number;
+  onExpandedChange: (loading: false | number) => void;
 }
 
 export const CertificationItem = ({
+  id,
+  expanded,
+  onExpandedChange,
   title,
-  position,
-  time,
-  location,
+  img,
+  issuer,
+  link,
   description,
-  tech,
 }: Props) => {
+  const isOpen = id === expanded;
+
   return (
     <div className={styles.certifications}>
       <div className={styles.heading}>
         <Reveal>
-          <span className={styles.title}>{title}</span>
+          <span className={styles.title}>
+            <Link href={link} target="_blank" rel="nofollow">
+              {title}
+            </Link>
+          </span>
         </Reveal>
         <Reveal>
-          <span>{time}</span>
+          <motion.button
+            onClick={() => onExpandedChange(isOpen ? false : id)}
+            className={styles.linkButton}
+          >
+            <img
+              className={styles.arrow}
+              src={
+                isOpen
+                  ? "/project-imgs/down-arrow.png"
+                  : "/project-imgs/right-arrow.png"
+              }
+            />
+          </motion.button>
         </Reveal>
       </div>
 
       <div className={styles.heading}>
         <Reveal>
-          <span className={styles.position}>{position}</span>
-        </Reveal>
-        <Reveal>
-          <span>{location}</span>
+          <span className={styles.issuer}>{issuer}</span>
         </Reveal>
       </div>
-      <Reveal>
-        <p className={styles.description}>{description}</p>
-      </Reveal>
-      <Reveal>
-        <div className={styles.tech}>
-          {tech.map((item) => (
-            <span key={item} className="chip">
-              {item}
-            </span>
-          ))}
-        </div>
-      </Reveal>
+      {isOpen && (
+        <CollapsableContent>
+          <>
+            <div className={styles.detailsImgContainer}>
+              <Link href={link} target="_blank" rel="nofollow">
+                <img className={styles.detailsImg} src={img} />
+              </Link>
+            </div>
+            <p className={styles.description}>{description}</p>
+          </>
+        </CollapsableContent>
+      )}
     </div>
   );
 };

@@ -18,18 +18,62 @@
   font-weight: bold;
 }
 
-.position {
+.title:hover {
+  text-decoration: underline;
+}
+
+.issuer {
   color: var(--brand);
   font-weight: bold;
+}
+
+.arrow{
+  padding-left: 0px;
+  vertical-align: middle;
+  margin-right: 0px;
+  width: 20px;
+}
+
+.details_container{
+  white-space: nowrap; 
+}
+
+.linkButton {
+  font-size: var(--text-xs);
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: var(--brand);
+  text-decoration: none;
+  text-align: left;
+  vertical-align: middle;
+  margin: 0;
+  line-height:2;
+  cursor: pointer;
+}
+
+.linkButton:hover{
+  text-decoration: underline;
+}
+
+
+.detailsImgContainer{
+  float: left;
+  margin-right: 18px;
+  margin-bottom: 18px;
+  max-height:10%;
+  max-width:10%;
+}
+
+.detailsImg{
+  float: left;
+  width: 100%;
+  height: 100%;
 }
 
 .description {
   margin-bottom: 1.8rem;
   font-weight: 200;
+  text-align: justify;
 }
 
-.tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-}

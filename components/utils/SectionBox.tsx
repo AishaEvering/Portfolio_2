@@ -47,25 +47,11 @@ export const SectionBox = ({
                 </motion.button>
               )}
         </div>
-        <AnimatePresence initial={false}>
-          {isOpen && isLoading == false && reset == false && (
-            <motion.section
-              key="content"
-              initial="collapsed"
-              animate="open"
-              exit="collapsed"
-              variants={{
-                open: { opacity: 1, height: "auto" },
-                collapsed: { opacity: 0, height: 0 },
-              }}
-              transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
-            >
-              <CollapsableContent>
-                <div className={styles.content}>{children}</div>
-              </CollapsableContent>
-            </motion.section>
-          )}
-        </AnimatePresence>
+        {isOpen && isLoading == false && reset == false && (
+          <CollapsableContent>
+            <div className={styles.content}>{children}</div>
+          </CollapsableContent>
+        )}
       </fieldset>
     </>
   );
