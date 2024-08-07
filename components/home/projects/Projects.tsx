@@ -62,9 +62,9 @@ const projects = [
     code: "https://github.com/AishaEvering/My_Assistant",
     projectLink: "https://aishae-my-assistant.hf.space/",
     liveDemo: true,
-    tech: ["TensorFlow", "Python", "Pandas", "Numpy", "Matplotlib"],
+    tech: ["TensorFlow", "Keras", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
-      "A fine-tuned BERT transformer model that predicts the intent behind the user's commands.",
+      "A fine-tuned DistilBERT transformer model that predicts the intent behind user commands.",
     modalContent: (
       <>
         <p>
@@ -153,10 +153,18 @@ const projects = [
       <>
         <p>
           This is my final project for obtaining the Data Science Certification
-          from DataCamp. In this project, I was provided with a dataset
-          containing recipes, their details, and whether they generated high web
-          traffic. My task was to predict which types of recipes would drive
-          high traffic in the future, aiming for at least 80% accuracy
+          from{" "}
+          <a
+            target="_blank"
+            rel="nofollow"
+            href="https://www.datacamp.com/portfolio/shovon3000g"
+          >
+            DataCamp
+          </a>
+          . In this project, I was provided with a dataset containing recipes,
+          their details, and whether they generated high web traffic. My task
+          was to predict which types of recipes would drive high traffic in the
+          future, aiming for at least 80% accuracy
         </p>
         <p>
           The project involved training two models: a baseline model and a

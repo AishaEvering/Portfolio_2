@@ -10,11 +10,11 @@ export const CommandExamples: string[] = [
 
 
   export const ArtExamples: string[] = [
-    "/project-imgs/examples_beach.jpeg",
-    "/project-imgs/examples_boats.jpeg",
-    "/project-imgs/examples_flowers.png",
-    "/project-imgs/examples_Mona.png",
-    "/project-imgs/examples_portrait.jpeg",
+    "/project-imgs/art-geek-imgs/beach.jpeg",
+    "/project-imgs/art-geek-imgs/boats.jpeg",
+    "/project-imgs/art-geek-imgs/flowers.png",
+    "/project-imgs/art-geek-imgs/Mona.png",
+    "/project-imgs/art-geek-imgs/portrait.jpeg",
   ];
 
   export const CommandPredictionImgs: string[] = [
