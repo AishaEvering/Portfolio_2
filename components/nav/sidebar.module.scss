@@ -1,5 +1,5 @@
 .sideBar {
-  background: var(--background-dark);
+  background: var(--background-dark-opaque);
 
   height: 100vh;
 
@@ -36,13 +36,13 @@
   }
 
   a:hover {
-    background: var(--background);
+    background: var(--bg-opaque);
     border-right: 1px solid var(--brand);
     opacity: 1;
   }
 
   .selected {
-    background: var(--background);
+    background: var(--bg-opaque);
     border-right: 1px solid var(--brand);
     opacity: 1;
   }

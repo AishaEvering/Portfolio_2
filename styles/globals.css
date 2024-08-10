@@ -8,6 +8,7 @@
   --bg-opaque: rgb(255, 255, 255);
   --background-light: rgb(234, 229, 229);
   --background-dark: white;
+  --background-dark-opaque: white;
 
   --text: rgb(85, 85, 85);
   --text-error: red;
@@ -40,8 +41,9 @@
   font-size: 62.5%;
 
   --background: rgb(17, 17, 17);
-  --bg-opaque: rgb(17, 17, 17);
+  --bg-opaque: rgb(17, 17, 17, 0.25);
   --background-light: rgb(35, 35, 35);
+  --background-dark-opaque: rgb(17, 17, 17, 0.25);
   --background-dark: rgb(17, 17, 17);
   --alter-color: rgb(101, 97, 97);
   --is-open-text:#c3c4c3;

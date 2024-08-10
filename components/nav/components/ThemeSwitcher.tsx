@@ -11,7 +11,6 @@ export const ThemeSwitcher = () => {
     const savedTheme = localStorage.getItem(themeAttr);
 
     if (savedTheme) {
-      console.log("Loaded theme: " + savedTheme);
       const isDarkTheme = savedTheme === "dark";
       setIsChecked(isDarkTheme);
       setTheme(savedTheme);
@@ -30,7 +29,6 @@ export const ThemeSwitcher = () => {
 
   const handleThemeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTheme = event.target.checked ? "dark" : "light";
-    console.log("Pressed: " + newTheme);
     setIsChecked(event.target.checked);
     setTheme(newTheme);
   };
