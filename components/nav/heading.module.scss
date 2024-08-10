@@ -12,10 +12,13 @@
   background: var(--bg-opaque);
   backdrop-filter: blur(12px);
 
-  font-size: var(--text-md);
   font-weight: bold;
 
   @media (max-width: 768px) {
     padding: 0 2.4rem;
   }
+}
+
+.switcher_container{
+  margin-top: 15px;
 }

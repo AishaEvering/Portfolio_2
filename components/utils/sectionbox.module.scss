@@ -1,7 +1,7 @@
 
 .container {
   flex-direction: column;
-  border: 1px solid  #76c7c0;
+  border: 1px solid  var(--alter-color);
   border-radius: 15px;
   padding: 12px;
   margin-bottom: 5px;
@@ -14,7 +14,7 @@
 .legend {
   font-size: 1.3rem;
   padding: 0 10px;
-  color:  #76c7c0;
+  color:  var(--alter-color);
 }
 
 .subTitle{
@@ -34,7 +34,7 @@
 
 .content{
   width: 100%;
-  border: 1px solid  #76c7c0;
+  border: 1px solid var(--alter-color);
   border-radius: 5px;
   padding: 5px;
   font-size: small;

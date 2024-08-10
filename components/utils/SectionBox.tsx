@@ -39,7 +39,9 @@ export const SectionBox = ({
               isLoading == false && (
                 <motion.button
                   initial={false}
-                  animate={{ color: isOpen ? "#c3c4c3" : "#E118B2" }}
+                  animate={{
+                    color: isOpen ? "var(--is-open-text)" : "var(--sub-brand)",
+                  }}
                   onClick={() => onExpandedChange(isOpen ? false : id)}
                   className={styles.linkButton}
                 >

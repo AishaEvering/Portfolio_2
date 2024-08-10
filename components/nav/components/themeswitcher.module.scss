@@ -1,0 +1,152 @@
+$knob-size: 1.75em;
+
+.toggle {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.toggle_input {
+  position: absolute;
+  z-index: 2;
+  bottom: 132.5%;
+  border-radius: 50%;
+  transform: rotate(-25deg);
+  transform-origin: 50% 4.75em;
+  width: $knob-size;
+  height: $knob-size;
+  opacity: 0;
+  transition: transform .24s cubic-bezier(.65, 1.35, .5, 1);
+  cursor: pointer;
+  
+  &:checked {
+    transform: rotate(25deg);
+  }
+}
+
+.toggle_handle_wrapper {
+  position: absolute;
+  z-index: 1;
+  bottom: -135%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 62.125%, transparent 50%);
+  mask-image: linear-gradient(to bottom, #000 62.125%, transparent 50%);
+  width: 200%;
+  overflow: hidden;
+}
+
+.toggle_handle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-25deg);
+  transform-origin: bottom center;
+  transition: transform .24s cubic-bezier(.65, 1.35, .5, 1);
+  
+  .toggle_input:checked + .toggle_handle_wrapper > & {
+    transform: rotate(25deg);
+  }
+}
+
+.toggle_handle_knob {
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+  width: $knob-size;
+  height: $knob-size;
+  background-image: radial-gradient(farthest-corner at 70% 30%, var(--switch-ball-color1) 4%, var(--switch-ball-color2) 12% 24%, var(--switch-ball-color3) 50% 65%, var(--switch-ball-color2) 75%);
+  transition: transform .24s cubic-bezier(.65, 1.35, .5, 1);
+  
+  .toggle_input:checked + .toggle_handle_wrapper & {
+    transform: rotate(-90deg);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 8px 2px rgb(255 255 255 / .4);
+    opacity: 0;
+    transition: opacity .2s;
+    
+    @media (hover: hover) {
+      @at-root {
+        .toggle_input:hover + .toggle_handle_wrapper &,
+        .toggle_input:focus-visible + .toggle_handle_wrapper & {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.toggle_handle_bar_wrapper {
+  position: relative;
+  width: .5em;
+  height: 3em;
+}
+
+.toggle_handle_bar {
+  position: absolute;
+  top: -($knob-size / 2);
+  left: 0;
+  width: 100%;
+  height: calc(100% + #{$knob-size / 2});
+  background-image: linear-gradient(to right, #777475, #a4a4a4, #fff 45% 55%, #a4a4a4, #777475);
+  background-position-x: .06125em;
+  transition: background-position-x .24s cubic-bezier(.65, 1.35, .5, 1);
+  box-shadow: inset 0 1em .25em rgb(0 0 0 / .4);
+  
+  .toggle_input:checked + .toggle_handle_wrapper & {
+    background-position-x: -.06125em;
+  }
+}
+
+.toggle_base {
+  position: relative;
+  border-radius: 3.125em;
+  padding: .25em;
+  width: 3.5em;
+  height: 1.125em;
+  background-color: #fff;
+  background-image: linear-gradient(to bottom, #fff, #d7d7d7);
+  box-shadow:
+    0 -.25em .5em #fff,
+    0 .25em .5em #d7d7d7,
+  ;
+}
+
+.toggle_base_inside {
+  position: relative;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #a6a6a6, #7d7d7d);
+  box-shadow:
+    inset 0 .0625em rgb(255 255 255 / .2),
+    inset 0 -.03125em rgb(255 255 255 / 1),
+    inset 0 -.0625em .25em rgb(0 0 0 / .1),
+  ;
+  
+  // toggle base inside active
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    //background-image: linear-gradient(to bottom, #5ab054, #438c3c);
+    //background-image: linear-gradient(to bottom, var(--brand), var(--sub-brand));
+    background-image: linear-gradient(to bottom, var(--switch-background-image-color1), var(--switch-background-image-color2));
+    box-shadow: inherit;
+    opacity: 0;
+    transition: opacity .24s cubic-bezier(.65, 1.35, .5, 1);
+    
+    @at-root .toggle_input:checked ~ .toggle_base & {
+      opacity: 1;
+    }
+  }
+}

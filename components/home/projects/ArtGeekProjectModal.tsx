@@ -12,6 +12,7 @@ import { ImageButton } from "@/components/buttons/ImageButton";
 import { createFileFromPath } from "@/components/utils/createFileFromPath";
 import { ArtGeekPredictionsDisplay } from "./ArtGeekPredictionsComponent";
 import { ArtExamples } from "@/components/utils/HelperData";
+import { PiBookOpenText } from "react-icons/pi";
 
 interface Props {
   isOpen: boolean;
@@ -176,11 +177,7 @@ export const ArtGeekProjectModal = ({
               full
               <span className={styles.readme}>
                 <a target="_blank" rel="nofollow" href={code}>
-                  <img
-                    src="/project-imgs/readme.png"
-                    className={styles.readMeImg}
-                    alt="read me"
-                  />
+                  <PiBookOpenText size="2.0rem" color="var(--brand)" />
                   ReadMe
                 </a>
               </span>

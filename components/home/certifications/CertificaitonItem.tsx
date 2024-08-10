@@ -2,6 +2,7 @@ import { Reveal } from "@/components/utils/Reveal";
 import styles from "./certifications.module.scss";
 import { CollapsableContent } from "@/components/utils/CollapsableContent";
 import { motion } from "framer-motion";
+import { FaArrowRight, FaArrowDown } from "react-icons/fa";
 import Link from "next/link";
 
 interface Props {
@@ -42,14 +43,11 @@ export const CertificationItem = ({
             onClick={() => onExpandedChange(isOpen ? false : id)}
             className={styles.linkButton}
           >
-            <img
-              className={styles.arrow}
-              src={
-                isOpen
-                  ? "/project-imgs/down-arrow.png"
-                  : "/project-imgs/right-arrow.png"
-              }
-            />
+            {isOpen ? (
+              <FaArrowDown size="2.4rem" color="var(--brand)" />
+            ) : (
+              <FaArrowRight size="2.4rem" color="var(--brand)" />
+            )}
           </motion.button>
         </Reveal>
       </div>

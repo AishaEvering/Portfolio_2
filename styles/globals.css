@@ -1,7 +1,7 @@
 /* styles/globals.css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-:root {
+:root[data-theme="light"] {
   font-size: 62.5%;
 
   --background: white;
@@ -10,7 +10,56 @@
   --background-dark: white;
 
   --text: rgb(85, 85, 85);
+  --text-error: red;
+  --text-highlight:#76c7c0;
+  --text-form:rgb(85, 85, 85);
+  --text-tab:#ffffff;
+
   --brand: rgb(225, 24, 178);
+  --sub-brand: #E118B2;
+  --alter-color:#76c7c0;
+  --is-open-text:#c3c4c3;
+  --progress-bar-color:#76c7c0;
+  --progress-bar-background: #e0e0e0;
+  --switch-ball-color1: #fcd9f4;
+  --switch-ball-color2: #E118B2;
+  --switch-ball-color3: #a01880;
+  --switch-background-image-color1:#E118B2;
+  --switch-background-image-color2:#900f72;
+
+  
+  --text-xs: 1.6rem;
+  --text-sm: 1.8rem;
+  --text-md: 2.2rem;
+  --text-lg: 3.6rem;
+  --text-xl: 5.6rem;
+  --text-2xl: 9.6rem;
+}
+
+:root[data-theme="dark"] {
+  font-size: 62.5%;
+
+  --background: rgb(17, 17, 17);
+  --bg-opaque: rgb(17, 17, 17);
+  --background-light: rgb(35, 35, 35);
+  --background-dark: rgb(17, 17, 17);
+  --alter-color: rgb(101, 97, 97);
+  --is-open-text:#c3c4c3;
+  --progress-bar-color:#76c7c0;
+  --progress-bar-background: #e0e0e0;
+  --switch-ball-color1: #fedee2;
+  --switch-ball-color2: #d63534;
+  --switch-ball-color3: #a81a1a;
+  --switch-background-image-color1:rgb(10, 255, 157);
+  --switch-background-image-color2:rgb(11, 147, 92);
+
+  --text-tab:black;
+  --text-highlight:rgb(10, 255, 157);
+  --text-form:#fff;
+  --text: rgb(188, 189, 194);
+  --text-error: red;
+  --brand: rgb(10, 255, 157);
+  --sub-brand: rgb(75, 213, 158);
 
   --text-xs: 1.6rem;
   --text-sm: 1.8rem;

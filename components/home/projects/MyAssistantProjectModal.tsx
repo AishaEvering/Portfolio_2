@@ -10,6 +10,7 @@ import { MyAssistantPredictionsDisplay } from "./MyAssistantPredictionsComponent
 import CommandForm from "./CommandInputComponent";
 import { TabComponent } from "@/components/utils/TabComponent";
 import { CommandExamples } from "@/components/utils/HelperData";
+import { PiBookOpenText } from "react-icons/pi";
 
 interface Props {
   isOpen: boolean;
@@ -84,14 +85,16 @@ export const MyAssistantProjectModal = ({
           onSelect={handleSelectExample}
         ></TabComponent>
         <div className={styles.appStyles}>
-          <div className={styles.predContainer}>
-            <MyAssistantPredictionsDisplay command={command} reset={reset} />
+          <div className={styles.my_assistant_containeer}>
+            <div className={styles.predContainer}>
+              <MyAssistantPredictionsDisplay command={command} reset={reset} />
+            </div>
+            <CommandForm
+              onSubmit={handleSubmit}
+              onClear={handleClearCommand}
+              initialCommand={selectedExample}
+            ></CommandForm>
           </div>
-          <CommandForm
-            onSubmit={handleSubmit}
-            onClear={handleClearCommand}
-            initialCommand={selectedExample}
-          ></CommandForm>
         </div>
         <div className={styles.modalContent}>
           <h4>{title}</h4>
@@ -105,11 +108,7 @@ export const MyAssistantProjectModal = ({
               full
               <span className={styles.readme}>
                 <a target="_blank" rel="nofollow" href={code}>
-                  <img
-                    src="/project-imgs/readme.png"
-                    className={styles.readMeImg}
-                    alt="read me"
-                  />
+                  <PiBookOpenText size="2.0rem" color="var(--brand)" />
                   ReadMe
                 </a>
               </span>

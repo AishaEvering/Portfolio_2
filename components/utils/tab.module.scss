@@ -37,7 +37,7 @@
       #f6f6c0,
       #f680e0,
       #04f0dc,
-      #76c7c0,
+      var(--alter-color),
       #559791,
       #eb4acd,
       #f574b0,
@@ -64,7 +64,7 @@ $menu_WIDTH: 110px;
   width: $menu_WIDTH;
   font-size: small;
   text-align: center;
-  color: #ffffff;
+  color: var(--text-tab);
   font-weight: 500;
   text-transform: uppercase;
   transition: 0.3s background-color;
@@ -81,20 +81,7 @@ $menu_WIDTH: 110px;
   top: 100%;
   left: 0;
   z-index: 101;
-  // transition:
-  //   0.2s 0.2s border-top ease-out,
-  //   0.3s border-top-color;
 }
-
-
-
-// .trigger:hover > .title:before {
-//   border-top-width: 0;
-//   transition:
-//     0.2s border-top-width ease-in,
-//     0.3s border-top-color;
-// }
-
 
 .ddList{
   list-style: none;
@@ -108,12 +95,12 @@ $menu_WIDTH: 110px;
 .dropdownMenu{
   position: absolute;
   top: 90px;
-  background-color: white;
+  background-color: var(--background);;
   border-radius: 10px;
   padding: 10px 20px;
   width: 300px;
   z-index: 10;
-  border: 2px solid #76c7c0;
+  border: 2px solid var(--alter-color);
 }
 
 .dropdownMenu::before{
@@ -123,9 +110,9 @@ $menu_WIDTH: 110px;
   right: 200px;
   height: 20px;
   width: 20px;
-  background: white;
-  border-left: 2px solid #76c7c0;
-  border-top: 2px solid #76c7c0;
+  background: var(--background);
+  border-left: 2px solid var(--alter-color);
+  border-top: 2px solid var(--alter-color);
   transform: translateX(-50%) rotate(45deg);
 }
 
@@ -150,9 +137,9 @@ $menu_WIDTH: 110px;
 }
 
 .dropdownMenu ul li:hover {
-  color: #76c7c0;
+  color: var(--background-dark);
   padding: 4px 0;
-  background-color: #e8f9f9;
+  background-color: var(--brand);
   cursor: pointer;
 }
 
@@ -166,11 +153,4 @@ $menu_WIDTH: 110px;
   max-width: 400px;
   margin-left: 10px;
   transition: var(--speed);
-}
-
-.linksubtext{
-  padding-top: 3px;
-  font-size: xx-small;
-  color: rgb(168, 163, 163);
-  float: left;
 }

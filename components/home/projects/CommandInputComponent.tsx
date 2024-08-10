@@ -44,7 +44,7 @@ export default function CommandForm({
 
   return (
     <form id="commandForm" onSubmit={handleSubmit(onFormSubmit)} noValidate>
-      <div className={styles.formGroup}>
+      <div className={styles.form}>
         <input
           type="text"
           id="command"
