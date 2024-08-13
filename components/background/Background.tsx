@@ -1,45 +1,25 @@
 import React, { useEffect, useState } from "react";
 import styles from "./background.module.scss";
+import { useTheme } from "next-themes";
 
 const Background = () => {
-  const [theme, setTheme] = useState<string | null>("light");
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const handleThemeChange = () => {
-      const theme = document.documentElement.getAttribute("data-theme");
-      setTheme(theme);
-      // setTheme(theme === "dark" ? darkThemeImage : lightThemeImage);
-    };
-
-    // Initial check
-    handleThemeChange();
-
-    // Set up a MutationObserver to watch for changes to the theme attribute
-    const observer = new MutationObserver(() => {
-      handleThemeChange();
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    // Clean up the observer on component unmount
-    return () => {
-      observer.disconnect();
-    };
+    setMounted(true);
   }, []);
+
+  if (!mounted) return null; // Render nothing until mounted
 
   return (
     <>
-      {theme === "dark" && (
+      {resolvedTheme === "dark" && (
         <div className={styles.background}>
-          <section className={styles.wrapper}>
-            <div className={styles.stars}></div>
-            <div className={styles.stars2}></div>
-            <div className={styles.stars3}></div>
-            <div className={styles.stars4}></div>
-          </section>
+          <div className={styles.stars} />
+          <div className={styles.stars2} />
+          <div className={styles.stars3} />
+          <div className={styles.stars4} />
         </div>
       )}
     </>

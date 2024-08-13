@@ -2,7 +2,7 @@ import Background from "@/components/background/Background";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Poppins } from "next/font/google";
-import { useEffect, useState } from "react";
+import { ThemeProvider } from "next-themes";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -13,9 +13,11 @@ const poppins = Poppins({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div id="root" className={poppins.className}>
-      <Background />
-      <Component {...pageProps} />
-    </div>
+    <ThemeProvider>
+      <div id="root" className={poppins.className}>
+        <Background />
+        <Component {...pageProps} />
+      </div>
+    </ThemeProvider>
   );
 }

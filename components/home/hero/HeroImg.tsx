@@ -1,45 +1,28 @@
+import { useEffect, useState } from "react";
 import styles from "./heroimg.module.scss";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/utils/Reveal";
-import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 export const HeroImg = () => {
   const lightThemeImage = "/project-imgs/hero-pic.png";
   const darkThemeImage = "/project-imgs/hero-pic-dark.jpeg";
 
-  const [heroImg, setHeroImg] = useState(lightThemeImage);
+  const { resolvedTheme } = useTheme();
+  const [imageUrl, setImageUrl] = useState(lightThemeImage);
 
   useEffect(() => {
-    const handleThemeChange = () => {
-      const theme = document.documentElement.getAttribute("data-theme");
-      setHeroImg(theme === "dark" ? darkThemeImage : lightThemeImage);
-    };
-
-    // Initial check
-    handleThemeChange();
-
-    // Set up a MutationObserver to watch for changes to the theme attribute
-    const observer = new MutationObserver(() => {
-      handleThemeChange();
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    // Clean up the observer on component unmount
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+    const themeImage =
+      resolvedTheme === "dark" ? darkThemeImage : lightThemeImage;
+    setImageUrl(`${themeImage}?v=${new Date().getTime()}`);
+  }, [resolvedTheme]);
 
   return (
     <div className={styles.heroimg}>
       <Reveal>
         <div className={styles.heroimgColumn}>
           <div className={styles.heroimgGrid}>
-            <img src={heroImg} alt="Hero" />
+            <img src={imageUrl} alt="Hero Image" />
 
             <motion.svg
               className="w-[300px] xl:w-[506px] h-[300px] xl:h-[506px]"

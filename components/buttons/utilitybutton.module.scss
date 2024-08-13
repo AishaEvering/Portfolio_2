@@ -1,36 +1,35 @@
 .utilityButton {
-  display:inline-block;
-  outline: none;
-  cursor: pointer;
-
-
-  background: var(--brand);
-  color: var(--background-dark);
-
-  padding: 0.5rem;
-  border-color: var(--brand);
-
-  font-size: small;
-  font-weight: 500;
-  text-transform: uppercase;
-  border-radius: 10px;
-  width: 10rem;
-
   position: relative;
-  z-index: 20;
-
+  z-index: 1;
+  display:inline-block;
+  color: var(--text-tab);
+  border: none;
+  background: var(--brand);
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 10px;
+  outline: none !important;
+  transition: background .2s ease;
+  cursor: pointer;
   overflow: hidden;
   margin-right: 20px;
   margin-top: 10px;
   box-sizing: border-box;
-  border:0.16em solid;
 
-  transition: 0.2s opacity;
-}
+  &:hover {
+    background: var(--bot-sub-brand);
+  }
 
-.utilityButton:hover {
-  opacity: 0.9;
-  border-color: var(--brand);
+  &:disabled{
+    opacity: 0.3; 
+    cursor: not-allowed;
+  }
+
+  &:disabled:hover{
+      background: var(--brand);
+  }
 }
 
   @media all and (max-width:30em){
@@ -39,3 +38,4 @@
       margin:0.2em auto;
     }
   }
+

@@ -18,7 +18,7 @@ export default function CommandForm({
     handleSubmit,
     register,
     reset,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<{ command: string }>({
     defaultValues: {
       command: initialCommand,
@@ -68,10 +68,16 @@ export default function CommandForm({
       )}
 
       <div className={styles.buttonContainer}>
-        <UtilityButton type="button" onClick={handleClear}>
+        <UtilityButton
+          type="button"
+          isDisabled={!isValid}
+          onClick={handleClear}
+        >
           Clear
         </UtilityButton>
-        <UtilityButton type="submit">Predict</UtilityButton>
+        <UtilityButton isDisabled={!isValid} type="submit">
+          Predict
+        </UtilityButton>
       </div>
     </form>
   );

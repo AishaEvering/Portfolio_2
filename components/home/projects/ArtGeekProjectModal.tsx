@@ -92,6 +92,7 @@ export const ArtGeekProjectModal = ({
 
       if (file) {
         setImageFile(file);
+        handlePredict();
       }
     } catch (error) {
       console.error("Error handling example:", error);
@@ -140,8 +141,18 @@ export const ArtGeekProjectModal = ({
                       <p>Drag and drop an image here, or click to select one</p>
                     )}
                   </div>
-                  <UtilityButton onClick={handleClearImg}>Clear</UtilityButton>
-                  <UtilityButton onClick={handlePredict}>Predict</UtilityButton>
+                  <UtilityButton
+                    onClick={handleClearImg}
+                    isDisabled={!imageFile}
+                  >
+                    Clear
+                  </UtilityButton>
+                  <UtilityButton
+                    onClick={handlePredict}
+                    isDisabled={!imageFile}
+                  >
+                    Predict
+                  </UtilityButton>
                 </div>
                 <ArtGeekPredictionsDisplay
                   reset={reset}

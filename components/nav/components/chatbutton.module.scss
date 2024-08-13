@@ -1,0 +1,23 @@
+.chatboxicon{
+    position: relative;
+    z-index: 20;
+    background-color: transparent;
+    border: 0px;
+    padding-bottom: 5px;
+    margin: 0px;
+    align-items: center;
+    vertical-align: top;
+}
+  
+.icon{
+    opacity: 0.5;
+    padding: 0;
+    margin: 0;
+}
+
+.icon:hover {
+    color: var(--brand);
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+  }
