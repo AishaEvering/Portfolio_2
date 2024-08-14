@@ -5,8 +5,8 @@ import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { TextLoader } from "langchain/document_loaders/fs/text";
 import { DocumentInterface } from "@langchain/core/documents"
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
-import { getEmbeddingsCollection, getVectorStore } from "../lib/astradb";
 import { Redis } from "@upstash/redis";
+import { getEmbeddingsCollection, getVectorStore } from "../src/lib/astradb";
 
 
 async function generateEmbeddings(){
@@ -36,7 +36,7 @@ async function generateEmbeddings(){
 }
 
 async function createLoader(ext: string): Promise<DocumentInterface[]> {
-    const loader = new DirectoryLoader("components/utils/data/", {
+    const loader = new DirectoryLoader("src/components/utils/data/", {
         [ext]: (path) => new TextLoader(path)
     }, false);
 
@@ -53,16 +53,17 @@ async function createComponentLoader(): Promise<DocumentInterface[]> {
     const searchableDirs = ['nav', 'home'];
     const searchableHomeDirs = ['about', 'certifications', 'contact', 'experience', 'hero', 'projects'];
 
-    const loader = new DirectoryLoader("components/",{
+    const loader = new DirectoryLoader("src/components/",{
         ".tsx": (path) => new TextLoader(path)
     }, true);
     
     return (await loader.load())
         .map((doc): DocumentInterface | undefined => {
+          
             let url = doc.metadata.source
             .replace(/\\/g, "/")
-            .split("/Portfolio_2/components")[1];
-            
+            .split("/Portfolio_2/src/components")[1];
+
             // is url in searchable_dirs
             const isInSearchableDirs = searchableDirs.some(path => url.includes(path));
     
@@ -81,7 +82,6 @@ async function createComponentLoader(): Promise<DocumentInterface[]> {
                 if(isInHome){
                     url = url.substring(0, url.lastIndexOf('/'));  
                     url = url.includes('hero') ? "/" : `/#${url.substring(url.lastIndexOf('/') + 1)}`;
-                    
                     return {
                         pageContent: cleanContent(doc.pageContent),
                         metadata: {url}
