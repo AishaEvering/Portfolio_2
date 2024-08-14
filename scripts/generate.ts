@@ -62,7 +62,7 @@ async function createComponentLoader(): Promise<DocumentInterface[]> {
           
             let url = doc.metadata.source
             .replace(/\\/g, "/")
-            .split("/Portfolio_2/src/components")[1];
+            .split("/src/components")[1];
 
             // is url in searchable_dirs
             const isInSearchableDirs = searchableDirs.some(path => url.includes(path));
