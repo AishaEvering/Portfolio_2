@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./styles/globals.css";
 import Background from "@/components/background/Background";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: {
@@ -38,6 +39,7 @@ export default function RootLayout({
           <main id="root">
             <Background />
             {children}
+            <Analytics />
           </main>
         </ThemeProvider>
       </body>
