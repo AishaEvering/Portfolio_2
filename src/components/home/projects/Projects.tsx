@@ -21,7 +21,7 @@ const projects = [
   {
     title: "About Buzz",
     projectType: "default",
-    imgSrc: "/project-imgs/buzz.png",
+    imgSrc: "/project-imgs/buzz_lightyear.png",
     code: "https://github.com/AishaEvering/Portfolio_2",
     projectLink: "",
     liveDemo: false,
