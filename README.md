@@ -24,8 +24,13 @@ mechanism to fetch relevant information, showcasing the advanced capabilities of
 
 ## Overview
 ${{\color{orange}\Huge{\textsf{What\ is\ Buzz?\ \}}}}\$
+Buzz is a chatbot. But more than that, Buzz is an advanced large language model provided by OpenAI, known as ChatGPT, specifically trained to focus on answering questions about my portfolio or, as businesses might say, my domain. This is one of those moments where I truly appreciate the strides taken towards making "AI for everyone." ChatGPT is a robust and powerful LLM trained on expensive and sophisticated servers.  Yet, here I am, harnessing such a vastly knowledgeable model to focus on my very small site at a minimal cost. Much like you would do with the sun and a magnifying glass.  You’ve got to love it.
 
-TODO
+From a more technical perspective, Buzz is a system that processes data by converting it into vectors, splitting it into manageable chunks, and storing these chunks in a vector database. Later, it uses this data for semantic search to provide relevant context when communicating with users on my site. This ensures that interactions are informed and relevant based on the stored information.
+
+A semantic search is a way to search for information based on the meaning and context of the words, rather than just matching exact keywords. It helps in understanding the intent behind a query to find more relevant and accurate results.
+
+Along with the semantic search, I used prompting to give the model more details about its identity, purpose, and the type of tone to adopt. Since it's for my portfolio, the tone can be a bit spicy at times, which I don't mind at all.
 ***
 
 ${{\color{orange}\Huge{\textsf{About\ The\ Data\ \}}}}\$
