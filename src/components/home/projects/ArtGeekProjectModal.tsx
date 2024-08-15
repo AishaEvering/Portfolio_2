@@ -48,9 +48,9 @@ export const ArtGeekProjectModal = ({
       if (body) body.style.overflowY = "hidden";
     } else {
       if (body) body.style.overflowY = "scroll";
-      setImageUrl("");
-      setImageFile(null);
-      setReset(true);
+      handleClearImg();
+      setError("");
+      setPredictionInput(null);
     }
   }, [isOpen]);
 
@@ -94,7 +94,6 @@ export const ArtGeekProjectModal = ({
 
       if (file) {
         setImageFile(file);
-        handlePredict();
       }
     } catch (error) {
       console.error("Error handling example:", error);

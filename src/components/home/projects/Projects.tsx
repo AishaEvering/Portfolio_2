@@ -30,7 +30,6 @@ const projects = [
       "React",
       "TypeScript",
       "Sass",
-      "CSS",
       "Redis",
       "OpenAI",
       "LangChain",

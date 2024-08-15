@@ -1,7 +1,7 @@
 "use client";
 import { CollapsableContent } from "./CollapsableContent";
 import styles from "./sectionbox.module.scss";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Props {
   title: string;

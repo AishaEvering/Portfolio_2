@@ -1,10 +1,11 @@
 "use client";
 
-import { HeroImg } from "./HeroImg";
+import { HeroImg } from "./components/HeroImg";
 import styles from "./hero.module.scss";
 import { StandardButton } from "@/components/buttons/StandardButton";
 import { OutlineButton } from "@/components/buttons/OutlineButton";
 import { Reveal } from "@/components/utils/Reveal";
+import { RotatingText } from "./components/RotatingText";
 
 export const Hero = () => {
   return (
@@ -19,7 +20,7 @@ export const Hero = () => {
           </Reveal>
           <Reveal>
             <h2 className={styles.subTitle}>
-              I&apos;m a <span>Software Engineer</span>
+              <RotatingText />
             </h2>
           </Reveal>
           <Reveal>
