@@ -69,16 +69,20 @@ Now that the data is gathered and stored, let’s talk about how Buzz uses this 
 ***
 
 ## Key Takeaways
-${{\color{orange}\Huge{\textsf{Final\ Thoughts\ \}}}}\$
-TODO
+Hindsight is 20/20, so let's talk about where things were unclear.
+1. Navigating LangChain and Datastax Components: Working with LangChain and Datastax components can get messy. The industry is moving fast, and what is a valid way of doing things today can be deprecated tomorrow. While I was in the process of working on this project, I came across advice from a YouTuber who said, "If you want your things to work tomorrow, don't get the latest version of the libraries." That's when things started working for me.
+2. Edge Runtime: Sigh, where do I begin? I kept getting warnings that I can't run dynamic code in the edge runtime, but all the new Next.js features wanted me to use the edge runtime. This was an issue because I needed to connect to the vector store, and the Datastax library used dynamic code. I tried creating another route just for the vector store connection, where I wasn't directly executing anything. Instead, I was sending it to a LangChain retriever. However, I couldn't get the object type returned from the route to match the expected type. Although this was just a warning, I ditched the route idea and ignored the warning, only to find out at the end that I couldn't build my code. 😢 So, as I mentioned before, I stepped back from the latest versions of LangChain and stopped using the edge runtime objects like NextRequest and NextResponse. For now, this approach works.
+3. Hosting my application on Hostinger:  Depending on when you are reading this, Buzz may or may not be available on my site. Although I love to code, this doesn't necessarily equate to being adept at building and managing servers. Initially, I thought I was doing well—I set up a VPS (Virtual Private Server) on Hostinger, and my site was up and running with a custom domain.
 
+   However, when I tried to integrate the chatbot, something was blocking it from retrieving data from the vector store. I knew it could push data out because the build script was working, but attempting to communicate with the bot resulted in it just hanging there. After exhausting all my troubleshooting efforts, I decided to try deploying the site on Vercel instead.
+   
+   Not only did the bot work on Vercel, but the site also became much smoother, faster, and more responsive overall. The deployment process was also incredibly easy. Consequently, I moved the site to Vercel. This also meant moving the domain, which takes 5-7 business days. So, until the domain transfer is complete, Buzz will unfortunately not be available.
 ***
 
 
 ## Summary
 
-TODO
- Happy coding!
+This is my coolest project yet, and I’m completely obsessed. So obsessed, in fact, that my next project will also be a RAG application. I’m not abandoning computer vision—there are still some exciting things I want to explore there—but I’ve decided to focus on one project at a time, and right now, that means diving into LLMs. I can talk to Buzz all day and am thrilled that it stays on track, always guiding users back to my portfolio. It’s like my personal cheerleader, and I’m so proud of it. Until next time, happy coding!
 
 ## Author
 
