@@ -22,23 +22,23 @@ mechanism to fetch relevant information, showcasing the advanced capabilities of
 ## [Live Demo](https://aishaeportfolio.com/)
 
 ## Overview
-${{\color{green}\Huge{\textsf{What\ is\ Buzz?\ \}}}}\$
+${{\color{orange}\Huge{\textsf{What\ is\ Buzz?\ \}}}}\$
 
 TODO
 ***
 
-${{\color{green}\Huge{\textsf{About\ The\ Data\ \}}}}\$
+${{\color{orange}\Huge{\textsf{About\ The\ Data\ \}}}}\$
 
 TODO
 ***
 
-${{\color{green}\Huge{\textsf{Full\ Process\ \}}}}\$
+${{\color{orange}\Huge{\textsf{Full\ Process\ \}}}}\$
 
 TODO
 ***
 
 ## Key Takeaways
-${{\color{green}\Huge{\textsf{Final\ Thoughts\ \}}}}\$
+${{\color{orange}\Huge{\textsf{Final\ Thoughts\ \}}}}\$
 TODO
 
 ***
