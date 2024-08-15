@@ -52,7 +52,20 @@ So how does Buzz get the data on my site? There are two ways:
 
 ${{\color{orange}\Huge{\textsf{Full\ Process\ \}}}}\$
 
-TODO
+Now that the data is gathered and stored, let’s talk about how Buzz uses this data:
+
+1. User Interface: A React component handles the user interface, sending messages to a specific route.
+2. Message Handling: The last message is considered the current message, while previous messages are considered the message history. This distinction is crucial because context is key.
+3. The last message is considered the current message and the others are considered message history.  This is an important note because the name of the game is context.
+   - If you only send the most current message, the model loses the ability to understand the full context of the conversation. To maintain this context, historic messages are processed separately.
+   - These historic messages are sent to a dedicated model, which generates a search query to retrieve information relevant to the current question. This search query, along with the current message prompt,
+     and of course the system prompte I mentioned earlier is then used to generate a response.
+   - So not only am I creating prompts for the model, ChatGPT is also creating prompts based on prior information to ensure accurate and context-aware responses.
+     
+![Mind Blowing](https://media.giphy.com/media/2fLgzU6ZNbqgj1jJy2/giphy.gif)
+
+4. Initialization: A few objects are initialized, including the LangChainStream, the models, and Redis. Redis is used for caching the messages. Although sending messages to the models is relatively inexpensive, it’s not free. By caching messages, users not only receive faster responses, but it also reduces the overall cost of the process.
+5. Processing: Next, I gather everything—the models, the prompts, etc.—into a retrieval chain. The retrieval chain is invoked with the current message and chat history, fetching relevant data from the vector store to generate a context-aware response. The streamed response is then sent back to the user.
 ***
 
 ## Key Takeaways
