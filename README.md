@@ -30,12 +30,24 @@ From a more technical perspective, Buzz is a system that processes data by conve
 
 A semantic search is a way to search for information based on the meaning and context of the words, rather than just matching exact keywords. It helps in understanding the intent behind a query to find more relevant and accurate results.
 
-Along with the semantic search, I used prompting to give the model more details about its identity, purpose, and the type of tone to adopt. Since it's for my portfolio, the tone can be a bit spicy at times, which I don't mind at all.
+Along with the semantic search, I used prompting to give the model more details about its identity, purpose, and the type of tone to adopt. Since it's for *my* portfolio, the tone can be a bit spicy at times, which I don't mind at all.
 ***
 
-${{\color{orange}\Huge{\textsf{About\ The\ Data\ \}}}}\$
+${{\color{orange}\Huge{\textsf{The\ Data\ \}}}}\$
+So how does Buzz get the data on my site? There are two ways:
 
-TODO
+1. Automated Script During Deployment:
+
+   - I have a script written in TypeScript that runs whenever I deploy the site. This script uses LangChain to load all the components (`.tsx` files) in specific directories.
+   - The script removes unnecessary information like import statements, styling, and extra spaces. LangChain then creates documents with the remaining data.
+   - LangChain has a sophisticated splitter that can divide the HTML data without losing too much context. This splitter breaks the data into small chunks for the model.
+   - The processed data is then passed to a vector store called AstraDB, hosted by Datastax, where it's converted into vectors.
+     
+2. Manual Inclusion of GitHub ReadMe Files:
+
+   - I manually copy the ReadMe files I create for my GitHub projects and place them in a folder on my site. This provides additional context about my thoughts on my projects.
+   - While LangChain can connect to GitHub, I specifically wanted only the ReadMe files and didn't want the overhead of connecting my GitHub account for data that rarely changes.
+   - LangChain collects this data in the form of markdown files, splits it, and sends the split documents to the vector store, where they are converted into vectors.
 ***
 
 ${{\color{orange}\Huge{\textsf{Full\ Process\ \}}}}\$
