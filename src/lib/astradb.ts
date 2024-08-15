@@ -1,5 +1,5 @@
 import { AstraDBVectorStore} from "@langchain/community/vectorstores/astradb";
-import { DataAPIClient, VectorDoc, UUID } from '@datastax/astra-db-ts'
+import { DataAPIClient} from '@datastax/astra-db-ts'
 
 import { OpenAIEmbeddings } from "@langchain/openai";
 
