@@ -26,6 +26,7 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
   } = useChat();
 
   const [loading, setLoading] = useState<boolean>(false);
+  const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
 
   useEffect(() => {
     const body = document.querySelector("body");
@@ -36,8 +37,7 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
       body!.style.overflowY = "scroll";
     }
     scrollToBottom();
-
-    setLoading(messages.length > 0 && messages?.length % 2 != 0);
+    setLoading(lastMessageIsUser);
   }, [messages]);
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -75,8 +75,6 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
         messageContainerRef.current.scrollHeight;
     }
   };
-
-  const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
 
   const content = (
     <div className={styles.modal} onClick={() => setIsOpen(false)}>
