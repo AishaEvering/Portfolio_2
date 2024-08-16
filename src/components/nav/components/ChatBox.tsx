@@ -1,7 +1,7 @@
 "use client";
 import { Message, useChat } from "ai/react";
 import styles from "./chatbox.module.scss";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MdClose } from "react-icons/md";
 import ReactDOM from "react-dom";
 import { motion } from "framer-motion";
@@ -25,6 +25,8 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
     error,
   } = useChat();
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
     const body = document.querySelector("body");
 
@@ -33,6 +35,9 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
     } else {
       body!.style.overflowY = "scroll";
     }
+    scrollToBottom();
+
+    setLoading(messages.length > 0 && messages?.length % 2 != 0);
   }, [messages]);
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -82,7 +87,9 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         onClick={(e) => e.stopPropagation()}
-        className={styles.chat}
+        className={
+          loading ? `${styles.chat} ${styles.loading}` : `${styles.chat}`
+        }
       >
         <div className={styles.chat_title}>
           <h1>Buzz Lightyear</h1>
@@ -94,12 +101,12 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
             {messages.map((message) => (
               <ChatMessage message={message} key={message.id} />
             ))}
-            {isLoading && lastMessageIsUser && (
+            {loading && lastMessageIsUser && (
               <ChatMessage
                 message={{
                   id: "loading",
                   role: "assistant",
-                  content: "",
+                  content: "...",
                 }}
               />
             )}
@@ -146,7 +153,7 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
             type="submit"
             className={styles.message_submit}
             title="Submit message"
-            disabled={isLoading || input.length === 0}
+            disabled={loading || input.length === 0}
           >
             Send
           </button>
@@ -168,13 +175,9 @@ interface ChatMessageProps {
 function ChatMessage({ message: { id, role, content } }: ChatMessageProps) {
   const isAiMessage = role === "assistant";
   const roleClassName = isAiMessage ? styles.aimessage : styles.usermessage;
-  const loadingClassName =
-    isAiMessage && id === "loading" ? styles.loading : "";
 
   return (
-    <div
-      className={`${styles.message} ${styles.new} ${roleClassName} ${loadingClassName}`}
-    >
+    <div className={`${styles.message} ${styles.new} ${roleClassName}`}>
       {isAiMessage && <SiProbot className={styles.avatar} />}
       <ReactMarkdown
         components={{

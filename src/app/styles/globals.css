@@ -1,6 +1,13 @@
 /* styles/globals.css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+:root{
+	--d: 1000ms;
+	--angle: 90deg;
+	--gradX: 100%;
+	--gradY: 50%;
+}
+
 :root[data-theme="light"] {
   font-size: 62.5%;
 
@@ -32,6 +39,8 @@
   --msg-ai-border: rgb(234, 229, 229);
   --msg-user-background: linear-gradient(120deg, #E118B2, #900f72);
 
+  --c1: rgb(225, 24, 178);
+	--c2: white;
    
   --text-xs: 1.6rem;
   --text-sm: 1.8rem;
@@ -77,6 +86,9 @@
   --text-lg: 3.6rem;
   --text-xl: 5.6rem;
   --text-2xl: 9.6rem;
+
+  --c1: rgb(10, 255, 157);
+	--c2:rgb(17, 17, 17);
 }
 
 * {

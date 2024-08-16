@@ -77,6 +77,8 @@ export const Stats = () => {
             <span className="chip">Numpy</span>
             <span className="chip">Matplotlib</span>
             <span className="chip">Seaborn</span>
+            <span className="chip">Next.js</span>
+            <span className="chip">LangChain</span>
           </div>
         </div>
       </Reveal>
