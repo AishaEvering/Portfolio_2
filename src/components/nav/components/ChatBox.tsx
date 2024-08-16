@@ -106,7 +106,7 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
                 message={{
                   id: "loading",
                   role: "assistant",
-                  content: "...",
+                  content: "thinking...",
                 }}
               />
             )}
