@@ -6,7 +6,7 @@
 
 My portfolio is a Next.js application built with React, featuring some notable highlights. First, I recreated the Gradio UI in React, making the custom UIs 
 for the projects with live demos look better, more convenient, and even fun. Second, I developed a comprehensive Retrieval-Augmented Generation (RAG) chatbot 
-system designed to answer questions about my portfolio. This system, named Buzz Lightyear, integrates a language model for generating responses and a retrieval 
+system designed to answer questions about my portfolio. This system, named Buzz Lightyear, integrates OpenAI's ChatGPT for generating responses and a retrieval 
 mechanism to fetch relevant information, showcasing the advanced capabilities of my work.
 
 ## Technologies
