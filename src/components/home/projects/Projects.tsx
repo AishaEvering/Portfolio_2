@@ -46,7 +46,7 @@ const projects = [
           convenient, and even fun. Second, I developed a comprehensive
           Retrieval-Augmented Generation (RAG) chatbot system designed to answer
           questions about my portfolio. This system, named Buzz Lightyear,
-          integrates a language model for generating responses and a retrieval
+          integrates OpenAI's ChatGPT for generating responses and a retrieval
           mechanism to fetch relevant information, showcasing the advanced
           capabilities of my work.
         </p>
