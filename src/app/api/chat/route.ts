@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     // get api key
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
-      throw new Error("API key is not defined.");
+      throw new Error("Oops, API key is not defined.");
     }
    
     // get chatHistory and last message
