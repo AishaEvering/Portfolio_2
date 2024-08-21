@@ -67,6 +67,7 @@ Mixins
     border-color: var( --background);
     border: 0.35rem solid;
 
+
     &.loading {
         border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
         animation: borderRotate 2500ms linear infinite forwards;

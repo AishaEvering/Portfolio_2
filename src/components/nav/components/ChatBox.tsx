@@ -37,8 +37,10 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
 
   useEffect(() => {
     if (isOpen) {
-      scrollToBottom();
-      inputRef.current?.focus();
+      setTimeout(() => {
+        scrollToBottom();
+        inputRef.current?.focus();
+      }, 50);
     }
   }, [isOpen]);
 
