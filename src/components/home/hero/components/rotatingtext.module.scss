@@ -8,15 +8,21 @@
   
   .staticText{
     width: 18%;
+    white-space: nowrap;
   }
 
   .animation {
     height:55px;
-    white-space: nowrap;
+    // white-space: nowrap; 
     overflow:hidden;
     margin-left: 0.8rem;
     font-weight: bold;
     color: var(--brand);
+
+    @media (max-width: 768px) {
+      font-size: var(--text-lg);
+      width: 90%;
+    }
   }
   
   .animation:hover  > div > div {

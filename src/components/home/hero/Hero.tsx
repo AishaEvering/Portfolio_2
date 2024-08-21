@@ -20,7 +20,9 @@ export const Hero = () => {
           </Reveal>
           <Reveal>
             <h2 className={styles.subTitle}>
-              <RotatingText />
+              I&apos;m a <span>Software Engineer</span>
+              {/* <p className={styles.staticText}>I&apos;m a</p> */}
+              {/* <RotatingText /> */}
             </h2>
           </Reveal>
           <Reveal>
