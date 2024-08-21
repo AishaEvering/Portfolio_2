@@ -21,7 +21,6 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
     handleInputChange,
     handleSubmit,
     setMessages,
-    isLoading,
     error,
   } = useChat();
 
@@ -29,23 +28,12 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
   const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
 
   useEffect(() => {
-    const body = document.querySelector("body");
-
-    if (isOpen) {
-      body!.style.overflowY = "hidden";
-    } else {
-      body!.style.overflowY = "scroll";
-    }
     scrollToBottom();
     setLoading(lastMessageIsUser);
   }, [messages]);
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const messageContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   useEffect(() => {
     if (isOpen) {
@@ -57,14 +45,12 @@ export default function ChatBox({ setIsOpen, isOpen }: Props) {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault(); // prevent new line in textarea
-
       // Create a fake form event to pass to handleSubmit
       const fakeEvent = {
         ...event,
         currentTarget: event.currentTarget.closest("form") as HTMLFormElement,
         preventDefault: () => event.preventDefault(),
       } as React.FormEvent<HTMLFormElement>;
-
       handleSubmit(fakeEvent);
     }
   };
