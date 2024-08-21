@@ -12,7 +12,7 @@ import {
   StreamingTextResponse,
   Message as VercelChatMessage,
 } from "ai";
-import { UpstashRedisCache } from "langchain/cache/upstash_redis";
+import { UpstashRedisCache } from "@langchain/community/caches/upstash_redis";
 import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { createHistoryAwareRetriever } from "langchain/chains/history_aware_retriever";
 import { createRetrievalChain } from "langchain/chains/retrieval";
