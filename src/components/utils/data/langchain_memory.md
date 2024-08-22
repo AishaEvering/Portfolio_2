@@ -1,6 +1,6 @@
-# LangChain Pratice
+# LangChain Practice
 
-## 📃 Description
+## Description
 
 This is a simple console application that accepts user input and maintains a 'memory' of the conversation, ensuring the LLM retains context.
 

@@ -1,6 +1,6 @@
-# LangChain Pratice
+# LangChain Practice
 
-## 📃 Description
+## Description
 
 This is a simple console application that accepts user input, generates code in the selected programming language, and provides a corresponding test function.
 

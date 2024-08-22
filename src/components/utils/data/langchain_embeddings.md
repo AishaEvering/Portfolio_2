@@ -1,6 +1,6 @@
-# LangChain Pratice
+# LangChain Practice
 
-## 📃 Description
+## Description
 
 This is a simple console application that creates embeddings from text and then chats with the LLM about those embeddings.
 
