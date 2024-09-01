@@ -1,0 +1,58 @@
+.container{
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  height: 420px;
+  position: relative;
+  gap: 40px;
+}
+
+.imgwrapper{
+  flex:70%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.image{
+  position: absolute;
+  flex:70%;
+  object-fit: scale-down;
+  width: 100%;
+  height: 80%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.imgplaceholder{
+  flex:70%;
+  width: 100%;
+  height: 340px;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+.btnwrapper{
+  flex:30%;
+  display: flex;
+  gap:20px;
+  position: relative;
+  justify-content: flex-end;
+}
+
+.welcomemsg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 12px;
+  color: var(--brand);
+  text-shadow: 1px 1px 2px black;
+}

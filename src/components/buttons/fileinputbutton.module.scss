@@ -1,0 +1,66 @@
+
+
+.fileInputButton {
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  display: none;
+  margin-left: auto;
+
+  &:disabled{
+    opacity: 0.3; 
+    cursor: not-allowed;
+  }
+}
+
+
+  @media all and (max-width:30em){
+    .fileInputButton{
+      display:block;
+      margin:0.2em auto;
+    }
+  }
+
+  .label{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: small;
+    letter-spacing: 0.075em;
+    color: var(--text-tab);
+    background: var(--brand);
+    text-align: center;
+    padding: 1.0rem 1.0rem;
+    border-radius: 10px;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.35);
+    transition: all .5s ease;
+    position: relative;
+    
+    &:active{
+      transform: scale(0.95);
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .disabled{
+    opacity: 0.3; 
+    cursor: not-allowed;
+  }
+
+  .icon{
+    size: 20px;
+    margin-right: 10px;
+    color: var(--text-tab);
+  }
+ 

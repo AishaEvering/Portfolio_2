@@ -1,0 +1,54 @@
+.container{
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  height: 430px;
+  position: relative;
+  gap: 40px;
+}
+
+.camwrapper{
+  flex:70%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.camera{
+  position: absolute;
+  flex:70%;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.cameraplaceholder{
+  flex:70%;
+  width: 100%;
+  height: 340px;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+.camoverlay{
+  flex:70%;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.btnwrapper{
+  flex:30%;
+  display: flex;
+  gap:20px;
+  position: relative;
+  justify-content: flex-end;
+}

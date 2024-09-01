@@ -83,6 +83,7 @@ export const MyAssistantProjectModal = ({
         <TabComponent
           title="Examples"
           items={CommandExamples}
+          withQuotations={true}
           onSelect={handleSelectExample}
         ></TabComponent>
         <div className={styles.appStyles}>

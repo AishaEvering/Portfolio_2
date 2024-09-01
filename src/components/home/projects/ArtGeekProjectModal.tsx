@@ -167,7 +167,7 @@ export const ArtGeekProjectModal = ({
               </div>
               {/* Example Inputs */}
               <div className={styles.examplesStyles}>
-                <p>Examples:</p>
+                <p>sExamples:</p>
                 <div className={styles.examplesImages}>
                   {ArtExamples.map((path, index) => (
                     <ImageButton

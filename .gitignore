@@ -3,5 +3,11 @@ node_modules
 .next/static
 .next/cache/
 .env.local
-
+backend/.flaskenv
+backend/env/
+backend/app.log
+backend/__pycache__
+backend/core/__pycache__
+backend/core/helpers/__pycache__
+backend/core/tmp
 

@@ -101,3 +101,46 @@
     vertical-align: center;
     background-color: #ed4850;
   }
+
+  .hairdetectionBtns {
+    display: flex;
+    gap: 1.6rem;
+    opacity: 0.8;
+    top: 430px;
+    position: fixed;
+    z-index: 20;
+    align-items: center;
+
+    &:hover {
+      color: var(--brand);
+      opacity: 1;
+    }
+  }
+  
+  .hairdetectionimg_icon{
+    opacity: 0.3;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hairdetectionimg_icon_selected {
+    color: var(--brand);
+    border-bottom: 1px solid var(--brand);
+    opacity: 1;
+  }
+
+  .hairdetectionimg_icon:hover {
+    color: var(--brand);
+    border-bottom: 1px solid var(--brand);
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hairdetectionimg_btn{
+    border: 0px;
+    background-color: transparent;
+    padding-top: 10px;
+    padding-bottom: 9px;
+    align-items: center;
+  }

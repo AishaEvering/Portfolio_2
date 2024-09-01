@@ -8,6 +8,7 @@ import { ProjectModal } from "./ProjectModal";
 import { ArtGeekProjectModal } from "./ArtGeekProjectModal";
 import styles from "./projects.module.scss";
 import { MyAssistantProjectModal } from "./MyAssistantProjectModal";
+import { HairDetectProjectModal } from "./HairDetectProjectModal";
 import Image from "next/image";
 
 interface Props {
@@ -128,6 +129,17 @@ export const Project = ({
       )}
       {projectType == "my_assistant" && (
         <MyAssistantProjectModal
+          modalContent={modalContent}
+          projectLink={projectLink}
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
+          title={title}
+          code={code}
+          tech={tech}
+        />
+      )}
+      {projectType == "hair_detect" && (
+        <HairDetectProjectModal
           modalContent={modalContent}
           projectLink={projectLink}
           setIsOpen={setIsOpen}

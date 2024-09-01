@@ -1,4 +1,26 @@
 
+export const WEBCAM = "webcam";
+export const IMAGE = "image";
+export const VIDEO = "video";
+
+export const ImageExamples: string[] = [
+  "hair 1",
+  "hair 2",
+  "hair 4",
+  "hair 5",
+  "hair 6",
+  "hair 10",
+  "hair 11",
+];
+
+export const VideoExamples: string[] = [
+  "hair 1",
+  "hair 2",
+  "hair 3",
+  "hair 4",
+  "hair 5",
+];
+
 
 export const CommandExamples: string[] = [
     "Play Kendrick Lamar.",

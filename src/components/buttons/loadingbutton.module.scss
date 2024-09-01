@@ -1,0 +1,117 @@
+
+$stripe-height: 7px;
+
+// @media all and (max-width:30em){
+//     .loadingButton{
+//       display:block;
+//       margin:0.2em auto;
+//     }
+// }
+
+@mixin reset-button {
+  position: relative;
+  overflow : visible;
+  margin : 0;
+  padding : 0;
+  border : 0;
+  background : transparent;
+  font : inherit;
+  line-height : normal;
+  cursor : pointer;
+  -moz-user-select : text;
+  
+  &:-moz-focus-inner {
+      padding : 0;
+      border : 0;
+  }
+}
+
+@keyframes stripe-slide {
+  0% { background-position: 0% 0; }
+  100% { background-position: 100% 0; }
+}
+
+.loadingButton {
+  @include reset-button;
+  display:inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding: .8rem 2.0rem;
+  background: transparent;
+  border: 2px solid var(--brand);
+  color: var(--brand);
+  font-size: small;
+  letter-spacing: 0.075em;
+  border-radius: 10px;
+  transition: all .5s ease;
+  box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  position: relative;
+
+  &:disabled{
+    opacity: 0.3; 
+    cursor: not-allowed;
+  }
+
+  &:active{
+    transform: scale(0.95);
+  }
+
+      
+      &:after {
+          content: '';
+          display: block;
+          height: $stripe-height;
+          width: 100%;
+          background-image: repeating-linear-gradient(
+              45deg,
+              var(--brand),
+              var(--brand) 1px,
+              transparent 2px,
+              transparent 5px
+          );
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          border-top: 1px solid var(--brand);
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          background-size: $stripe-height $stripe-height;
+      }
+
+      &:hover {
+          background-color: var(--brand);
+          color: var(--background-dark);
+          border-color: var(--brand);
+
+          &:after {
+              background-image: repeating-linear-gradient(
+                  45deg,
+                  var(--background-dark),
+                  var(--background-dark) 1px,
+                  transparent 2px,
+                  transparent 5px
+              );
+              border-top: 1px solid var(--background-dark);
+          }
+        }
+
+        &.loading {
+          background-color: var(--brand);
+          color: var(--background-dark);
+          border-color: var(--brand);
+
+          &:after {
+              background-image: repeating-linear-gradient(
+                  45deg,
+                  var(--background-dark),
+                  var(--background-dark) 1px,
+                  transparent 2px,
+                  transparent 5px
+              );
+              border-top: 1px solid var(--background-dark);
+              animation: stripe-slide 12s infinite linear forwards;
+          }
+        }
+}

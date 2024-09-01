@@ -32,7 +32,6 @@ export const ProjectModal = ({
 }: Props) => {
   useEffect(() => {
     const body = document.querySelector("body");
-
     if (isOpen) {
       body!.style.overflowY = "hidden";
     } else {

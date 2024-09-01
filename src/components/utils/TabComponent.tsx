@@ -5,10 +5,16 @@ import styles from "./tab.module.scss";
 interface Props {
   title: string;
   items: string[];
+  withQuotations: boolean;
   onSelect: (command: string) => void;
 }
 
-export const TabComponent = ({ title, items, onSelect }: Props) => {
+export const TabComponent = ({
+  title,
+  items,
+  withQuotations,
+  onSelect,
+}: Props) => {
   const [open, setOpen] = useState(false);
 
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -50,6 +56,7 @@ export const TabComponent = ({ title, items, onSelect }: Props) => {
             <DropdownItem
               key={index}
               text={item}
+              withQuotations={withQuotations}
               onSelect={() => onSelect(item)}
             />
           ))}
@@ -61,14 +68,17 @@ export const TabComponent = ({ title, items, onSelect }: Props) => {
 
 interface DropdownItemProps {
   text: string;
+  withQuotations: boolean;
   onSelect: () => void;
 }
 
-function DropdownItem({ text, onSelect }: DropdownItemProps) {
+function DropdownItem({ text, withQuotations, onSelect }: DropdownItemProps) {
+  const formattedText = withQuotations ? `"${text}"` : text;
+
   return (
     <li className={styles.dropdownItem}>
       <a className={styles.link} onClick={onSelect}>
-        <div className={styles.linktext}>&quot;{text}&quot;</div>
+        <div className={styles.linktext}>{formattedText}</div>
       </a>
     </li>
   );
