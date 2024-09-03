@@ -18,48 +18,48 @@ export const Projects = () => {
 };
 
 const projects = [
-  {
-    title: "Black Hair Detection",
-    projectType: "hair_detect",
-    imgSrc: "/project-imgs/hair_detect.jpg",
-    code: "https://github.com/AishaEvering/ObjectDetection",
-    projectLink:
-      "https://universe.roboflow.com/aishas-workspace/black-hair-detection",
-    liveDemo: true,
-    tech: ["Roboflow", "YOLO", "Flask", "PyTorch", "Python", "Numpy"],
-    description:
-      "I created a custom dataset using Roboflow to train a YOLOv8 model for detecting and classifying hairstyles commonly seen in Black communities. To showcase this model, I developed a live demo as part of my portfolio, featuring a Flask API for the backend.",
-    modalContent: (
-      <>
-        <p>
-          This project focuses on object detection, specifically identifying a
-          variety of hairstyles commonly seen in the Black community. I sourced
-          and annotated images from the internet using Roboflow, which
-          streamlined the entire process—from data storage and annotation to
-          model training. The hairstyles detected by the model include afros,
-          bantu knots, bobs, braids, cornrows, fades, locs, long hair,
-          sisterlocs, and TWAs (teeny weeny afros).
-        </p>
-        <p>
-          The live demo above features a custom React interface that interacts
-          with my trained model for real-time inference via my Flask API hosted
-          on Vercel.
-        </p>
-        <p>
-          To explore my custom dataset or review the model's performance
-          metrics, visit my project on
-          <a
-            target="_blank"
-            rel="nofollow"
-            href="https://universe.roboflow.com/aishas-workspace/black-hair-detection"
-          >
-            Roboflow Universe
-          </a>
-          .
-        </p>
-      </>
-    ),
-  },
+  // {
+  //   title: "Black Hair Detection",
+  //   projectType: "hair_detect",
+  //   imgSrc: "/project-imgs/hair_detect.jpg",
+  //   code: "https://github.com/AishaEvering/ObjectDetection",
+  //   projectLink:
+  //     "https://universe.roboflow.com/aishas-workspace/black-hair-detection",
+  //   liveDemo: true,
+  //   tech: ["Roboflow", "YOLO", "Flask", "PyTorch", "Python", "Numpy"],
+  //   description:
+  //     "I created a custom dataset using Roboflow to train a YOLOv8 model for detecting and classifying hairstyles commonly seen in Black communities. To showcase this model, I developed a live demo as part of my portfolio, featuring a Flask API for the backend.",
+  //   modalContent: (
+  //     <>
+  //       <p>
+  //         This project focuses on object detection, specifically identifying a
+  //         variety of hairstyles commonly seen in the Black community. I sourced
+  //         and annotated images from the internet using Roboflow, which
+  //         streamlined the entire process—from data storage and annotation to
+  //         model training. The hairstyles detected by the model include afros,
+  //         bantu knots, bobs, braids, cornrows, fades, locs, long hair,
+  //         sisterlocs, and TWAs (teeny weeny afros).
+  //       </p>
+  //       <p>
+  //         The live demo above features a custom React interface that interacts
+  //         with my trained model for real-time inference via my Flask API hosted
+  //         on Vercel.
+  //       </p>
+  //       <p>
+  //         To explore my custom dataset or review the model's performance
+  //         metrics, visit my project on
+  //         <a
+  //           target="_blank"
+  //           rel="nofollow"
+  //           href="https://universe.roboflow.com/aishas-workspace/black-hair-detection"
+  //         >
+  //           Roboflow Universe
+  //         </a>
+  //         .
+  //       </p>
+  //     </>
+  //   ),
+  // },
   {
     title: "About Buzz",
     projectType: "default",
