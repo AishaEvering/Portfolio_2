@@ -7,8 +7,8 @@ import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Florian Walther",
-    default: "Florian Walther",
+    template: "%s | Aisha Evering",
+    default: "Aisha Evering",
   },
   description: "Check out my smart portfolio website with a custom AI chatbot.",
 };

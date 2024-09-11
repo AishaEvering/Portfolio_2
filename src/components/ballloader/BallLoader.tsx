@@ -3,9 +3,10 @@ import styles from "./ballloader.module.scss";
 
 interface Props {
   label?: string;
+  showLabel?: boolean;
 }
 
-export const BallLoader = ({ label }: Props) => {
+export const BallLoader = ({ label = "Loading", showLabel = true }: Props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.circle}></div>
@@ -14,7 +15,7 @@ export const BallLoader = ({ label }: Props) => {
       <div className={styles.shadow}></div>
       <div className={styles.shadow}></div>
       <div className={styles.shadow}></div>
-      <span>{label ? label : "Loading"}</span>
+      {showLabel && <span>{label}</span>}
     </div>
   );
 };

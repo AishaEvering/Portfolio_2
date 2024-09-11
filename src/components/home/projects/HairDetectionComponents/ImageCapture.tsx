@@ -27,7 +27,7 @@ export const ImageCapture = ({ example }: Props) => {
     if (example) {
       const fileName = example.replace(" ", "_") + ".jpg";
       setFileId(fileName);
-      processedImage;
+      setProcessedImage("");
       setShowExample(true);
       setWelcomeMsg("");
     }
@@ -41,6 +41,7 @@ export const ImageCapture = ({ example }: Props) => {
       img.onload = () => {
         setProcessedImage(img.src);
         setLoadingExample(false);
+        setResetInput(true);
       };
       img.onerror = () => {
         console.error("Failed to load example image.");
