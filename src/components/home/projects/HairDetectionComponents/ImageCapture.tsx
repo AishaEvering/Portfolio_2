@@ -36,17 +36,33 @@ export const ImageCapture = ({ example }: Props) => {
   useEffect(() => {
     if (showExample && fileId) {
       setLoadingExample(true);
-      const img = new Image();
-      img.src = `/api/process_example_image?file_id=${fileId}`;
-      img.onload = () => {
-        setProcessedImage(img.src);
-        setLoadingExample(false);
-        setResetInput(true);
-      };
-      img.onerror = () => {
-        console.error("Failed to load example image.");
-        setLoadingExample(false);
-      };
+
+      // Use fetch to handle the request and catch errors
+      fetch(`/api/process_example_image?file_id=${fileId}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.blob(); // Convert response to a blob for the image
+        })
+        .then((blob) => {
+          const img = new Image();
+          img.src = URL.createObjectURL(blob); // Create an object URL for the image blob
+          img.onload = () => {
+            setProcessedImage(img.src);
+            setLoadingExample(false);
+            setResetInput(true);
+          };
+          img.onerror = () => {
+            console.error("Failed to load example image from blob.");
+            setLoadingExample(false);
+          };
+        })
+        .catch((error) => {
+          // Log the error message and any details
+          console.error("Error loading example image:", error);
+          setLoadingExample(false);
+        });
     }
   }, [showExample, fileId]);
 

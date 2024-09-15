@@ -14,7 +14,7 @@ const nextConfig = {
       {
         source: "/api/:path*",
         destination:
-          "https://hd-od-backend-ver-3-651389703234.us-west2.run.app/:path*",
+          "https://hd-od-backend-ver-3-651389703234.us-west2.run.app/api/:path*",
       },
     ];
   },
