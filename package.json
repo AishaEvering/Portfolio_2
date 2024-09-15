@@ -2,7 +2,7 @@
   "name": "nextjs-langchain-portfolio",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://hd-od-backend-651389703234.us-central1.run.app/",
+  "proxy": "https://hd-od-backend-ver-3-651389703234.us-west2.run.app/",
   "scripts": {
     "dev": "next dev",
     "build": "npm run generate && next build",

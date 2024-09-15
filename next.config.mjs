@@ -13,8 +13,8 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://localhost:8080/api/:path*",
-        //"https://hd-od-backend-651389703234.us-central1.run.app/api/:path*", // Proxy to Backend
+        destination:
+          "https://hd-od-backend-ver-3-651389703234.us-west2.run.app/:path*",
       },
     ];
   },
