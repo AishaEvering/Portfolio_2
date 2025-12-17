@@ -19,6 +19,32 @@ export const Projects = () => {
 
 const projects = [
   {
+    title: "Illusion of Originality",
+    projectType: "default",
+    imgSrc: "/project-imgs/illusion_of_originality.gif",
+    code: "https://github.com/AishaEvering/illusion-of-originality",
+    projectLink: "https://illusion-of-originality.aishaeportfolio.com/",
+    liveDemo: true,
+    tech: ["React", "TailwindCSS", "Framer Motion", "GSAP", "Next.js"],
+    description:
+      "Final project for BIO 511: Big Data in Context, analyzing the ethical implications of generative AI systems built on large scale scraping of human created content.",
+    modalContent: (
+      <>
+        <p>
+          Illusion of Originality is a final project for BIO 511: Big Data in
+          Context that explores the ethics of generative AI systems built on
+          scraped, human created data. The project investigates how large scale
+          data extraction and model training practices mask human authorship and
+          labor while reinforcing power imbalances between AI developers and
+          creators. By combining ethical analysis with clear technical
+          explanations and interactive design, the project aims to make complex
+          questions about originality, ownership, and accountability accessible
+          to a broader audience.
+        </p>
+      </>
+    ),
+  },
+  {
     title: "Black Hair Detection",
     projectType: "hair_detect",
     imgSrc: "/project-imgs/hair_detect.jpg",
@@ -218,41 +244,41 @@ const projects = [
       </>
     ),
   },
-  {
-    title: "Recipe Discovery",
-    projectType: "default",
-    imgSrc: "/project-imgs/recipe_loader.jpeg",
-    code: "https://github.com/AishaEvering/RecipeDiscovery",
-    projectLink: "",
-    liveDemo: false,
-    tech: ["Scikit-Learn", "Python", "Pandas", "Numpy", "Matplotlib"],
-    description:
-      "Solving a binary classification problem to predict which recipes will lead to high web traffic using logistic regression models.",
-    modalContent: (
-      <>
-        <p>
-          This is my final project for obtaining the Data Science Certification
-          from{" "}
-          <a
-            target="_blank"
-            rel="nofollow"
-            href="https://www.datacamp.com/portfolio/shovon3000g"
-          >
-            DataCamp
-          </a>
-          . In this project, I was provided with a dataset containing recipes,
-          their details, and whether they generated high web traffic. My task
-          was to predict which types of recipes would drive high traffic in the
-          future, aiming for at least 80% accuracy
-        </p>
-        <p>
-          The project involved training two models: a baseline model and a
-          comparison model. I demonstrated techniques for data validation and
-          cleaning, and shared insights from exploratory data analysis (EDA).
-          After developing and training the models, I presented my findings. You
-          can view that presentaion in my GitHub repository.
-        </p>
-      </>
-    ),
-  },
+  // {
+  //   title: "Recipe Discovery",
+  //   projectType: "default",
+  //   imgSrc: "/project-imgs/recipe_loader.jpeg",
+  //   code: "https://github.com/AishaEvering/RecipeDiscovery",
+  //   projectLink: "",
+  //   liveDemo: false,
+  //   tech: ["Scikit-Learn", "Python", "Pandas", "Numpy", "Matplotlib"],
+  //   description:
+  //     "Solving a binary classification problem to predict which recipes will lead to high web traffic using logistic regression models.",
+  //   modalContent: (
+  //     <>
+  //       <p>
+  //         This is my final project for obtaining the Data Science Certification
+  //         from{" "}
+  //         <a
+  //           target="_blank"
+  //           rel="nofollow"
+  //           href="https://www.datacamp.com/portfolio/shovon3000g"
+  //         >
+  //           DataCamp
+  //         </a>
+  //         . In this project, I was provided with a dataset containing recipes,
+  //         their details, and whether they generated high web traffic. My task
+  //         was to predict which types of recipes would drive high traffic in the
+  //         future, aiming for at least 80% accuracy
+  //       </p>
+  //       <p>
+  //         The project involved training two models: a baseline model and a
+  //         comparison model. I demonstrated techniques for data validation and
+  //         cleaning, and shared insights from exploratory data analysis (EDA).
+  //         After developing and training the models, I presented my findings. You
+  //         can view that presentaion in my GitHub repository.
+  //       </p>
+  //     </>
+  //   ),
+  // },
 ];
