@@ -16,6 +16,14 @@ export const Stats = () => {
           </h4>
           <div className={styles.statGrid}>
             <Education
+              title={"Master of Science"}
+              school={"Arizona State University"}
+              focus={
+                "Concentraion on Computational Life Sciences (in progress)"
+              }
+              time={"Expected 2026"}
+            ></Education>
+            <Education
               title={"Bachelors of Science"}
               school={"University of Advancing Technology"}
               focus={"Concentraion on Software Engineering"}

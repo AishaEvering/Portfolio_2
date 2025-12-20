@@ -15,6 +15,8 @@ interface Props {
   modalContent: JSX.Element;
   description: string;
   projectLink: string;
+  review: string;
+  reviewer: string;
   imgSrc: string;
   tech: string[];
   title: string;
@@ -26,6 +28,8 @@ interface Props {
 export const Project = ({
   modalContent,
   projectLink,
+  review,
+  reviewer,
   description,
   imgSrc,
   title,
@@ -108,6 +112,8 @@ export const Project = ({
         <ProjectModal
           modalContent={modalContent}
           projectLink={projectLink}
+          review={review}
+          reviewer={reviewer}
           setIsOpen={setIsOpen}
           isOpen={isOpen}
           imgSrc={imgSrc}

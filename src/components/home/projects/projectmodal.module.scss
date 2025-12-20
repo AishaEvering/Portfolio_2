@@ -89,6 +89,11 @@
   }
 }
 
+.reviewText {
+  font-size: var(--text-xs);
+  font-style: italic;
+}
+
 .links {
   display: flex;
   align-items: center;

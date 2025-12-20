@@ -24,6 +24,9 @@ const projects = [
     imgSrc: "/project-imgs/illusion_of_originality.gif",
     code: "https://github.com/AishaEvering/illusion-of-originality",
     projectLink: "https://illusion-of-originality.aishaeportfolio.com/",
+    review:
+      "This is truly exceptional work!!! By far the best project I've seen teaching this class. Please let me know if there's anything I can do to help support your work and interests going forward!",
+    reviewer: "Beckett Sterner",
     liveDemo: true,
     tech: ["React", "TailwindCSS", "Framer Motion", "GSAP", "Next.js"],
     description:
@@ -51,6 +54,8 @@ const projects = [
     code: "https://github.com/AishaEvering/ObjectDetection",
     projectLink:
       "https://universe.roboflow.com/aishas-workspace/black-hair-detection",
+    review: "",
+    reviewer: "",
     liveDemo: true,
     tech: ["Roboflow", "YOLO", "Flask", "PyTorch", "Python", "Numpy"],
     description:
@@ -92,6 +97,8 @@ const projects = [
     imgSrc: "/project-imgs/buzz_lightyear.png",
     code: "https://github.com/AishaEvering/Portfolio_2",
     projectLink: "",
+    review: "",
+    reviewer: "",
     liveDemo: false,
     tech: [
       "Next.js",
@@ -127,6 +134,8 @@ const projects = [
     imgSrc: "/project-imgs/Mona.png",
     code: "https://github.com/AishaEvering/Art_Geek",
     projectLink: "https://aishae-art-geek.hf.space",
+    review: "",
+    reviewer: "",
     liveDemo: true,
     tech: ["PyTorch", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
@@ -165,6 +174,8 @@ const projects = [
     imgSrc: "/project-imgs/how_can_I_help_you.jpeg",
     code: "https://github.com/AishaEvering/My_Assistant",
     projectLink: "https://aishae-my-assistant.hf.space/",
+    review: "",
+    reviewer: "",
     liveDemo: true,
     tech: ["TensorFlow", "Keras", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
@@ -228,6 +239,8 @@ const projects = [
     imgSrc: "/project-imgs/EmotionDetection.png",
     code: "https://github.com/AishaEvering/Emotion_Detection",
     projectLink: "",
+    review: "",
+    reviewer: "",
     liveDemo: false,
     tech: ["TensorFlow", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
@@ -250,6 +263,8 @@ const projects = [
   //   imgSrc: "/project-imgs/recipe_loader.jpeg",
   //   code: "https://github.com/AishaEvering/RecipeDiscovery",
   //   projectLink: "",
+  //   review: "",
+  //   reviewer: "",
   //   liveDemo: false,
   //   tech: ["Scikit-Learn", "Python", "Pandas", "Numpy", "Matplotlib"],
   //   description:

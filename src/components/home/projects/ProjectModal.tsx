@@ -16,6 +16,8 @@ interface Props {
   imgSrc: string;
   code: string;
   projectLink?: string;
+  review?: string;
+  reviewer?: string;
   tech: string[];
   modalContent: JSX.Element;
 }
@@ -23,6 +25,8 @@ interface Props {
 export const ProjectModal = ({
   modalContent,
   projectLink = "",
+  review = "",
+  reviewer = "",
   setIsOpen,
   imgSrc,
   isOpen,
@@ -77,6 +81,16 @@ export const ProjectModal = ({
               .
             </p>
           </div>
+          {review.length > 0 && (
+            <div className={styles.modalFooter}>
+              <p className={styles.linksText}>
+                Review<span>.</span>
+              </p>
+              <p className={styles.reviewText}>
+                "{review}" -{reviewer}
+              </p>
+            </div>
+          )}
           <div className={styles.modalFooter}>
             <p className={styles.linksText}>
               Project Links<span>.</span>
