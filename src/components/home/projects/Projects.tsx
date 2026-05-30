@@ -30,6 +30,8 @@ const projects = [
     showReadMeSection: false,
     showSourceCode: false,
     isPaper: true,
+    review: "",
+    reviewer: "",
     tech: [
       "GWAS",
       "PRS",
@@ -64,6 +66,7 @@ const projects = [
       "This is truly exceptional work!!! By far the best project I've seen teaching this class. Please let me know if there's anything I can do to help support your work and interests going forward!",
     reviewer: "Beckett Sterner",
     liveDemo: true,
+    showReadMeSection: true,
     showSourceCode: true,
     isPaper: false,
     tech: ["React", "TailwindCSS", "Framer Motion", "GSAP", "Next.js"],
@@ -96,6 +99,7 @@ const projects = [
     reviewer: "",
     showGitHub: true,
     liveDemo: true,
+    showReadMeSection: true,
     showSourceCode: true,
     isPaper: false,
     tech: ["Roboflow", "YOLO", "Flask", "PyTorch", "Python", "Numpy"],
@@ -143,6 +147,7 @@ const projects = [
     liveDemo: false,
     showSourceCode: true,
     isPaper: false,
+    showReadMeSection: true,
     showGitHub: true,
     tech: [
       "Next.js",
@@ -182,6 +187,7 @@ const projects = [
     reviewer: "",
     liveDemo: true,
     showGitHub: true,
+    showReadMeSection: true,
     showSourceCode: true,
     isPaper: false,
     tech: ["PyTorch", "Python", "Pandas", "Numpy", "Matplotlib"],
@@ -226,6 +232,7 @@ const projects = [
     liveDemo: true,
     showGitHub: true,
     showSourceCode: true,
+    showReadMeSection: true,
     isPaper: false,
     tech: ["TensorFlow", "Keras", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:

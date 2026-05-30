@@ -34,6 +34,8 @@ export const Hero = () => {
               development and a growing focus on machine learning,
               bioinformatics, and computational biology.
             </p>
+          </Reveal>
+          <Reveal>
             <p className={styles.aboutCopy}>
               Currently pursuing a master&apos;s degree in Computational Life
               Sciences at Arizona State University, I&apos;m building projects
