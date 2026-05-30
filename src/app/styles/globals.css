@@ -13,32 +13,36 @@
 
   --background: white;
   --bg-opaque: rgb(255, 255, 255);
-  --background-light: rgb(234, 229, 229);
+  --background-light: #F5F2F4;
   --background-dark: white;
   --background-dark-opaque: white;
 
-  --text: rgb(85, 85, 85);
+  --text: #5B5B63;
   --text-error: red;
   --text-highlight:#76c7c0;
   --text-form:rgb(85, 85, 85);
   --text-tab:#ffffff;
 
-  --brand: rgb(225, 24, 178);
-  --sub-brand: #E118B2;
+  --brand: #C0268C;
+  --sub-brand: #A61E74;
   --bot-sub-brand: rgba(225, 24, 178, .5);
   --alter-color:#76c7c0;
   --is-open-text:#c3c4c3;
   --progress-bar-color:#76c7c0;
   --progress-bar-background: #e0e0e0;
   --switch-ball-color1: #fcd9f4;
-  --switch-ball-color2: #E118B2;
-  --switch-ball-color3: #a01880;
+  --switch-ball-color2: #C0268C;
+  --switch-ball-color3: #7A1B5A;
   --switch-background-image-color1:#E118B2;
   --switch-background-image-color2:#900f72;
   --msg-ai-background: rgba(168, 153, 153, 0.3);
   --msg-ai-border: rgb(234, 229, 229);
-  --msg-user-background: linear-gradient(120deg, #E118B2, #900f72);
+  --msg-user-background: linear-gradient(120deg, #C0268C, #7A1B5A);
 
+
+  --shadow-color: rgba(0, 0, 0, 0.10);
+  --brand-glow: rgba(192, 38, 140, 0.35);
+  
   --c1: rgb(225, 24, 178);
 	--c2: white;
    
@@ -67,6 +71,9 @@
   --switch-ball-color3: #a81a1a;
   --switch-background-image-color1:rgb(10, 255, 157);
   --switch-background-image-color2:rgb(11, 147, 92);
+
+  --shadow-color: rgba(0, 0, 0, 0.35);
+  --brand-glow: rgba(10, 255, 157, 0.30);
 
   --text-tab:black;
   --text-highlight:rgb(10, 255, 157);

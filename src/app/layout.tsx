@@ -27,10 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <title>Aisha Evering | Software Engineer</title>
+      <title>
+        Aisha Evering | Computational Biology Graduate Student & Software
+        Engineer
+      </title>
       <meta
         name="description"
-        content="Showcasing a blend of practical expertise and innovative models, my portfolio highlights my journey through data science and machine learning with interactive apps and real-world solutions."
+        content="From scalable software systems to machine learning and computational biology projects, my portfolio reflects a passion for building intelligent, data-driven solutions with real-world impact."
       />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/project-imgs/favicon.ico" />

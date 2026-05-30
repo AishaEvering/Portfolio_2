@@ -20,6 +20,9 @@ interface Props {
   reviewer?: string;
   tech: string[];
   modalContent: JSX.Element;
+  showReadMeSection: boolean;
+  showSourceCode: boolean;
+  isPaper: boolean;
 }
 
 export const ProjectModal = ({
@@ -33,6 +36,9 @@ export const ProjectModal = ({
   title,
   code,
   tech,
+  showReadMeSection = true,
+  showSourceCode = true,
+  isPaper = false,
 }: Props) => {
   useEffect(() => {
     const body = document.querySelector("body");
@@ -68,18 +74,20 @@ export const ProjectModal = ({
 
           <div className={styles.suppliedContent}>
             {modalContent}
-            <p>
-              For a comprehensive overview of the decisions I made, the
-              challenges I faced, and the lessons I learned, please refer to the
-              full
-              <span className={styles.readme}>
-                <a target="_blank" rel="nofollow" href={code}>
-                  <PiBookOpenText size="2.0rem" color="var(--brand)" />
-                  ReadMe
-                </a>
-              </span>
-              .
-            </p>
+            {showReadMeSection ? (
+              <p>
+                For a comprehensive overview of the decisions I made, the
+                challenges I faced, and the lessons I learned, please refer to
+                the full
+                <span className={styles.readme}>
+                  <a target="_blank" rel="nofollow" href={code}>
+                    <PiBookOpenText size="2.0rem" color="var(--brand)" />
+                    ReadMe
+                  </a>
+                </span>
+                .
+              </p>
+            ) : null}
           </div>
           {review.length > 0 && (
             <div className={styles.modalFooter}>
@@ -96,12 +104,14 @@ export const ProjectModal = ({
               Project Links<span>.</span>
             </p>
             <div className={styles.links}>
-              <Link target="_blank" rel="nofollow" href={code}>
-                <AiFillGithub /> source code
-              </Link>
+              {showSourceCode && (
+                <Link target="_blank" rel="nofollow" href={code}>
+                  <AiFillGithub /> source code
+                </Link>
+              )}
               {projectLink.length > 0 && (
                 <Link target="_blank" rel="nofollow" href={projectLink}>
-                  <AiOutlineExport /> live project
+                  <AiOutlineExport /> {isPaper ? "view paper" : "live project"}
                 </Link>
               )}
             </div>

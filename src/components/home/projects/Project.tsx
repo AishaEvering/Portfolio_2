@@ -3,7 +3,7 @@ import { Reveal } from "@/components/utils/Reveal";
 import { useAnimation, useInView, motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { AiFillGithub, AiOutlineExport } from "react-icons/ai";
+import { AiFillFilePdf, AiFillGithub, AiOutlineExport } from "react-icons/ai";
 import { ProjectModal } from "./ProjectModal";
 import { ArtGeekProjectModal } from "./ArtGeekProjectModal";
 import styles from "./projects.module.scss";
@@ -23,6 +23,10 @@ interface Props {
   code: string;
   liveDemo: boolean;
   projectType: string;
+  showGitHub: boolean;
+  showReadMeSection: boolean;
+  showSourceCode: boolean;
+  isPaper: boolean;
 }
 
 export const Project = ({
@@ -37,6 +41,10 @@ export const Project = ({
   tech,
   liveDemo,
   projectType = "default",
+  showGitHub = true,
+  showReadMeSection = true,
+  showSourceCode = true,
+  isPaper = false,
 }: Props) => {
   const [hovered, setHovered] = useState(false);
 
@@ -91,7 +99,11 @@ export const Project = ({
               <div className={styles.projectTitleLine} />
 
               <Link href={code} target="_blank" rel="nofollow">
-                <AiFillGithub size="2.8rem" />
+                {showGitHub ? (
+                  <AiFillGithub size="2.8rem" />
+                ) : (
+                  <AiFillFilePdf size="2.8rem" />
+                )}
               </Link>
             </div>
           </Reveal>
@@ -120,6 +132,9 @@ export const Project = ({
           title={title}
           code={code}
           tech={tech}
+          showReadMeSection={showReadMeSection}
+          showSourceCode={showSourceCode}
+          isPaper={isPaper}
         />
       )}
       {projectType == "art_geek" && (

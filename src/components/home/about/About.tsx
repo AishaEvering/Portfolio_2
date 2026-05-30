@@ -24,32 +24,31 @@ export const About = () => {
                   width={500}
                 />
               </div>
-              <p className={`${styles.aboutText} ${styles.subhead} boxP`}>
-                Hello and nice to meet you! As Jay-Z famously said, &quot;
-                <i>Allow me to reintroduce myself.</i>&quot; I&apos;m Aisha
-                Evering, and I&apos;ve recently focused on advancing my
-                expertise in data science through a range of certifications and
-                hands-on projects. I hold both Data Science and Associate Data
-                Science certifications from Datacamp, as well as an AWS Cloud
-                Practitioner certification. Currently, I&apos;m working towards
-                my AWS Machine Learning certification. My ambition is to become
-                a Machine Learning Engineer, and I have a deep passion for
-                Machine Learning with Python.
+              <p className={`${styles.aboutText} boxP`}>
+                I&apos;m a software engineer and computational biology graduate
+                student focused on the intersection of machine learning,
+                bioinformatics, and scientific computing.
+              </p>
+              <p className={styles.aboutText}>
+                With a background in scalable software development and
+                data-driven applications, I&apos;m now building projects
+                centered around genomics, biological data analysis,
+                visualization, and machine learning applications for scientific
+                research while pursuing my master&apos;s degree in Computational
+                Life Sciences at Arizona State University.
               </p>
             </div>
           </Reveal>
           <Reveal>
             <p className={styles.aboutText}>
-              My professional experience lies in Software Engineering, where I
-              have specialized in developing applications using technologies
-              such as Dart, C#, Java, and JavaScript. I am proficient in React
-              as well as JSON manipulation.
+              My goal is to combine engineering, data science, and biology to
+              help create impactful tools for healthcare and scientific
+              discovery.
             </p>
           </Reveal>
           <Reveal>
             <p className={styles.aboutText}>
-              When I&apos;m not studying and building machine learning projects,
-              I enjoy building Lego towers{" "}
+              When I’m away from the keyboard, I enjoy building Lego towers{" "}
               <Image
                 height={500}
                 width={500}
@@ -57,8 +56,8 @@ export const About = () => {
                 src="/project-imgs/lego.png"
                 alt="Lego Emoji"
               />{" "}
-              with my children. I am eager to apply my strong analytical skills
-              and programming expertise in a data-driven role.
+              with my children, experimenting with creative ideas, and exploring
+              new technologies that inspire curiosity and innovation.
             </p>
           </Reveal>
           <Reveal>

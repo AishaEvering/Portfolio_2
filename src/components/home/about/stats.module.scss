@@ -9,10 +9,11 @@
 
     margin-bottom: 1.0rem;
     span {
-      font-size: var(--text-md);
+      font-size: var(--text-sm);
       font-weight: bold;
       position: relative;
       margin-left: 0.8rem;
+      white-space: nowrap;
     }
   }
 }

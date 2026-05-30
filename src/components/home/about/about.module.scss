@@ -10,7 +10,8 @@
 
 .aboutText {
   margin-bottom: 2.4rem;
-  font-weight: 200;
+  font-weight: 170;
+  line-height: 1.6;
 }
 
 .links {
@@ -36,13 +37,37 @@
   margin-right: .75em;
 }
 
-.boxImgContainer{
+// .boxImgContainer{
+//   float: left;
+//   margin-right: 18px;
+//   margin-bottom: 18px;
+//   max-height:30%;
+//   max-width:30%;
+//   filter: drop-shadow(10px 5px 4px var(--brand));
+// }
+
+.boxImgContainer {
   float: left;
-  margin-right: 18px;
-  margin-bottom: 18px;
-  max-height:30%;
-  max-width:30%;
-  filter: drop-shadow(10px 5px 4px var(--brand));
+  margin-right: 24px;
+  margin-bottom: 20px;
+  max-width: 34%;
+
+  border-radius: 24px;
+  overflow: hidden;
+
+box-shadow:
+  8px 8px 18px var(--brand-glow),
+  0 14px 28px var(--shadow-color);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boxImgContainer:hover {
+  transform: translateY(-4px);
+
+box-shadow:
+  8px 8px 18px var(--brand-glow),
+  0 14px 28px var(--shadow-color);
 }
 
 .boxImg {

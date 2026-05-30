@@ -19,15 +19,53 @@ export const Projects = () => {
 
 const projects = [
   {
+    title: "Polygenic Risk Score Bias in Type 2 Diabetes",
+    projectType: "default",
+    imgSrc: "/project-imgs/gwas.png",
+    code: "/Ancestry Related Disparities in Polygenic Risk Score Performance for Type 2 Diabetes and Their Ethical Implications.pdf",
+    projectLink:
+      "/Ancestry Related Disparities in Polygenic Risk Score Performance for Type 2 Diabetes and Their Ethical Implications.pdf",
+    showGitHub: false,
+    liveDemo: false,
+    showReadMeSection: false,
+    showSourceCode: false,
+    isPaper: true,
+    tech: [
+      "GWAS",
+      "PRS",
+      "Genomics",
+      "Machine Learning",
+      "Computational Biology",
+    ],
+    description:
+      "Graduate research project exploring how ancestry, population structure, and genomic variation influence the performance and fairness of polygenic risk scores for Type 2 Diabetes prediction across diverse populations.",
+    modalContent: (
+      <>
+        <p>
+          This research project examined challenges related to linkage
+          disequilibrium, dataset imbalance, and predictive bias in genomic
+          machine learning models while evaluating emerging multi-ancestry
+          approaches such as LDpred2, PRS-CSx, and MUSSEL. The project focused
+          on the intersection of genomics, health equity, and computational
+          biology to better understand the limitations and future potential of
+          precision medicine.
+        </p>
+      </>
+    ),
+  },
+  {
     title: "Illusion of Originality",
     projectType: "default",
     imgSrc: "/project-imgs/illusion_of_originality.gif",
     code: "https://github.com/AishaEvering/illusion-of-originality",
     projectLink: "https://illusion-of-originality.aishaeportfolio.com/",
+    showGitHub: true,
     review:
       "This is truly exceptional work!!! By far the best project I've seen teaching this class. Please let me know if there's anything I can do to help support your work and interests going forward!",
     reviewer: "Beckett Sterner",
     liveDemo: true,
+    showSourceCode: true,
+    isPaper: false,
     tech: ["React", "TailwindCSS", "Framer Motion", "GSAP", "Next.js"],
     description:
       "Final project for BIO 511: Big Data in Context, analyzing the ethical implications of generative AI systems built on large scale scraping of human created content.",
@@ -56,7 +94,10 @@ const projects = [
       "https://universe.roboflow.com/aishas-workspace/black-hair-detection",
     review: "",
     reviewer: "",
+    showGitHub: true,
     liveDemo: true,
+    showSourceCode: true,
+    isPaper: false,
     tech: ["Roboflow", "YOLO", "Flask", "PyTorch", "Python", "Numpy"],
     description:
       "I created a custom dataset using Roboflow to train a YOLOv8 model for detecting and classifying hairstyles commonly seen in Black communities. To showcase this model, I developed a live demo as part of my portfolio, featuring a Flask API for the backend.",
@@ -100,6 +141,9 @@ const projects = [
     review: "",
     reviewer: "",
     liveDemo: false,
+    showSourceCode: true,
+    isPaper: false,
+    showGitHub: true,
     tech: [
       "Next.js",
       "React",
@@ -137,6 +181,9 @@ const projects = [
     review: "",
     reviewer: "",
     liveDemo: true,
+    showGitHub: true,
+    showSourceCode: true,
+    isPaper: false,
     tech: ["PyTorch", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
       "A refined Vision Transformer (ViT) feature extractor model for computer vision that accurately predicts the genre and style of art pieces.",
@@ -177,6 +224,9 @@ const projects = [
     review: "",
     reviewer: "",
     liveDemo: true,
+    showGitHub: true,
+    showSourceCode: true,
+    isPaper: false,
     tech: ["TensorFlow", "Keras", "Python", "Pandas", "Numpy", "Matplotlib"],
     description:
       "A fine-tuned DistilBERT transformer model that predicts the intent behind user commands.",
@@ -233,30 +283,33 @@ const projects = [
       </>
     ),
   },
-  {
-    title: "Emotion Detection",
-    projectType: "default",
-    imgSrc: "/project-imgs/EmotionDetection.png",
-    code: "https://github.com/AishaEvering/Emotion_Detection",
-    projectLink: "",
-    review: "",
-    reviewer: "",
-    liveDemo: false,
-    tech: ["TensorFlow", "Python", "Pandas", "Numpy", "Matplotlib"],
-    description:
-      "A multi-class classification model designed to identify emotions—sad, happy, surprised, and neutral—across various facial expressions.",
-    modalContent: (
-      <>
-        <p>
-          This project serves as a capstone endeavor towards earning my MIT
-          Applied Data Science certification. In this project, I selected a
-          dataset, trained custom models, and employed transfer learning to
-          classify images. The final stage involved presenting the resulting
-          metrics for each experiment in a live presentation.
-        </p>
-      </>
-    ),
-  },
+  // {
+  //   title: "Emotion Detection",
+  //   projectType: "default",
+  //   imgSrc: "/project-imgs/EmotionDetection.png",
+  //   code: "https://github.com/AishaEvering/Emotion_Detection",
+  //   projectLink: "",
+  //   review: "",
+  //   reviewer: "",
+  //   liveDemo: false,
+  //   showGitHub: true,
+  //   showSourceCode: true,
+  //   isPaper: false,
+  //   tech: ["TensorFlow", "Python", "Pandas", "Numpy", "Matplotlib"],
+  //   description:
+  //     "A multi-class classification model designed to identify emotions—sad, happy, surprised, and neutral—across various facial expressions.",
+  //   modalContent: (
+  //     <>
+  //       <p>
+  //         This project serves as a capstone endeavor towards earning my MIT
+  //         Applied Data Science certification. In this project, I selected a
+  //         dataset, trained custom models, and employed transfer learning to
+  //         classify images. The final stage involved presenting the resulting
+  //         metrics for each experiment in a live presentation.
+  //       </p>
+  //     </>
+  //   ),
+  // },
   // {
   //   title: "Recipe Discovery",
   //   projectType: "default",
