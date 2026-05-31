@@ -20,7 +20,7 @@ const useArtGeek = (imageFile?: File | null) => {
         setLoading(true);
         Client.connect("AishaE/art_geek").then((app) => {
             // get predictions
-            app.predict("/predict",{img: imageFile})
+            app.predict("/predict",[imageFile])
             .then((res) => {
                 const responseData = res.data as Prediction;
                 setData(responseData);
