@@ -11,11 +11,11 @@
 :root[data-theme="light"] {
   font-size: 62.5%;
 
-  --background: white;
-  --bg-opaque: rgb(255, 255, 255);
-  --background-light: #F5F2F4;
-  --background-dark: white;
-  --background-dark-opaque: white;
+  --background: #f3f4f6;
+  --bg-opaque: #f3f4f6;
+  --background-light: #ffffff;
+  --background-dark: #f3f4f6;
+  --background-dark-opaque: #white;
 
   --text: #5B5B63;
   --text-error: red;

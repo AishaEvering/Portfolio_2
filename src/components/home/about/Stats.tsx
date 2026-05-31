@@ -23,14 +23,14 @@ export const Stats = () => {
               title={"Master of Science"}
               school={"Arizona State University"}
               focus={
-                "Concentraion on Computational Life Sciences (in progress)"
+                "Concentration on Computational Life Sciences (in progress)"
               }
               time={"Expected 2026"}
             ></Education>
             <Education
               title={"Bachelors of Science"}
               school={"University of Advancing Technology"}
-              focus={"Concentraion on Software Engineering"}
+              focus={"Concentration on Software Engineering"}
               time={"2001"}
             ></Education>
             <Education

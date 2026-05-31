@@ -8,7 +8,7 @@ export const Footer = () => {
       <div className={styles.footerWrapper}>
         <Reveal width="100%">
           <p className={styles.footer}>
-            Copyright &#169; 2024 Aisha Evering. All Rights Reserved.
+            Copyright &#169; 2026 Aisha Evering. All Rights Reserved.
           </p>
         </Reveal>
       </div>
