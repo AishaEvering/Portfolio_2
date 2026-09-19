@@ -10,6 +10,7 @@ import { Certifications } from "@/components/home/certifications/Certifications"
 import { Experience } from "@/components/home/experience/Experience";
 import { Contact } from "@/components/home/contact/Contact";
 import { Footer } from "@/components/home/footer/Footer";
+import Featured from "@/components/home/featured/featured";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
           <Heading />
           <Hero />
           <About />
+          <Featured />
           <Projects />
           <Certifications />
           <Experience />

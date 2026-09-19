@@ -41,6 +41,16 @@
     opacity: 1;
   }
 
+  .featuredLink:hover {
+    border-right-color: #1b6b5b;
+  }
+
+  .featuredSelected {
+    background: var(--bg-opaque);
+    border-right: 1px solid #1b6b5b;
+    opacity: 1;
+  }
+
   .selected {
     background: var(--bg-opaque);
     border-right: 1px solid var(--brand);

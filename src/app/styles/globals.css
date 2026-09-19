@@ -6,6 +6,9 @@
 	--angle: 90deg;
 	--gradX: 100%;
 	--gradY: 50%;
+
+  --biotools-accent:#1b6b5b;
+  --biotools-font: 'IBM Plex Sans', system-ui, sans-serif;
 }
 
 :root[data-theme="light"] {

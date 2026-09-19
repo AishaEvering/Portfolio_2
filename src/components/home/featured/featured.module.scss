@@ -1,0 +1,129 @@
+.featuredPanel {
+  width: 100%;
+  box-sizing: border-box;
+
+  margin-top: 2rem;
+  padding: 2.5rem;
+
+  border: 1px solid var(--biotools-accent);
+  border-radius: 12px;
+
+  background-color: rgb(101, 97, 97, .2);
+  font-family: var(--biotools-font);
+  -webkit-font-smoothing:antialiased;
+}
+
+.bioToolsHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+
+  h4 {
+    margin: 0;
+    font-size: var(--text-xl);
+  }
+
+  p {
+    margin: 0.25rem 0 0;
+    opacity: 0.7;
+  }
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.featureContent {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.tagline {
+  font-size: 1.35rem;
+  line-height: 1.6;
+}
+
+.demo {
+  overflow: hidden;
+  border-radius: 8px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.featureCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+.primaryAction {
+  .arrow {
+    display: inline-block;
+    margin-left: 0.35rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover .arrow {
+    transform: translate(3px, -3px);
+  }
+  background: var(--biotools-accent);
+  border: 1px solid var(--biotools-accent);
+  color: #fff;
+
+  &:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+  }
+}
+
+.secondaryAction {
+  .arrow {
+    display: inline-block;
+    margin-left: 0.35rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover .arrow {
+    transform: translate(3px, -3px);
+  }
+
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--biotools-accent);
+
+  &:hover {
+    background: rgba(27, 107, 91, 0.1);
+    transform: translateY(-2px);
+  }
+}

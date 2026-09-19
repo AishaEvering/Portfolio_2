@@ -19,6 +19,49 @@ export const Projects = () => {
 
 const projects = [
   {
+    title: "Anaeramoeba flamelloides Scientific Research Poster",
+    projectType: "default",
+    imgSrc: "/project-imgs/scientific_poster.png",
+    code: "/Anaeramoeba_flamelloides_Poster.pdf",
+    projectLink: "/Research_ Anaeramoebidae flamelloides.pdf",
+    showGitHub: false,
+    liveDemo: false,
+    showReadMeSection: false,
+    showSourceCode: false,
+    isPaper: true,
+    review: "",
+    reviewer: "",
+    tech: [
+      "Microbial Eukaryotes",
+      "Phylogenetics",
+      "Symbiosis",
+      "Cell Biology",
+      "Evolution",
+    ],
+    description:
+      "Literature-based investigation of Anaeramoeba flamelloides, an anaerobic microbial eukaryote with unusual cellular organization and bacterial symbionts. Created as part of graduate research coursework exploring microbial eukaryote diversity, evolution, and phylogenetics.",
+    modalContent: (
+      <>
+        <p>
+          This research poster explores Anaeramoeba flamelloides, an anaerobic
+          microbial eukaryote with unusual cellular organization and a
+          remarkable intracellular symbiosis. The project examines its
+          morphology, hundreds of hydrogenosomes, sulfate-reducing bacterial
+          symbionts, and phylogenetic placement within Metamonada.
+          <p>
+            <a
+              target="_blank"
+              rel="nofollow"
+              href="Anaeramoeba_flamelloides_Poster.pdf"
+            >
+              See full research poster
+            </a>
+          </p>
+        </p>
+      </>
+    ),
+  },
+  {
     title: "Polygenic Risk Score Bias in Type 2 Diabetes",
     projectType: "default",
     imgSrc: "/project-imgs/gwas.png",

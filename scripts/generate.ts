@@ -51,7 +51,7 @@ async function createLoader(ext: string): Promise<DocumentInterface[]> {
 
 async function createComponentLoader(): Promise<DocumentInterface[]> {
     const searchableDirs = ['nav', 'home'];
-    const searchableHomeDirs = ['about', 'certifications', 'contact', 'experience', 'hero', 'projects'];
+    const searchableHomeDirs = ['about', 'certifications', 'contact', 'experience', 'hero', 'projects', 'featured'];
 
     const loader = new DirectoryLoader("src/components/",{
         ".tsx": (path) => new TextLoader(path)

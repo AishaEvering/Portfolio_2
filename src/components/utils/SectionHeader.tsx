@@ -5,9 +5,10 @@ import { Reveal } from "./Reveal";
 interface Props {
   title: string;
   dir?: "l" | "r";
+  accent?: string;
 }
 
-export const SectionHeader = ({ title, dir = "r" }: Props) => {
+export const SectionHeader = ({ title, dir = "r", accent }: Props) => {
   return (
     <div
       className={styles.sectionHeader}
@@ -18,7 +19,7 @@ export const SectionHeader = ({ title, dir = "r" }: Props) => {
         <Reveal>
           <span className={styles.title}>
             {title}
-            <span>.</span>
+            <span style={accent ? { color: accent } : undefined}>.</span>
           </span>
         </Reveal>
       </h3>
