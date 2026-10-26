@@ -1,6 +1,11 @@
 .heading {
-  height: calc(45px + 3.6rem);
-  padding: 0 3.6rem;
+  width: 100%;
+  box-sizing: border-box;
+  height: calc(40px + 3.6rem);
+  padding: 0.75rem 2rem;
+
+  min-height: 64px;
+  padding-block: 0.5rem;
 
   display: flex;
   align-items: center;
@@ -9,8 +14,11 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background: var(--bg-opaque);
+
+  // Let the global atmosphere show through.
+  background: transparent;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   font-weight: bold;
 

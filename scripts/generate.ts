@@ -16,7 +16,7 @@ async function generateEmbeddings(){
 
     // clear out vector db
    const vectorStore = await getVectorStore();
-   (await getEmbeddingsCollection()).deleteMany({})
+   await (await getEmbeddingsCollection()).deleteMany({})
 
    const docs = [];
 
@@ -32,22 +32,39 @@ async function generateEmbeddings(){
     const splitDocs = await splitter.splitDocuments(componentDocs);
     docs.push(...splitDocs);
     
-    await vectorStore.addDocuments(splitDocs);
+    await vectorStore.addDocuments(docs);
 }
+
 
 async function createLoader(ext: string): Promise<DocumentInterface[]> {
-    const loader = new DirectoryLoader("src/components/utils/data/", {
-        [ext]: (path) => new TextLoader(path)
-    }, false);
+  const loader = new DirectoryLoader(
+    "src/components/utils/data/",
+    {
+      [ext]: (path) => new TextLoader(path),
+    },
+    false
+  );
 
-    return (await loader.load())
-        .map((doc): DocumentInterface | undefined => {
-            return doc ? {
-                pageContent: cleanContent(doc.pageContent),
-                metadata: { url: "/#projects" }
-            } : undefined;
-        }).filter((doc): doc is DocumentInterface => doc !== undefined);
+  const urlMap: Record<string, string> = {
+    "skills.md": "/#about",
+    "education.md": "/#about",
+    "dmc1.md": "/#work",
+  };
+
+  return (await loader.load()).map((doc) => {
+    const source = String(doc.metadata.source).replace(/\\/g, "/");
+    const filename = source.split("/").pop() ?? "";
+
+    return {
+      pageContent: cleanContent(doc.pageContent),
+      metadata: {
+        source: filename,
+        url: urlMap[filename] ?? "/#work",
+      },
+    };
+  });
 }
+
 
 async function createComponentLoader(): Promise<DocumentInterface[]> {
     const searchableDirs = ['nav', 'home'];

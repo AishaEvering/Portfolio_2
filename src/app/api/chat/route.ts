@@ -49,6 +49,20 @@ export async function POST(req: Request) {
     // get retriver to get the data from vector db
     const retriever = (await getVectorStore()).asRetriever();
 
+
+    const docs = await retriever.invoke(
+      "Aisha scientific research bioinformatics skills tools projects"
+    );
+
+console.table(
+  docs.map((doc, index) => ({
+    index,
+    source: doc.metadata?.source,
+    url: doc.metadata?.url,
+    preview: doc.pageContent.slice(0, 150),
+  }))
+);
+
     // get history search query retriever
     const historyAwareRetrieverChain = await createHistoryAwareRetriever({
       llm: rephrasingModel,
@@ -118,7 +132,18 @@ function getPrompts(){
           "you do not offend or curse. Answer the user's questions based on the below context. Whenever it makes sense, provide " +
           "links to pages that contain more information about the topic from the given context. Don't link the user to the " +
           "portfolio page.  If they are talking to you, they are already on the portfolio page. Format your messages in markdown " +
-          "format.\n\n" +
+          "format. When answering factual questions about Aisha's education, prioritize the education document over inferences from " +
+          "project descriptions. Do not infer current enrollment or degree status from coursework references. " +
+          "If the education document is not available in the retrieved context, do not guess Aisha's degree or enrollment status. " +
+          "Instead, say that you don't have enough information to confirm it. " +
+          "When providing links, use valid Markdown link syntax: [descriptive text](URL). " +
+          "Only use URLs explicitly provided in the retrieved context. Never invent links or page paths. " +
+          "Do not link to the portfolio homepage because the visitor is already there. " +
+          "When describing Aisha's technical skills, prioritize the skills document. Distinguish professional " +
+          "experience from academic or personal project experience. Do not imply professional experience with a " +
+          "technology solely because it appears in a project. " +
+          "When linking to sections of Aisha's portfolio, use the relative URL provided in the document metadata exactly as " + 
+          "written (for example, /#about). Never prepend localhost, invent a domain, or change the fragment structure.\n\n" +
           "Context:\n{context}",
       ],
       new MessagesPlaceholder("chat_history"),
@@ -141,7 +166,7 @@ function getPrompts(){
 }
 
 function getModels(handlers: any, cache: UpstashRedisCache){
-  const MODEL_NAME = "gpt-3.5-turbo-0125";
+  const MODEL_NAME = "gpt-5.4-nano";
 
   const chatModel = new ChatOpenAI({
     modelName: MODEL_NAME,

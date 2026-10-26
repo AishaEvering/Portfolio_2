@@ -1,0 +1,67 @@
+
+.gallery {
+  margin: 1.25rem 0 1.75rem;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.tab {
+  appearance: none;
+  border: 1px solid #ded8d3;
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  background: #f8f6f4;
+  color: #625e64;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    background: #eee7e2;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #80665b;
+    outline-offset: 3px;
+  }
+}
+
+.active {
+  background: #65544e;
+  border-color: #65544e;
+  color: #fff;
+
+  &:hover {
+    background: #65544e;
+  }
+}
+
+.panel {
+  padding: 0.75rem;
+  background: #f6f5f4;
+  border-radius: 12px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+}
+
+.description {
+  margin: 0.75rem 0 0;
+  color: #77737b;
+  font-size: 0.8rem;
+}

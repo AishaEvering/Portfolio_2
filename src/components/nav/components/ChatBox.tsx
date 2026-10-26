@@ -1,205 +1,294 @@
 "use client";
+
+import { useEffect, useRef } from "react";
 import { Message, useChat } from "ai/react";
-import styles from "./chatbox.module.scss";
-import { useEffect, useRef, useState } from "react";
-import { MdClose } from "react-icons/md";
+import { motion, AnimatePresence } from "framer-motion";
+import { SiProbot } from "react-icons/si";
+import { MdClose, MdArrowUpward, MdRefresh } from "react-icons/md";
 import ReactDOM from "react-dom";
-import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
-import { SiProbot } from "react-icons/si";
+
+import styles from "./chatbox.module.scss";
 
 interface Props {
   isOpen: boolean;
-  setIsOpen: Function;
+  setIsOpen: (open: boolean) => void;
 }
 
-export default function ChatBox({ setIsOpen, isOpen }: Props) {
+const suggestions = [
+  {
+    label: "Explore BioTools",
+    prompt: "Tell me about the BioTools project.",
+  },
+  {
+    label: "Research experience",
+    prompt: "Tell me about Aisha's computational biology research experience.",
+  },
+  {
+    label: "Technical skills",
+    prompt: "What are Aisha's technical skills?",
+  },
+];
+
+export default function ChatBox({ isOpen, setIsOpen }: Props) {
   const {
     messages,
     input,
     handleInputChange,
     handleSubmit,
+    append,
     setMessages,
+    stop,
     error,
   } = useChat();
-
-  const [loading, setLoading] = useState<boolean>(false);
-  const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
-
-  useEffect(() => {
-    scrollToBottom();
-    setLoading(lastMessageIsUser);
-  }, [messages]);
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const messageContainerRef = useRef<HTMLDivElement>(null);
 
+  const lastMessageIsUser = messages[messages.length - 1]?.role === "user";
+
+  const loading = lastMessageIsUser;
+
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => {
-        scrollToBottom();
-        inputRef.current?.focus();
-      }, 50);
+      inputRef.current?.focus();
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    const container = messageContainerRef.current;
+
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  }, [messages, loading]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isOpen, setIsOpen]);
+
+  const sendSuggestion = async (prompt: string) => {
+    if (loading) return;
+
+    await append({
+      role: "user",
+      content: prompt,
+    });
+  };
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault(); // prevent new line in textarea
-      // Create a fake form event to pass to handleSubmit
-      const fakeEvent = {
-        ...event,
-        currentTarget: event.currentTarget.closest("form") as HTMLFormElement,
-        preventDefault: () => event.preventDefault(),
-      } as React.FormEvent<HTMLFormElement>;
-      handleSubmit(fakeEvent);
+    if (
+      event.key === "Enter" &&
+      !event.shiftKey &&
+      !event.nativeEvent.isComposing
+    ) {
+      event.preventDefault();
+
+      if (input.trim() && !loading) {
+        event.currentTarget.form?.requestSubmit();
+      }
     }
   };
 
-  const scrollToBottom = () => {
-    if (messageContainerRef.current) {
-      messageContainerRef.current.scrollTop =
-        messageContainerRef.current.scrollHeight;
-    }
-  };
+  if (!isOpen) return null;
 
   const content = (
     <div className={styles.modal} onClick={() => setIsOpen(false)}>
-      <button className={styles.closeModalBtn}>
-        <MdClose />
-      </button>
-      <motion.div
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        onClick={(e) => e.stopPropagation()}
-        className={
-          loading ? `${styles.chat} ${styles.loading}` : `${styles.chat}`
-        }
+      <motion.section
+        role="dialog"
+        aria-modal="true"
+        aria-label="Chat with Buzz Lightyear"
+        className={styles.chat}
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          duration: 0.3,
+          ease: "easeOut",
+        }}
+        onClick={(event) => event.stopPropagation()}
       >
-        <div className={styles.chat_title}>
-          <h1>Buzz Lightyear</h1>
-          <h2>I&apos;m here to help!</h2>
-          <SiProbot className={styles.avatar} />
-        </div>
-        <div className={styles.messages} ref={messageContainerRef}>
-          <div className={styles.message_content}>
-            {messages.map((message) => (
-              <ChatMessage message={message} key={message.id} />
-            ))}
-            {loading && lastMessageIsUser && (
-              <ChatMessage
-                message={{
-                  id: "loading",
-                  role: "assistant",
-                  content: "thinking...",
-                }}
-              />
-            )}
-            {error && (
-              <ChatMessage
-                message={{
-                  id: "error",
-                  role: "assistant",
-                  content: "Something went wrong. Please try again!",
-                }}
-              />
-            )}
-            {!error && messages.length === 0 && (
-              <div className={styles.placeholder}>
-                <SiProbot size="2.4rem" className={styles.icon} />
-                <p className={styles.placeholdermsg}>
-                  Hello, nice to meet you. How can I help?
-                </p>
-                <p className={styles.placeholdersubmsg}>
-                  You can ask me any question about Aisha and I will find the
-                  relevant information on this portfolio.
-                </p>
-                <p className={styles.signature}>-- Buzz</p>
-              </div>
-            )}
+        {/* Header */}
+        <header className={styles.chatHeader}>
+          <div className={styles.avatarBox}>
+            <SiProbot />
           </div>
+
+          <div className={styles.headerText}>
+            <h2>Buzz Lightyear</h2>
+            <span>I'm here to help!</span>
+          </div>
+
+          <div className={styles.headerActions}>
+            {messages.length > 0 && (
+              <button
+                type="button"
+                className={styles.newChatButton}
+                onClick={() => {
+                  stop();
+                  setMessages([]);
+                  inputRef.current?.focus();
+                }}
+                aria-label="Start a new chat"
+                title="New chat"
+              >
+                <MdRefresh />
+              </button>
+            )}
+
+            <button
+              type="button"
+              className={styles.closeButton}
+              aria-label="Close chat"
+              onClick={() => setIsOpen(false)}
+            >
+              <MdClose />
+            </button>
+          </div>
+        </header>
+
+        {/* Conversation */}
+        <div
+          className={styles.messages}
+          ref={messageContainerRef}
+          aria-live="polite"
+          aria-relevant="additions"
+        >
+          {messages.length === 0 ? (
+            <div className={styles.welcome}>
+              <h3>Curious about my work?</h3>
+
+              <p>
+                Ask me about my projects, research, technical experience, or
+                career journey.
+              </p>
+
+              <div className={styles.suggestions}>
+                {suggestions.map((suggestion) => (
+                  <button
+                    type="button"
+                    key={suggestion.label}
+                    onClick={() => sendSuggestion(suggestion.prompt)}
+                    disabled={loading}
+                  >
+                    {suggestion.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className={styles.conversation}>
+              {messages.map((message) => (
+                <ChatMessage key={message.id} message={message} />
+              ))}
+
+              {loading && messages[messages.length - 1]?.role === "user" && (
+                <div className={styles.thinking}>
+                  <SiProbot />
+                  <span>Buzz is thinking...</span>
+                </div>
+              )}
+
+              {error && (
+                <p className={styles.error}>
+                  Something went wrong. Please try again.
+                </p>
+              )}
+            </div>
+          )}
         </div>
+
+        {/* Input */}
         <form
-          id="chatForm"
-          onSubmit={handleSubmit}
-          noValidate
-          className={styles.message_box}
+          className={styles.messageBox}
+          onSubmit={(event) => {
+            if (!input.trim() || loading) {
+              event.preventDefault();
+              return;
+            }
+
+            handleSubmit(event);
+          }}
         >
           <textarea
+            ref={inputRef}
             value={input}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            placeholder="Ask something..."
-            className={styles.message_input}
-            ref={inputRef}
+            placeholder="Ask Buzz something..."
+            aria-label="Message Buzz"
+            rows={1}
+            className={styles.messageInput}
           />
+
           <button
-            onClick={() => setMessages(messages)}
             type="submit"
-            className={styles.message_submit}
-            title="Submit message"
-            disabled={loading || input.length === 0}
+            className={styles.sendButton}
+            aria-label="Send message"
+            disabled={loading || !input.trim()}
           >
-            Send
+            <MdArrowUpward />
           </button>
         </form>
-      </motion.div>
+      </motion.section>
     </div>
   );
 
-  if (!isOpen) return <></>;
-
-  // @ts-ignore
-  return ReactDOM.createPortal(content, document.getElementById("root"));
+  return ReactDOM.createPortal(content, document.body);
 }
 
 interface ChatMessageProps {
   message: Message;
 }
 
-function ChatMessage({ message: { id, role, content } }: ChatMessageProps) {
-  const isAiMessage = role === "assistant";
-  const roleClassName = isAiMessage ? styles.aimessage : styles.usermessage;
+function ChatMessage({ message }: ChatMessageProps) {
+  const isAssistant = message.role === "assistant";
 
   return (
-    <div className={`${styles.message} ${styles.new} ${roleClassName}`}>
-      {isAiMessage && <SiProbot className={styles.avatar} />}
-      <ReactMarkdown
-        components={{
-          a: ({ node, ref, ...props }) => {
-            const isExternalLink = props.href?.startsWith("http");
+    <div
+      className={`${styles.message} ${
+        isAssistant ? styles.assistantMessage : styles.userMessage
+      }`}
+    >
+      {isAssistant && (
+        <div className={styles.messageAvatar}>
+          <SiProbot />
+        </div>
+      )}
 
-            return (
-              <Link
-                {...props}
-                href={props.href ?? ""}
-                className={styles.link}
-                target={isExternalLink ? "_blank" : "_self"}
-                rel={isExternalLink ? "nofollow" : undefined}
-              />
-            );
-          },
-          p: ({ node, ...props }) => (
-            <p {...props} className={styles.paragraph} />
-          ),
-          ul: ({ node, ...props }) => (
-            <ul {...props} className={styles.unoderedlists} />
-          ),
-          li: ({ node, ...props }) => (
-            <li {...props} className={styles.listitem} />
-          ),
-          i: ({ node, ...props }) => (
-            <i {...props} className={styles.italicText} />
-          ),
-          b: ({ node, ...props }) => (
-            <b {...props} className={styles.boldText} />
-          ),
-        }}
-      >
-        {content}
-      </ReactMarkdown>
-      <span></span>
+      <div className={styles.messageBubble}>
+        <ReactMarkdown
+          components={{
+            a: ({ node, ...props }) => {
+              const external = props.href?.startsWith("http");
+
+              return (
+                <Link
+                  href={props.href ?? "#"}
+                  target={external ? "_blank" : "_self"}
+                  rel={external ? "noopener noreferrer" : undefined}
+                >
+                  {props.children}
+                </Link>
+              );
+            },
+          }}
+        >
+          {message.content}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 }

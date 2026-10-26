@@ -1,23 +1,29 @@
 "use client";
-import { Reveal } from "@/components/utils/Reveal";
-import { useAnimation, useInView, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { AiFillFilePdf, AiFillGithub, AiOutlineExport } from "react-icons/ai";
+import Image from "next/image";
+import { AiFillGithub, AiFillFilePdf } from "react-icons/ai";
 import { ProjectModal } from "./ProjectModal";
 import { ArtGeekProjectModal } from "./ArtGeekProjectModal";
-import styles from "./projects.module.scss";
 import { MyAssistantProjectModal } from "./MyAssistantProjectModal";
 import { HairDetectProjectModal } from "./HairDetectProjectModal";
-import Image from "next/image";
+import styles from "./projects.module.scss";
 
-interface Props {
+export interface ProjectResource {
+  label: string;
+  href: string;
+  type: "poster" | "paper" | "manuscript" | "demo" | "other";
+}
+
+export interface Props {
   modalContent: JSX.Element;
   description: string;
   projectLink: string;
   review: string;
   reviewer: string;
   imgSrc: string;
+  modalImgSrc?: string;
   tech: string[];
   title: string;
   code: string;
@@ -27,6 +33,14 @@ interface Props {
   showReadMeSection: boolean;
   showSourceCode: boolean;
   isPaper: boolean;
+  isPoster: boolean;
+  number: string;
+  category: string;
+  displayTitle: string;
+  shortDescription: string;
+  showPreviewImage?: boolean;
+  resources?: ProjectResource[];
+  onTryBuzz?: () => void;
 }
 
 export const Project = ({
@@ -36,6 +50,7 @@ export const Project = ({
   reviewer,
   description,
   imgSrc,
+  modalImgSrc,
   title,
   code,
   tech,
@@ -45,81 +60,86 @@ export const Project = ({
   showReadMeSection = true,
   showSourceCode = true,
   isPaper = false,
+  isPoster = false,
+  number,
+  category,
+  displayTitle,
+  shortDescription,
+  resources,
+  showPreviewImage = true,
+  onTryBuzz,
 }: Props) => {
-  const [hovered, setHovered] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
-
-  const controls = useAnimation();
-
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [isInView, controls]);
-
   return (
     <>
-      <motion.div
-        ref={ref}
-        variants={{
-          hidden: { opacity: 0, y: 100 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        initial="hidden"
-        animate={controls}
-        transition={{ duration: 0.75 }}
+      <motion.article
+        className={styles.projectCard}
+        initial={{ opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.4 }}
       >
-        <div
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          onClick={() => setIsOpen(true)}
+        <div className={styles.cardTopline}>
+          <span>
+            {category} / {number}
+          </span>
+          <button
+            type="button"
+            className={styles.cardArrow}
+            onClick={() => setIsOpen(true)}
+            aria-label={`Learn more about ${displayTitle}`}
+          >
+            ↗
+          </button>
+        </div>
+        <button
           className={styles.projectImage}
+          type="button"
+          onClick={() => setIsOpen(true)}
+          aria-label={`View ${displayTitle} project details`}
         >
-          <Image
-            src={imgSrc}
-            height={500}
-            width={500}
-            alt={`An image of the ${title} project.`}
-            style={{
-              width: hovered ? "90%" : "85%",
-              rotate: hovered ? "2deg" : "0deg",
-            }}
-          />
-        </div>
+          {imgSrc ? (
+            <Image
+              src={imgSrc}
+              alt={`${displayTitle} project preview`}
+              width={640}
+              height={360}
+            />
+          ) : (
+            <span className={styles.imagePlaceholder}>
+              Research poster · preview coming soon
+            </span>
+          )}
+        </button>
         <div className={styles.projectCopy}>
-          <Reveal width="100%">
-            <div className={styles.projectTitle}>
-              <h4>{title}</h4>
-              <div className={styles.projectTitleLine} />
-
-              <Link href={code} target="_blank" rel="nofollow">
-                {showGitHub ? (
-                  <AiFillGithub size="2.8rem" />
-                ) : (
-                  <AiFillFilePdf size="2.8rem" />
-                )}
+          <h3>{displayTitle}</h3>
+          <p className={styles.projectDescription}>{shortDescription}</p>
+          <div className={styles.tags}>
+            {tech.slice(0, 3).map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+          <div className={styles.cardLinks}>
+            <button type="button" onClick={() => setIsOpen(true)}>
+              Explore project ↗
+            </button>
+            {code && (
+              <Link
+                href={code}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={
+                  showGitHub
+                    ? `${displayTitle} source code`
+                    : `${displayTitle} PDF`
+                }
+              >
+                {showGitHub ? <AiFillGithub /> : <AiFillFilePdf />}
               </Link>
-            </div>
-          </Reveal>
-          <Reveal>
-            <div className={styles.projectTech}>{tech.join(" - ")}</div>
-          </Reveal>
-          <Reveal>
-            <p className={styles.projectDescription}>
-              {description}{" "}
-              <span onClick={() => setIsOpen(true)}>
-                {liveDemo ? "Learn more with live demo >" : "Learn more>"}
-              </span>
-            </p>
-          </Reveal>
+            )}
+          </div>
         </div>
-      </motion.div>
+      </motion.article>
       {projectType == "default" && (
         <ProjectModal
           modalContent={modalContent}
@@ -129,12 +149,18 @@ export const Project = ({
           setIsOpen={setIsOpen}
           isOpen={isOpen}
           imgSrc={imgSrc}
+          modalImgSrc={modalImgSrc}
           title={title}
           code={code}
           tech={tech}
           showReadMeSection={showReadMeSection}
           showSourceCode={showSourceCode}
+          category={category}
           isPaper={isPaper}
+          isPoster={isPoster}
+          resources={resources}
+          showPreviewImage={showPreviewImage}
+          onTryBuzz={onTryBuzz}
         />
       )}
       {projectType == "art_geek" && (

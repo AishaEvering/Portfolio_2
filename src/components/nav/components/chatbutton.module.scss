@@ -1,20 +1,76 @@
-.chatboxicon{
-    position: relative;
-    z-index: 20;
-    background-color: transparent;
-    border: 0px;
-    padding-bottom: 9px;
-}
-  
-.icon{
-    opacity: 0.3;
-    padding: 0;
-    margin: 0;
+
+.floatingBuzz {
+  --buzz-surface: rgba(245, 242, 237, 0.88);
+  --buzz-color: #142c25;
+  --buzz-border: rgba(148, 107, 85, 0.25);
+  --buzz-glow: rgba(201, 158, 90, 0.18);
+  --buzz-caption: #946b55;
+
+  position: fixed;
+  right: clamp(16px, 3vw, 44px);
+  bottom: clamp(20px, 4vh, 42px);
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
-.icon:hover {
-    color: var(--brand);
-    opacity: 1;
-    padding: 0;
-    margin: 0;
+:global(:root[data-theme="dark"]) .floatingBuzz {
+  --buzz-surface: rgba(27, 34, 48, 0.9);
+  --buzz-color: #f5f2ed;
+  --buzz-border: rgba(215, 177, 143, 0.35);
+  --buzz-glow: rgba(215, 177, 143, 0.16);
+  --buzz-caption: #d7b18f;
+}
+
+.chatboxicon {
+  display: grid;
+  place-items: center;
+
+  width: 64px;
+  height: 64px;
+  padding: 0;
+
+  color: var(--buzz-color);
+  background: var(--buzz-surface);
+  border: 1px solid var(--buzz-border);
+  border-radius: 50%;
+
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.08),
+    0 0 28px var(--buzz-glow);
+
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  transition: color 250ms ease;
+}
+
+.chatboxicon:hover {
+  color: var(--buzz-caption);
+}
+
+.chatboxicon:focus-visible {
+  outline: 2px solid var(--buzz-caption);
+  outline-offset: 4px;
+}
+
+.caption {
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--buzz-caption);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon {
+    transition: none;
   }
+}

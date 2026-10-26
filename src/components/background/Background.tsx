@@ -1,31 +1,24 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import Sunlight from "./Sunlight";
 import styles from "./background.module.scss";
-import { useTheme } from "next-themes";
 
-const Background = () => {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null; // Render nothing until mounted
-
+export default function Background() {
   return (
-    <>
-      {resolvedTheme === "dark" && (
-        <div className={styles.background}>
-          <div className={styles.stars} />
-          <div className={styles.stars2} />
-          <div className={styles.stars3} />
-          <div className={styles.stars4} />
-        </div>
-      )}
-    </>
-  );
-};
+    <div className={styles.background} aria-hidden="true">
+      <div className={styles.night}>
+        <div className={styles.orbWarm} />
+        <div className={styles.orbCool} />
+        <div className={styles.orbGold} />
 
-export default Background;
+        <div className={styles.stars} />
+        <div className={styles.stars2} />
+        <div className={styles.stars3} />
+      </div>
+
+      <div className={styles.day}>
+        <Sunlight />
+      </div>
+    </div>
+  );
+}

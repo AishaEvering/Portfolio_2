@@ -1,30 +1,54 @@
 "use client";
+
 import { useEffect, useState } from "react";
-import styles from "./sidebar.module.scss";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import styles from "./sidebar.module.scss";
+
+type Section = "home" | "work" | "about" | "contact";
+
+const navItems: {
+  id: Section;
+  label: string;
+  href: string;
+}[] = [
+  { id: "home", label: "Home", href: "#home" },
+  { id: "work", label: "Work", href: "#work" },
+  { id: "about", label: "About", href: "#about" },
+  { id: "contact", label: "Contact", href: "#contact" },
+];
 
 export const SideBar = () => {
-  const [selected, setSelected] = useState("");
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  const [selected, setSelected] = useState<Section>("home");
 
   useEffect(() => {
-    const sections = document.querySelectorAll(".section-wrapper");
+    if (!isHomePage) {
+      setSelected("about");
+      return;
+    }
 
-    const options = {
-      threshold: 0.3,
-    };
+    const sections = document.querySelectorAll<HTMLElement>(
+      "#home.section-wrapper, #work.section-wrapper, #about.section-wrapper, #contact.section-wrapper",
+    );
 
-    const callback = (entries: any) => {
-      entries.forEach((entry: any) => {
-        if (entry.isIntersecting) {
-          setSelected(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(callback, options);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setSelected(entry.target.id as Section);
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
 
     sections.forEach((section) => observer.observe(section));
-  }, []);
+
+    return () => observer.disconnect();
+  }, [isHomePage]);
 
   return (
     <motion.nav
@@ -33,78 +57,29 @@ export const SideBar = () => {
       transition={{ duration: 0.5 }}
       className={styles.sideBar}
     >
-      <motion.span
-        drag
-        dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}
-        dragElastic={0.9}
-        className={styles.logo}
-      >
-        AE<span>.</span>
-      </motion.span>
-      <motion.a
-        initial={{ x: -70 }}
-        animate={{ x: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        href="#about"
-        onClick={() => {
-          setSelected("about");
-        }}
-        className={selected === "about" ? styles.selected : ""}
-      >
-        About
-      </motion.a>
-      <motion.a
-        initial={{ x: -70 }}
-        animate={{ x: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        href="#featured"
-        onClick={() => setSelected("featured")}
-        className={`${styles.featuredLink} ${
-          selected === "featured" ? styles.featuredSelected : ""
-        }`}
-      >
-        Featured
-      </motion.a>
-      <motion.a
-        initial={{ x: -70 }}
-        animate={{ x: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        href="#projects"
-        onClick={() => setSelected("projects")}
-        className={selected === "projects" ? styles.selected : ""}
-      >
-        Projects
-      </motion.a>
-      <motion.a
-        initial={{ x: -70 }}
-        animate={{ x: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        href="#certifications"
-        onClick={() => setSelected("certifications")}
-        className={selected === "certifications" ? styles.selected : ""}
-      >
-        Certs.
-      </motion.a>
-      <motion.a
-        initial={{ x: -70 }}
-        animate={{ x: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        href="#experience"
-        onClick={() => setSelected("experience")}
-        className={selected === "experience" ? styles.selected : ""}
-      >
-        Exp.
-      </motion.a>
-      <motion.a
-        initial={{ x: -70 }}
-        animate={{ x: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        href="#contact"
-        onClick={() => setSelected("contact")}
-        className={selected === "contact" ? styles.selected : ""}
-      >
-        Contact
-      </motion.a>
+      {navItems.map((item, index) => (
+        <motion.a
+          key={item.id}
+          initial={{ x: -70 }}
+          animate={{ x: 0 }}
+          transition={{
+            duration: 0.5,
+            delay: index === 0 ? 0.1 : index === 3 ? 0.4 : 0.2,
+          }}
+          href={
+            isHomePage
+              ? item.href
+              : item.id === "about"
+                ? "/about"
+                : `/${item.href}`
+          }
+          onClick={() => setSelected(item.id)}
+          className={selected === item.id ? styles.selected : ""}
+          aria-current={selected === item.id ? "page" : undefined}
+        >
+          {item.label}
+        </motion.a>
+      ))}
     </motion.nav>
   );
 };

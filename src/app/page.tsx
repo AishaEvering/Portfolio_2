@@ -1,3 +1,5 @@
+"use client";
+
 import { Metadata } from "next";
 import React from "react";
 import styles from "./page.module.scss";
@@ -10,30 +12,30 @@ import { Certifications } from "@/components/home/certifications/Certifications"
 import { Experience } from "@/components/home/experience/Experience";
 import { Contact } from "@/components/home/contact/Contact";
 import { Footer } from "@/components/home/footer/Footer";
-import Featured from "@/components/home/featured/featured";
+import ChatButton from "@/components/nav/components/ChatButton";
+import { useState } from "react";
 
 export default function Home() {
+  const [isBuzzOpen, setIsBuzzOpen] = useState(false);
+
   return (
-    <>
-      <div className={styles.home}>
-        <SideBar />
-        <main>
-          <Heading />
-          <Hero />
-          <About />
-          <Featured />
-          <Projects />
-          <Certifications />
-          <Experience />
-          <Contact />
-          <Footer />
-          <div
-            style={{
-              height: "200px",
-            }}
-          />
-        </main>
-      </div>
-    </>
+    <div className={styles.home}>
+      <Heading />
+      <SideBar />
+
+      <main className={styles.content}>
+        <Hero />
+        <Projects onTryBuzz={() => setIsBuzzOpen(true)} />
+        <About />
+        <Certifications />
+        <Experience />
+        <Contact />
+        <Footer />
+
+        <ChatButton isOpen={isBuzzOpen} setIsOpen={setIsBuzzOpen} />
+
+        <div style={{ height: "200px" }} />
+      </main>
+    </div>
   );
 }

@@ -1,42 +1,63 @@
 "use client";
-import styles from "./headinglinks.module.scss";
-import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
+
 import Link from "next/link";
 import { motion } from "framer-motion";
-import ChatButton from "./ChatButton";
+import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
+import { Github } from "lucide-react";
+import { FiLinkedin, FiFileText } from "react-icons/fi";
+import { Parisienne } from "next/font/google";
+import styles from "./headinglinks.module.scss";
+
+const signatureFont = Parisienne({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 export const MyLinks = () => {
   return (
     <div className={styles.links}>
-      <motion.span
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.0 }}
+      <Link
+        href="#home"
+        className={`${styles.signature} ${signatureFont.className}`}
+        aria-label="Aisha Evering — Home"
       >
-        <Link
+        Aisha Evering
+      </Link>
+
+      <div className={styles.socials}>
+        <motion.a
           href="https://www.linkedin.com/in/aisha-evering-91580a3/"
           target="_blank"
-          rel="nofollow"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          whileHover={{ y: -3 }}
+          transition={{ duration: 0.2 }}
         >
-          <AiFillLinkedin size="2.4rem" />
-        </Link>
-      </motion.span>
+          <FiLinkedin size={19} />
+        </motion.a>
 
-      <motion.span
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      >
-        <Link
+        <motion.a
           href="https://github.com/AishaEvering"
           target="_blank"
-          rel="nofollow"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          whileHover={{ y: -3 }}
+          transition={{ duration: 0.2 }}
         >
-          <AiFillGithub size="2.4rem" />
-        </Link>
-      </motion.span>
-
-      <ChatButton />
+          <Github size={20} strokeWidth={1.8} />
+        </motion.a>
+        <motion.a
+          href="/Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View resume (opens in a new tab)"
+          whileHover={{ y: -3 }}
+          transition={{ duration: 0.2 }}
+        >
+          <FiFileText size={19} strokeWidth={1.7} />
+        </motion.a>
+      </div>
     </div>
   );
 };

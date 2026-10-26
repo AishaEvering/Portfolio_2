@@ -1,38 +1,46 @@
 "use client";
 
-import { motion, useAnimation, useInView } from "framer-motion";
-import { FaRobot } from "react-icons/fa6";
-import styles from "./chatbutton.module.scss";
-import { useEffect, useRef, useState } from "react";
-import ChatBox from "./ChatBox";
+import { Dispatch, SetStateAction } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { SiProbot } from "react-icons/si";
+import ChatBox from "./ChatBox";
+import styles from "./chatbutton.module.scss";
 
-export default function ChatButton() {
-  const [isOpen, setIsOpen] = useState(false);
+interface ChatButtonProps {
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [isInView, controls]);
+export default function ChatButton({ isOpen, setIsOpen }: ChatButtonProps) {
+  const reducedMotion = useReducedMotion();
 
   return (
     <>
-      <motion.button
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        onClick={() => setIsOpen(true)}
-        className={styles.chatboxicon}
-      >
-        <SiProbot size="2.4rem" className={styles.icon} />
-      </motion.button>
+      <div className={styles.floatingBuzz}>
+        <motion.div
+          animate={reducedMotion ? undefined : { y: [0, -7, 0] }}
+          transition={{
+            duration: 4.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <motion.button
+            type="button"
+            className={styles.chatboxicon}
+            aria-label="Chat with Buzz Lightyear"
+            aria-expanded={isOpen}
+            onClick={() => setIsOpen(true)}
+            whileHover={reducedMotion ? undefined : { scale: 1.08, rotate: -4 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            <SiProbot className={styles.icon} />
+          </motion.button>
+        </motion.div>
+
+        <span className={styles.caption}>ASK BUZZ</span>
+      </div>
+
       <ChatBox setIsOpen={setIsOpen} isOpen={isOpen} />
     </>
   );

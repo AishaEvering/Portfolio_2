@@ -12,6 +12,32 @@
 }
 
 :root[data-theme="light"] {
+  /* Editorial portfolio */
+  --editorial-bg: #f5f2ed;
+  --editorial-surface: #eae5de;
+  --editorial-heading: #142c25;
+  --editorial-text: #58616b;
+  --editorial-accent: #946b55;
+  --editorial-border: #d6cec4;
+  --editorial-header: rgba(245, 242, 237, 0.55);
+  --selection-bg: #d8e7dc;
+  --selection-text: #17372e;
+  --lever-knob-light: #a8f0d8;
+  --lever-knob-mid: #16a085;
+  --lever-knob-dark: #075a58;
+  --lever-metal: #a4aeb3;
+  --lever-switch-background-image-color1: #16A085;
+  --lever-switch-background-image-color2: #075A58;
+  --header-link-hover: #08766E;
+  --work-hover: #b47a58;
+  --work-accent: #a46340;
+  --timeline-opacity: 0.2;
+
+  /* Atmospheric lighting */
+  --editorial-glow-warm: rgba(222, 170, 138, 0.38);
+  --editorial-glow-cool: rgba(145, 172, 150, 0.28);
+  --editorial-glow-gold: rgba(235, 207, 165, 0.25);
+
   font-size: 62.5%;
 
   --background: #f3f4f6;
@@ -58,6 +84,32 @@
 }
 
 :root[data-theme="dark"] {
+  /* Editorial portfolio */
+  --editorial-bg: #101520;
+  --editorial-surface: #1b2230;
+  --editorial-heading: #f5f2ed;
+  --editorial-text: #bec4ce;
+  --editorial-accent: #d7b18f;
+  --editorial-border: #394150;
+  --editorial-header: rgba(16, 21, 32, 0.5);
+  --selection-bg: #435c70;
+  --selection-text: #fff4df;
+  --lever-knob-light: #d1fff1;
+  --lever-knob-mid: #35c9aa;
+  --lever-knob-dark: #08766e;
+  --lever-metal: #424e5a;
+  --lever-switch-background-image-color1: #35C9AA;
+  --lever-switch-background-image-color2: #08766E;
+  --header-link-hover: #35C9AA;
+  --work-hover: #70bfa8;
+  --work-accent: #70e2c1;
+  --timeline-opacity: 0.2;
+
+  /* Atmospheric lighting */
+  --editorial-glow-warm: rgba(158, 91, 84, 0.24);
+  --editorial-glow-cool: rgba(75, 113, 110, 0.24);
+  --editorial-glow-gold: rgba(161, 125, 99, 0.14);
+
   font-size: 62.5%;
 
   --background: rgb(17, 17, 17);
@@ -108,8 +160,8 @@
 }
 
 *::selection {
-  background: var(--brand);
-  color: var(--background);
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 html,

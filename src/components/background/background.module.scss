@@ -5,10 +5,40 @@
     width: 100vw;
     height: 100vh;
     background-size: cover;
-    z-index: -1; // Ensure it's behind other content
+    z-index: 0; // Above the page backdrop, below foreground content
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   }
   
+
+.light {
+  background: transparent;
+
+  .stars,
+  .stars2,
+  .stars3 {
+    opacity: 0.45;
+    filter: brightness(0) saturate(100%)
+      invert(43%) sepia(15%) saturate(780%)
+      hue-rotate(337deg);
+  }
+}
+
+.dark {
+  background: radial-gradient(
+    ellipse at bottom,
+    #1b2735 0%,
+    #090a0f 100%
+  );
+
+  .stars,
+  .stars2,
+  .stars3 {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+
   .stars {
     width: 1px;
     height: 1px;
@@ -573,3 +603,121 @@
         transform: translateY(-2000px);
     }
   }
+
+/* Editorial atmosphere additions: original star coordinates preserved. */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.night,
+.day {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.night {
+  background: radial-gradient(
+    ellipse at bottom,
+    #1b2735 0%,
+    #090a0f 100%
+  );
+}
+
+.day {
+  background:
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(236, 191, 152, 0.24),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 15% 90%,
+      rgba(145, 172, 150, 0.18),
+      transparent 55%
+    ),
+    #f5f2ed;
+}
+
+.orbLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(65px);
+  will-change: transform;
+  animation: ambientDrift 25s ease-in-out infinite alternate;
+}
+
+.orbWarm {
+  composes: orb;
+  width: min(80vw, 1050px);
+  aspect-ratio: 1;
+  top: -45%;
+  right: -23%;
+  background: radial-gradient(circle, rgba(158, 91, 84, .28), transparent 70%);
+}
+
+.orbCool {
+  composes: orb;
+  width: min(75vw, 950px);
+  aspect-ratio: 1;
+  bottom: -65%;
+  left: -25%;
+  background: radial-gradient(circle, rgba(75, 113, 110, .27), transparent 72%);
+  animation-delay: -10s;
+}
+
+.orbGold {
+  composes: orb;
+  width: min(50vw, 720px);
+  aspect-ratio: 1;
+  top: 18%;
+  left: 30%;
+  background: radial-gradient(circle, rgba(161, 125, 99, .14), transparent 73%);
+  animation-delay: -17s;
+}
+
+/* The star layers sit above the glows. */
+.stars, .stars2, .stars3 {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark background is the default */
+.night {
+  display: block;
+}
+
+.day {
+  display: none;
+}
+
+/* Light theme */
+:global(html[data-theme="light"]) .night {
+  display: none;
+}
+
+:global(html[data-theme="light"]) .day {
+  display: block;
+}
+@keyframes ambientDrift {
+  from { transform: translate3d(-3%, 2%, 0) scale(1); }
+  to { transform: translate3d(4%, -3%, 0) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb, .stars, .stars2, .stars3,
+  .stars::after, .stars2::after, .stars3::after {
+    animation: none !important;
+  }
+}

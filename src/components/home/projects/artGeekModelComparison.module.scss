@@ -1,0 +1,141 @@
+
+.chart {
+  margin: 1.75rem 0;
+  padding: 1.5rem;
+  border-radius: 14px;
+  background: #f8f6f2;
+  color: #55535b;
+}
+
+.eyebrow {
+  color: #8d898a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.chart h4 {
+  margin: 0.65rem 0 0;
+  font-family: Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.subtitle {
+  margin: 0.35rem 0 0;
+  color: #77727a;
+  font-size: 0.95rem;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+}
+
+.efficientNetKey,
+.efficientNetBar {
+  background: #477f72;
+}
+
+.vitKey,
+.vitBar {
+  background: #ad735e;
+}
+
+.results {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.group h5 {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+
+  > span {
+    flex: 0 0 2.5rem;
+    text-align: right;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.track {
+  flex: 1;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #eae5df;
+}
+
+.efficientNetBar,
+.vitBar {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.caption {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd7d0;
+
+  p {
+    margin: 0.75rem 0 0;
+    color: #77727a;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+.takeaway {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  color: #77727a;
+}
+
+.selected {
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: #eadbd2;
+  color: #865a49;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .chart {
+    padding: 1rem;
+  }
+
+  .chart h4 {
+    font-size: 1.2rem;
+  }
+}

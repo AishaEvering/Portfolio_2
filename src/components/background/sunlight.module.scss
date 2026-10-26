@@ -1,0 +1,134 @@
+@use "sass:math";
+@use "sass:list";
+@use "sass:string";
+
+// ── Settings ─────────────────────────────────────────────
+$src: 88% -12%;          // where the sun sits (off the top-right corner)
+$dust-count: 60;         // number of dust specks
+$pace: 1;                // 1 = current speed, 2 = twice as slow
+
+// Beam layers: (repeat angle, beam width, sweep time, pulse time, strength)
+$layers: (
+  (37deg, 10deg, 70s, 13s, .32),
+  (53deg, 14deg, 100s, 19s, .25),
+  (71deg,  9deg, 130s, 23s, .28)
+);
+
+// ── Build the beams, the dust mask and the animation list ──
+$beams: ();
+$masks: ();
+$anims: ();
+
+@for $i from 1 through list.length($layers) {
+  $l: list.nth($layers, $i);
+  $p: list.nth($l, 1);
+  $w: list.nth($l, 2);
+  $sweep: list.nth($l, 3) * $pace;
+  $pulse: list.nth($l, 4) * $pace;
+  $max: list.nth($l, 5);
+
+  @property --m#{$i} { syntax: "<angle>";  inherits: true; initial-value: 0deg; }
+  @property --o#{$i} { syntax: "<number>"; inherits: true; initial-value: 0; }
+
+  @keyframes sweep#{$i} { to { --m#{$i}: #{$p}; } }
+  @keyframes pulse#{$i} {
+    0%, 100% { --o#{$i}: 0; }
+    50%      { --o#{$i}: #{$max}; }
+  }
+
+  // visible golden beam
+  $beams: list.append($beams, string.unquote(
+    "repeating-conic-gradient(from var(--m#{$i}) at #{$src}, " +
+    "rgba(255,205,100,0) 0deg, rgba(255,205,100,var(--o#{$i})) #{$w * .5}, " +
+    "rgba(255,205,100,0) #{$w}, rgba(255,205,100,0) #{$p})"), comma);
+
+  // same beam as a mask: dust is dim in shade, bright inside the beam
+  $masks: list.append($masks, string.unquote(
+    "repeating-conic-gradient(from var(--m#{$i}) at #{$src}, " +
+    "rgba(0,0,0,.07) 0deg, rgba(0,0,0,calc(.07 + var(--o#{$i}) * #{math.div(.93, $max)})) #{$w * .5}, " +
+    "rgba(0,0,0,.07) #{$w}, rgba(0,0,0,.07) #{$p})"), comma);
+
+  $anims: list.append($anims, string.unquote("sweep#{$i} #{$sweep} linear infinite"), comma);
+  $anims: list.append($anims, string.unquote("pulse#{$i} #{$pulse} ease-in-out #{math.div($pulse, -2)} infinite"), comma);
+}
+
+// ── Layout ───────────────────────────────────────────────
+.sunlight {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  animation: $anims;
+
+  // soft haze around the sun
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at #{$src}, rgba(255, 215, 130, .14), transparent 50vmax);
+  }
+}
+
+.rays {
+  position: absolute;
+  inset: 0;
+  background: $beams;
+  mask-image: radial-gradient(circle at #{$src}, #000, transparent 85vmax);
+  -webkit-mask-image: radial-gradient(circle at #{$src}, #000, transparent 85vmax);
+}
+
+.dust {
+  position: absolute;
+  inset: 0;
+  mask-image: $masks;           // dust only glows inside a beam
+  -webkit-mask-image: $masks;
+
+  i {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    background: radial-gradient(circle closest-side,
+      rgba(255, 255, 242, var(--core)),
+      rgba(255, 238, 165, .8) 20%,
+      rgba(255, 222, 125, .25) 50%,
+      rgba(255, 210, 110, 0));
+    animation:
+      mote var(--life) ease-in-out var(--delay) infinite,
+      twinkle var(--tw) ease-in-out infinite alternate;
+  }
+}
+
+// Each speck gets its own random size, position, speed and timing.
+// z = depth: 0 is far (small, dim, slow), 1 is near (large, soft, fast).
+@for $n from 1 through $dust-count {
+  .dust i:nth-child(#{$n}) {
+    $z: math.pow(math.random(), 1.5);
+    $r: (.8 + $z * $z * 3.8) * (3 + $z * 3);
+    $speed: math.div((.4 + $z * 1.2) * .6, $pace);
+    $life: (math.random() * 13 + 10) * $pace;
+
+    left: math.random() * 100%;
+    top:  math.random() * 100%;
+    width:  $r * 2px;
+    height: $r * 2px;
+    --a: #{.55 + .45 * $z};
+    --core: #{1 - .5 * $z * $z};
+    --life: #{$life}s;
+    --delay: #{(0 - math.random() * $life)}s;
+    --tw: #{(math.random() * 2 + 1.5) * $pace}s;
+    --dx: #{(math.random() * 12 - 6) * $speed * $life}px;
+    --dy: #{(-2 - math.random() * 10) * $speed * $life}px;
+  }
+}
+
+@keyframes mote {
+  0%   { opacity: 0;        transform: translate(0, 0); }
+  50%  { opacity: var(--a); }
+  100% { opacity: 0;        transform: translate(var(--dx), var(--dy)); }
+}
+@keyframes twinkle {
+  from { scale: .8; }
+  to   { scale: 1.15; }
+}

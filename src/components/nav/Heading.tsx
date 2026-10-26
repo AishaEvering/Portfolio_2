@@ -6,7 +6,9 @@ import { ThemeSwitcher } from "./components/ThemeSwitcher";
 export const Heading = () => {
   return (
     <header className={styles.heading}>
-      <MyLinks />
+      <div className={styles.links}>
+        <MyLinks />
+      </div>
       <div className={styles.switcher_container}>
         <ThemeSwitcher />
       </div>

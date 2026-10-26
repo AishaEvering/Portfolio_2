@@ -1,90 +1,156 @@
-.about {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 2.4rem;
 
-  @media (max-width: 900px) {
+.aboutSection {
+  position: relative;
+  isolation: isolate;
+  padding-top: clamp(4rem, 7vw, 7rem);
+  padding-bottom: clamp(4rem, 7vw, 7rem);
+}
+
+.about {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+  align-items: center;
+  gap: clamp(3rem, 5vw, 5rem);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 650px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--work-accent);
+}
+
+.title {
+  margin: 0 0 1.5rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--text);
+}
+
+.description {
+  max-width: 55ch;
+  margin-bottom: 1.25rem;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.aboutLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid currentColor;
+  color: var(--work-accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 0.25s ease;
+
+  &:hover {
+    gap: 1.1rem;
+    color: var(--work-hover);
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+
+.aboutNavigation {
+  margin-top: 2rem;
+}
+
+.navigationLabel {
+  display: block;
+  margin-bottom: 0.9rem;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--text);
+  opacity: 0.65;
+}
+
+.quickLinks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 1.6rem;
+}
+
+.quickLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--work-accent) 22%, transparent);
+  border-radius: 0.65rem;
+  background: color-mix(in srgb, var(--work-accent) 5.5%, transparent);
+  color: var(--text);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+
+  svg {
+    flex-shrink: 0;
+    color: var(--work-accent);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--work-hover);
+    background: color-mix(in srgb, var(--work-hover) 10%, transparent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--work-accent);
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 420px) {
+  .quickLinks {
     grid-template-columns: 1fr;
   }
 }
 
-.aboutText {
-  margin-bottom: 2.4rem;
-  font-weight: 170;
-  line-height: 1.6;
-}
+@media (max-width: 800px) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
 
-.links {
-  display: flex;
-  align-items: center;
-  gap: 1.6rem;
-}
-
-.linksText {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-
-  font-size: var(--text-sm);
-  color: var(--brand);
-}
-
-.subhead::first-letter {
-  -webkit-initial-letter: 3;
-  initial-letter: 3;
-  color: var(--brand);
-  font-weight: bold;
-  margin-right: .75em;
-}
-
-// .boxImgContainer{
-//   float: left;
-//   margin-right: 18px;
-//   margin-bottom: 18px;
-//   max-height:30%;
-//   max-width:30%;
-//   filter: drop-shadow(10px 5px 4px var(--brand));
-// }
-
-.boxImgContainer {
-  float: left;
-  margin-right: 24px;
-  margin-bottom: 20px;
-  max-width: 34%;
-
-  border-radius: 24px;
-  overflow: hidden;
-
-box-shadow:
-  8px 8px 18px var(--brand-glow),
-  0 14px 28px var(--shadow-color);
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.boxImgContainer:hover {
-  transform: translateY(-4px);
-
-box-shadow:
-  8px 8px 18px var(--brand-glow),
-  0 14px 28px var(--shadow-color);
-}
-
-.boxImg {
-  border-radius: 20px;
-  float: left;
-  // opacity: 80%;
-  width: 100%;
-  height: 100%;
-}
-
-.emoji{
-  height: 1em;
-  width: 1em;
-  vertical-align: middle;
-  padding-bottom:0.2em
-}
-
-.boxP{
-  text-align: justify;
+  .imageWrapper {
+    max-width: 420px;
+  }
 }

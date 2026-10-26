@@ -1,21 +1,41 @@
 .links {
   display: flex;
-  gap: 1.6rem;
-  padding-top: 10px;
   align-items: center;
+  gap: 2rem;
+}
 
-  a {
-    opacity: 0.5;
-    position: relative;
-    z-index: 20;
-  }
+.signature {
+  color: var(--text-color);
+  font-size: clamp(2.5rem, 3vw, 3.3rem);
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.25s ease;
 
-  a:hover {
-    color: var(--brand);
-    opacity: 1;
+  &:hover {
+    color: var(--header-link-hover);
   }
 }
 
-.img_icon{
-  size: 2.4rem
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    opacity: 0.65;
+    transition:
+      color 0.25s ease,
+      opacity 0.25s ease;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--header-link-hover);
+      opacity: 1;
+    }
+  }
 }

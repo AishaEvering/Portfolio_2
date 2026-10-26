@@ -1,77 +1,86 @@
 "use client";
-import { MyLinks } from "@/components/nav/components/MyLinks";
-import { Reveal } from "@/components/utils/Reveal";
-import { SectionHeader } from "@/components/utils/SectionHeader";
-import styles from "./about.module.scss";
-import { Stats } from "./Stats";
-import { AiOutlineArrowRight } from "react-icons/ai";
+
+import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { FiArrowUpRight } from "react-icons/fi";
+import styles from "./about.module.scss";
+import { AboutTimelineLines } from "./AboutTimelineLines";
 
 export const About = () => {
   return (
-    <section id="about" className="section-wrapper">
-      <SectionHeader title="About" dir="l" />
-      <div className={styles.about}>
-        <div>
-          <Reveal>
-            <div className={styles.square}>
-              <div className={styles.boxImgContainer}>
-                <Image
-                  className={styles.boxImg}
-                  src="/project-imgs/about-pic.png"
-                  alt="About Picture"
-                  height={500}
-                  width={500}
-                />
-              </div>
-              <p className={`${styles.aboutText} boxP`}>
-                I&apos;m a software engineer and computational biology graduate
-                student focused on the intersection of machine learning,
-                bioinformatics, and scientific computing.
-              </p>
-              <p className={styles.aboutText}>
-                With a background in scalable software development and
-                data-driven applications, I&apos;m now building projects
-                centered around genomics, biological data analysis,
-                visualization, and machine learning applications for scientific
-                research while pursuing my master&apos;s degree in Computational
-                Life Sciences at Arizona State University.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal>
-            <p className={styles.aboutText}>
-              My goal is to combine engineering, data science, and biology to
-              help create impactful tools for healthcare and scientific
-              discovery.
-            </p>
-          </Reveal>
-          <Reveal>
-            <p className={styles.aboutText}>
-              When I’m away from the keyboard, I enjoy building Lego towers{" "}
-              <Image
-                height={500}
-                width={500}
-                className={styles.emoji}
-                src="/project-imgs/lego.png"
-                alt="Lego Emoji"
-              />{" "}
-              with my children, experimenting with creative ideas, and exploring
-              new technologies that inspire curiosity and innovation.
-            </p>
-          </Reveal>
-          <Reveal>
-            <div className={styles.links}>
-              <div className={styles.linksText}>
-                <span>My links</span>
-                <AiOutlineArrowRight />
-              </div>
-              <MyLinks />
-            </div>
-          </Reveal>
+    <section id="about" className={`section-wrapper ${styles.aboutSection}`}>
+      <AboutTimelineLines />
+      <motion.div
+        className={styles.about}
+        initial={{ opacity: 0, y: 150 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ type: "spring", stiffness: 90, damping: 18 }}
+      >
+        <div className={styles.content}>
+          <span className={styles.eyebrow}>A LITTLE ABOUT ME / 001</span>
+
+          <h2 className={styles.title}>There's more to the story.</h2>
+
+          <p className={styles.description}>
+            I've spent more than two decades building software, and somewhere
+            along the way, biology gave me an entirely new set of questions to
+            explore.
+          </p>
+
+          <p className={styles.description}>
+            Beyond code and research, I love plants, hiking, LEGO, and getting
+            lost in a good video game.
+          </p>
+
+          <div className={styles.aboutNavigation}>
+            <span className={styles.navigationLabel}>
+              EXPLORE MY BACKGROUND
+            </span>
+
+            <nav
+              className={styles.quickLinks}
+              aria-label="Explore my background"
+            >
+              <Link href="/about#experience" className={styles.quickLink}>
+                Experience
+                <FiArrowUpRight aria-hidden="true" />
+              </Link>
+
+              <Link href="/about#education" className={styles.quickLink}>
+                Education
+                <FiArrowUpRight aria-hidden="true" />
+              </Link>
+
+              <Link href="/about#skills" className={styles.quickLink}>
+                Skills &amp; Tools
+                <FiArrowUpRight aria-hidden="true" />
+              </Link>
+
+              <Link href="/about#certifications" className={styles.quickLink}>
+                Certifications
+                <FiArrowUpRight aria-hidden="true" />
+              </Link>
+            </nav>
+
+            <Link href="/about" className={styles.aboutLink}>
+              Get to know me
+              <FiArrowUpRight aria-hidden="true" />
+            </Link>
+          </div>
         </div>
-        <Stats />
-      </div>
+
+        <div className={styles.imageWrapper}>
+          <Image
+            src="/project-imgs/about-pic.png"
+            alt="Aisha working in a laboratory"
+            width={500}
+            height={600}
+            className={styles.image}
+          />
+        </div>
+      </motion.div>
     </section>
   );
 };

@@ -7,10 +7,11 @@ import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: {
+    default: "Aisha Evering | Scientific Software Engineer",
     template: "%s | Aisha Evering",
-    default: "Aisha Evering",
   },
-  description: "Check out my smart portfolio website with a custom AI chatbot.",
+  description:
+    "Software engineer specializing in scientific applications, computational biology, interactive data visualization, and intuitive research tools.",
 };
 
 const poppins = Poppins({
@@ -27,14 +28,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <title>
-        Aisha Evering | Computational Biology Graduate Student & Software
-        Engineer
-      </title>
-      <meta
-        name="description"
-        content="From scalable software systems to machine learning and computational biology projects, my portfolio reflects a passion for building intelligent, data-driven solutions with real-world impact."
-      />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/project-imgs/favicon.ico" />
       <body className={poppins.className}>

@@ -1,0 +1,31 @@
+.timeline {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  --timeline-one: #b88b73;
+  --timeline-two: #789b89;
+  --timeline-three: #c9aa96;
+
+  mask-image: linear-gradient(to bottom, transparent, black 9%, black 91%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 9%, black 91%, transparent);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.20;
+}
+
+:global([data-theme="dark"]) .timeline,
+:global(.dark) .timeline {
+  --timeline-one: #69b5a0;
+  --timeline-two: #9ac5b0;
+  --timeline-three: #497d70;
+}
+
+@media (max-width: 800px) {
+  .svg { opacity: 0.35; }
+}
