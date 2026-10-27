@@ -1,17 +1,25 @@
 "use client";
-import { Reveal } from "@/components/utils/Reveal";
+
 import styles from "./footer.module.scss";
 
 export const Footer = () => {
   return (
-    <section className="section-wrapper" id="contact">
-      <div className={styles.footerWrapper}>
-        <Reveal width="100%">
-          <p className={styles.footer}>
-            Copyright &#169; 2026 Aisha Evering. All Rights Reserved.
-          </p>
-        </Reveal>
+    <footer className={styles.footerWrapper}>
+      <div className={styles.footerContent}>
+        <span className={styles.ornament} aria-hidden="true">
+          ✦ ─── ❧ ─── ✦
+        </span>
+
+        <h2 className={styles.thankYou}>Thanks for visiting.</h2>
+
+        <p className={styles.subtitle}>I'm glad you stopped by.</p>
+
+        <div className={styles.divider} />
+
+        <p className={styles.copyright}>
+          © 2026 Aisha Evering · All rights reserved.
+        </p>
       </div>
-    </section>
+    </footer>
   );
 };

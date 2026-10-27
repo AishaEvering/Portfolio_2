@@ -1,0 +1,74 @@
+.section {
+  --edu-paper: #ede8df;
+  --edu-card: #f7f3ed;
+  --edu-ink: #142c25;
+  --edu-muted: #5d6a61;
+  --edu-border: rgba(20, 44, 37, .18);
+  --edu-accent: #9c7859;
+  --edu-gold: #b58b3d;
+  position: relative;
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 7rem) clamp(3rem, 5vw, 5rem);
+  background: var(--edu-paper);
+  color: var(--edu-ink);
+  scroll-margin-top: 5rem;
+}
+:global(html[data-theme="dark"]) .section {
+  --edu-paper: #102820;
+  --edu-card: #19372d;
+  --edu-ink: #f4ede3;
+  --edu-muted: #bbc8bd;
+  --edu-border: rgba(244, 237, 227, .18);
+  --edu-accent: #d8ac8a;
+  --edu-gold: #d7ae5d;
+}
+.inner { width: min(1080px, 100%); margin-inline: auto; }
+.divider {
+  width: min(520px, 80%);
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  margin: 0 auto clamp(2.25rem, 4vw, 3.5rem);
+  color: var(--edu-accent);
+}
+.dividerLine { flex: 1; height: 1px; background: currentColor; opacity: .55; }
+.sprout { width: 28px; height: 28px; flex: none; }
+.heading { margin-bottom: clamp(1.4rem, 3vw, 2rem); }
+.kicker {
+  margin: 0 0 .6rem;
+  color: var(--edu-accent);
+  font-size: .98rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+.heading h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.7rem, 4vw, 3.8rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -.025em;
+  margin: 0 0 .35rem;
+}
+.heading > p:last-child { color: var(--edu-muted); line-height: 1.5; font-size: 1.3rem; margin: 0; }
+.degreeList { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+.degree {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-content: start;
+  gap: .45rem;
+  padding: clamp(1.15rem, 2vw, 1.55rem);
+  border: 1px solid var(--edu-border);
+  background: var(--edu-card);
+  border-radius: 3px;
+  min-width: 0;
+}
+.featured { border-left: 3px solid var(--edu-gold); }
+.year { grid-column: 1; font-size: 1.3rem; color: var(--edu-accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.details { grid-column: 1 / -1; grid-row: 2; min-width: 0; }
+.school { font-size: 1.0rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--edu-muted); margin: 0 0 .4rem; }
+.details h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: clamp(1.55rem, 2.4vw, 2rem); line-height: 1.1; margin: 0 0 .25rem; }
+.field { color: var(--edu-muted); margin: 0; font-size: 1.0rem; }
+.highlight { grid-column: 2; grid-row: 1; color: var(--edu-gold); font-size: 1.1rem; text-align: right; }
+@media (max-width: 700px) {
+  .degreeList { grid-template-columns: 1fr; }
+  .divider { width: min(380px, 90%); }
+}

@@ -1,0 +1,102 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 5rem);
+  border: 1px solid rgba(154, 119, 91, 0.25);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 80% 30%, color-mix(in srgb, var(--journey-copper) 12%, transparent), transparent 60%),
+    var(--journey-bg);
+  color: var(--journey-ink);
+}
+
+.inner {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(260px, .85fr) minmax(0, 1.4fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+}
+
+.copy { position: relative; z-index: 2; }
+.eyebrow {
+  margin: 0 0 1rem;
+  font-size: .98rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  color: var(--journey-copper);
+}
+.copy h2 {
+  margin: 0 0 1.5rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 500;
+  line-height: 1.02;
+}
+.copy > p:last-child {
+  max-width: 40ch;
+  margin: 0;
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  line-height: 1.85;
+  color: var(--journey-muted);
+}
+
+.collage {
+  position: relative;
+  width: min(100%, 560px);
+  min-height: 430px;
+  margin-inline: auto;
+}
+.polaroid {
+  position: absolute;
+  width: 35%;
+  margin: 0;
+  padding: 9px 9px 0;
+  background: #faf7ef;
+  border: 1px solid #e1d8c8;
+  box-shadow: 0 16px 32px #00000024, 0 3px 8px #00000016;
+  transition: transform .3s ease, box-shadow .3s ease;
+  transform: rotate(var(--angle));
+  z-index: var(--layer);
+}
+.polaroid:hover {
+  z-index: 10;
+  transform: translateY(-12px) rotate(0deg) scale(1.04);
+  box-shadow: 0 24px 45px #00000030;
+}
+.imageWrap { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: #e9e4da; }
+.imageWrap img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.polaroid figcaption {
+  padding: .75rem .25rem .9rem;
+  text-align: center;
+  color: #51483f;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+}
+.photoOne { --angle: -11deg; --layer: 2; left: 2%; top: 8%; }
+.photoTwo { --angle: 7deg; --layer: 3; left: 31%; top: 0%; width: 41%; }
+.photoThree { --angle: 12deg; --layer: 2; right: 0; top: 15%; }
+.photoFour { --angle: -7deg; --layer: 4; left: 15%; top: 49%; }
+.photoFive { --angle: 8deg; --layer: 5; right: 11%; top: 53%; }
+
+@media (max-width: 900px) {
+  .inner { grid-template-columns: 1fr; }
+  .copy { max-width: 650px; }
+  .collage { max-width: 560px; min-height: 430px; margin: 0 auto; }
+}
+@media (max-width: 540px) {
+  .section { padding: 3rem 1rem 3.5rem; }
+  .collage { min-height: 340px; }
+  .polaroid { padding: 5px 5px 0; width: 41%; }
+  .photoOne { left: 0; top: 5%; }
+  .photoTwo { left: 29%; top: 0; width: 45%; }
+  .photoThree { right: 0; top: 20%; }
+  .photoFour { left: 5%; top: 53%; }
+  .photoFive { right: 8%; top: 58%; }
+  .polaroid figcaption { padding: .4rem .15rem .5rem; font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .polaroid { transition: none; }
+}

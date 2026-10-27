@@ -207,3 +207,13 @@ a {
   padding: 0.2rem 0.8rem;
   border-radius: 999px;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+#journey-chapters {
+  scroll-margin-top: 90px;
+}

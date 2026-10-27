@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import "./styles/globals.css";
 import Background from "@/components/background/Background";
 import { Analytics } from "@vercel/analytics/react";
+import { BuzzProvider } from "@/components/buzz/BuzzProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -32,11 +33,13 @@ export default function RootLayout({
       <link rel="icon" href="/project-imgs/favicon.ico" />
       <body className={poppins.className}>
         <ThemeProvider>
-          <main id="root">
-            <Background />
-            {children}
-            <Analytics />
-          </main>
+          <BuzzProvider>
+            <main id="root">
+              <Background />
+              {children}
+              <Analytics />
+            </main>
+          </BuzzProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,0 +1,191 @@
+/* Fixed, upper-right utility navigation. No layout space is reserved. */
+.nav {
+  position: fixed;
+  top: 82px;
+  right: clamp(1rem, 3vw, 3rem);
+  left: auto;
+  z-index: 80;
+  width: max-content;
+  max-width: calc(100vw - 5rem);
+  margin: 0;
+  color: #142c25;
+  background: #ede8df;
+  border: 1px solid rgba(20, 44, 37, .22);
+  border-radius: 10px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, .2);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s;
+}
+.visible {
+  opacity: .90;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(.75rem, 1.2vw, 1.25rem);
+  min-height: 44px;
+  padding-inline: 1.2rem;
+}
+.kicker {
+  flex: none;
+  color: #3b6551;
+  font-size: .93rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  white-space: nowrap;
+}
+.links {
+  display: flex;
+  align-items: center;
+  gap: clamp(.7rem, 1vw, 1.1rem);
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.links::-webkit-scrollbar { display: none; }
+.link {
+  position: relative;
+  flex: none;
+  padding: .85rem 0;
+  color: #50665b;
+  text-decoration: none;
+  font-size: .93rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+.link:hover, .active { color: #142c25; }
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: .48rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #3b6551;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+.active::after { transform: scaleX(1); }
+@media (max-width: 760px) {
+  .nav { top: 72px; right: .75rem; max-width: calc(100vw - 4rem); }
+  .inner { min-height: 42px; padding-inline: .85rem; }
+  .kicker { display: none; }
+  .link { font-size: .93rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav, .link, .link::after { transition: none; }
+}
+
+:global(html[data-theme="light"]) .nav {
+  background: #142c25;
+  color: #f4ede3;
+  border-color: rgba(244, 237, 227, 0.2);
+}
+
+:global(html[data-theme="light"]) .nav a {
+  color: #f4ede3;
+}
+
+:global(html[data-theme="light"]) .nav .active {
+  border-bottom-color: #d8ac8a;
+}
+
+/* Mobile: compact section selector. Desktop rules above remain unchanged. */
+.mobileToggle {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .nav {
+    top: 76px;
+    right: .75rem;
+    left: auto;
+    width: min(100px, calc(100vw - 5rem));
+    max-width: none;
+    opacity: 0;
+  }
+
+  .nav.visible { opacity: .90; }
+
+  .mobileToggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    min-height: 44px;
+    padding: .65rem .9rem;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: .85rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .chevron { font-size: 1.2rem; line-height: 1; }
+
+  .inner {
+    display: none;
+    padding: 0 .4rem .4rem;
+    min-height: 0;
+  }
+
+  .mobileOpen .inner { display: block; }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    overflow: visible;
+  }
+
+  .link {
+    display: block;
+    padding: .45rem .5rem;
+    font-size: .8rem;
+    white-space: normal;
+    border-radius: 5px;
+  }
+
+  .link::after { bottom: .3rem; left: .5rem; right: .5rem; }
+}
+
+/* Dark theme: the existing cream pill needs dark text, including the toggle. */
+:global(html[data-theme="dark"]) .nav {
+  color: #142c25;
+}
+
+:global(html[data-theme="dark"]) .nav .link {
+  color: #50665b;
+}
+
+:global(html[data-theme="dark"]) .nav .active,
+:global(html[data-theme="dark"]) .nav .link:hover {
+  color: #142c25;
+}
+
+:global(html[data-theme="light"]) .nav .mobileToggle {
+  color: #f4ede3;
+}
+
+@media (max-width: 760px) {
+  #journey-chapters,
+  #beyond-the-screen,
+  #education,
+  #skills,
+  #experience {
+    scroll-margin-top: 132px;
+  }
+}

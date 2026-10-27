@@ -1,16 +1,25 @@
+// .home {
+//   display: grid;
+//   grid-template-columns: 60px minmax(0, 1fr);
+//   grid-template-rows: auto 1fr;
+// }
+
+// .home > header {
+//   grid-column: 1 / -1;
+//   grid-row: 1;
+// }
+
+// .content {
+//   grid-column: 2;
+//   grid-row: 2;
+//   min-width: 0;
+// }
 .home {
   display: grid;
   grid-template-columns: 60px minmax(0, 1fr);
-  grid-template-rows: auto 1fr;
-}
-
-.home > header {
-  grid-column: 1 / -1;
-  grid-row: 1;
 }
 
 .content {
   grid-column: 2;
-  grid-row: 2;
   min-width: 0;
 }

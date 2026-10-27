@@ -1,0 +1,367 @@
+.chapter {
+  --chapter-surface: #eee8df;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 5rem 1.5rem 7rem;
+  color: var(--journey-ink);
+}
+
+.photo {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  max-width: 420px;
+  justify-self: end;
+  transform: rotate(-2deg);
+  padding: 9px;
+  border: 1px solid var(--journey-copper);
+  background: var(--chapter-surface);
+  box-shadow: 0 22px 55px #00000012;
+
+  img,
+  .photoPlaceholder {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+}
+
+.photoPlaceholder {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  border: 1px dashed var(--journey-copper);
+  color: var(--journey-muted);
+
+  span {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.1;
+  }
+}
+
+.stem {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.vine {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  color: var(--journey-copper);
+  pointer-events: none;
+}
+
+.vinePath {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  opacity: 0.65;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+
+}
+
+.leaf {
+  fill: color-mix(in srgb, #789b75 24%, transparent);
+  stroke: #789b75;
+  stroke-width: 0.7;
+  opacity: 0;
+
+}
+
+.chapter {
+  --chapter-surface: #eee8df;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 5rem 1.5rem 7rem;
+  color: var(--journey-ink);
+}
+
+.photo {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  max-width: 420px;
+  justify-self: end;
+  transform: rotate(-2deg);
+  padding: 9px;
+  border: 1px solid var(--journey-copper);
+  background: var(--chapter-surface);
+  box-shadow: 0 22px 55px #00000012;
+
+  img,
+  .photoPlaceholder {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+}
+
+.photoPlaceholder {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  border: 1px dashed var(--journey-copper);
+  color: var(--journey-muted);
+
+  span {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.1;
+  }
+}
+
+.stem {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.vine {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  color: var(--journey-copper);
+  pointer-events: none;
+}
+
+.vinePath {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  opacity: 0.65;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+
+}
+
+.leaf {
+  fill: color-mix(in srgb, #789b75 24%, transparent);
+  stroke: #789b75;
+  stroke-width: 0.7;
+  opacity: 0;
+
+}
+
+/* Trigger the original animations only when this chapter scrolls into view. */
+@media (prefers-reduced-motion: no-preference) {
+  .chapter.isVisible {
+    .vinePath { animation: growVine 3s ease-out forwards; }
+    .leaf { animation: revealLeaf 1.5s ease-out 1.6s forwards; }
+  }
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--journey-copper);
+  border-radius: 50%;
+  background: var(--journey-bg);
+  color: var(--journey-copper);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.6rem;
+  animation: nodeGlow 4s ease-in-out infinite;
+}
+
+.story {
+  grid-column: 3;
+  grid-row: 1;
+  max-width: 460px;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  border: 1px solid color-mix(in srgb, var(--journey-copper) 30%, transparent);
+  background: var(--chapter-surface);
+  border-radius: 4px 36px 4px 36px;
+
+  h2 {
+    margin: 1rem 0 1.5rem;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2.4rem, 3.6vw, 4rem);
+    font-weight: 500;
+    line-height: 1.04;
+  }
+
+  p {
+    margin: 0 0 1rem;
+    font-size: clamp(1.05rem, 1.1vw, 1.15rem);
+    line-height: 1.85;
+    color: var(--journey-muted);
+  }
+
+  p:last-child { margin-bottom: 0; }
+}
+
+.eyebrow {
+  color: var(--journey-copper);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.reverse {
+  .photo {
+    grid-column: 3;
+    justify-self: start;
+    transform: rotate(2deg);
+  }
+
+  .story {
+    grid-column: 1;
+    justify-self: end;
+  }
+}
+
+/* Theme defaults for ordinary chapters */
+:global(html[data-theme="dark"]) .chapter {
+  --chapter-surface: #1b3931;
+
+  .story { box-shadow: 0 18px 65px #00000025; }
+  .node { box-shadow: 0 0 24px #d8ac8a35; }
+}
+
+/* ASU-only chapter treatment; the separate AsuGarden owns its scenery. */
+.chapter.asu {
+  isolation: isolate;
+  --journey-copper: #a97836;
+  --chapter-surface: #fff6e9;
+  --journey-ink: #581b33;
+  --journey-muted: #654b50;
+
+  .story {
+    background: linear-gradient(145deg, #fff9f1, #f3e3d9);
+    border-color: #8c1d4055;
+    box-shadow: 0 22px 60px #8c1d4025;
+  }
+
+  .eyebrow { color: #8c1d40; }
+  .photo {
+    border-color: #c4944a;
+    background: #f8e5c9;
+  }
+
+  .node {
+    background: #8c1d40;
+    color: #ffc627;
+    border-color: #ffc627;
+  }
+}
+
+:global(html[data-theme="dark"]) .chapter.asu {
+  --chapter-surface: #4b1730;
+  --journey-ink: #fff4e7;
+  --journey-muted: #f0d9cf;
+  --journey-copper: #ffc627;
+
+  .story {
+    background: linear-gradient(145deg, #641b3c, #381326);
+    border-color: #ffc62780;
+  }
+
+  .eyebrow { color: #ffc627; }
+  .photo {
+    background: #4b1730;
+    border-color: #ffc627;
+  }
+}
+
+@keyframes growVine { to { stroke-dashoffset: 0; } }
+@keyframes revealLeaf { to { opacity: 0.75; } }
+@keyframes nodeGlow {
+  0%, 100% { box-shadow: 0 0 8px #c69b7840; }
+  50% { box-shadow: 0 0 24px #c69b7880; }
+}
+@keyframes riseIn {
+  from { opacity: 0; translate: 0 24px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vinePath { animation: none; stroke-dashoffset: 0; }
+  .leaf { animation: none; opacity: 0.75; }
+  .node { animation: none; }
+}
+
+@media (max-width: 800px) {
+  .chapter {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 1rem;
+    padding: 3rem 1.25rem 5rem;
+  }
+
+  .stem { grid-column: 1; grid-row: 1 / 3; }
+  .node { width: 36px; height: 36px; font-size: 1.2rem; }
+
+  .photo,
+  .reverse .photo {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    max-width: 340px;
+  }
+
+  .story,
+  .reverse .story {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: stretch;
+    max-width: none;
+  }
+}
+/* One-time lift: no opacity changes, so content never vanishes. */
+@media (prefers-reduced-motion: no-preference) {
+  .photo.lifted {
+    animation: gentleLift 760ms cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  .story.lifted {
+    animation: gentleLift 820ms cubic-bezier(.22, 1, .36, 1) both;
+  }
+}
+
+@keyframes gentleLift {
+  0%   { translate: 0 14px; }
+  68%  { translate: 0 -3px; }
+  100% { translate: 0 0; }
+}

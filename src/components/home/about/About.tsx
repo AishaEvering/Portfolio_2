@@ -57,11 +57,6 @@ export const About = () => {
                 Skills &amp; Tools
                 <FiArrowUpRight aria-hidden="true" />
               </Link>
-
-              <Link href="/about#certifications" className={styles.quickLink}>
-                Certifications
-                <FiArrowUpRight aria-hidden="true" />
-              </Link>
             </nav>
 
             <Link href="/about" className={styles.aboutLink}>

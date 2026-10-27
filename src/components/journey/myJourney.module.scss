@@ -52,7 +52,7 @@
 
 .introCopy { max-width: 720px; }
 .eyebrow, .chapterMarker, .portraitCaption {
-  font-size: .7rem;
+  font-size: .98rem;
   font-weight: 700;
   letter-spacing: .2em;
   color: var(--journey-copper);
@@ -69,47 +69,45 @@
 .intro h1 em { color: var(--journey-copper); font-weight: 400; }
 .lead {
   max-width: 580px;
-  margin: 0 0 1rem;
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  line-height: 1.75;
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+  line-height: 1.7;
+  color: var(--journey-ink);
 }
 .introNote { max-width: 540px; color: var(--journey-muted); line-height: 1.8; }
 .exploreLink {
   display: inline-flex;
-  gap: 1.1rem;
+  align-items: center;
+  gap: 0.75rem;
   margin-top: 1.6rem;
-  padding-bottom: .4rem;
+  padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--journey-copper);
   color: var(--journey-ink);
   text-decoration: none;
+  font-size: 1.15rem;
   font-weight: 600;
 }
-.exploreLink:hover { color: var(--journey-copper); }
+
+.exploreLink:hover {
+  color: var(--journey-copper);
+}
 
 .portraitFrame { position: relative; max-width: 410px; justify-self: center; width: 100%; transform: rotate(2deg); }
-.portraitPlaceholder {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-
-  border: 9px solid var(--journey-bg);
-  outline: 1px solid color-mix(
-    in srgb,
-    var(--journey-copper) 55%,
-    transparent
-  );
-
-  border-radius: 48% 48% 8px 8px;
-  background: var(--journey-bg);
-
-  box-shadow: 0 20px 60px #00000015;
-}
-.portraitPlaceholder span { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.8rem; }
-.portraitPlaceholder small { font-size: .75rem; }
-.portraitCaption { display: block; text-align: center; margin-top: 1.5rem; font-size: .6rem; }
+.portraitCaption { display: block; text-align: center; margin-top: 1.5rem; font-size: .98rem; }
 .nextChapter { padding: 5rem clamp(1.5rem, 9vw, 9rem) 8rem; max-width: 1100px; margin: auto; }
 .nextChapter h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2.6rem, 5vw, 4.5rem); font-weight: 500; margin: 1rem 0; }
 .nextChapter p { color: var(--journey-muted); }
+
+.portraitPlaceholder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+
+  border-radius: 48% 48% 8px 8px;
+  border: 1px solid var(--journey-copper);
+  background: var(--journey-bg);
+}
 
 .portraitImageWrapper {
   position: absolute;
@@ -140,3 +138,73 @@
   .journey { grid-template-columns: 48px minmax(0, 1fr); }
   .intro { padding-inline: 1.3rem; }
 }
+
+.photoNote {
+  position: relative;
+  z-index: 1;
+
+  max-width: 640px;
+  margin: 0 auto 7rem;
+  padding: 2rem 2.5rem;
+
+  border-left: 2px solid var(--journey-copper);
+  background: color-mix(
+    in srgb,
+    var(--journey-bg) 88%,
+    transparent
+  );
+
+  backdrop-filter: blur(8px);
+}
+
+.photoNoteEyebrow {
+  display: block;
+  margin-bottom: 1rem;
+
+  color: var(--journey-copper);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.photoNote h2 {
+  margin: 0 0 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.photoNote p {
+  margin: 0;
+  max-width: 55ch;
+  font-size: clamp(1.3rem, 1.2vw, 1.05rem);
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .photoNote {
+    margin-bottom: 4rem;
+    padding: 1.5rem;
+  }
+}
+
+
+/* Full-width photographic atmosphere for Chapter 03.
+   The sidebar remains outside this section. */
+.asuSection {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+.chapters {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Fixed navigation clears the site header and anchored section headings. */
+.navTarget, .chapters { scroll-margin-top: 155px; }

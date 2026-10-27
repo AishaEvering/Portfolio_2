@@ -39,7 +39,10 @@ export const Hero = () => {
               About me <span aria-hidden="true">↗</span>
             </a>
 
-            <a href="#contact" className={styles.secondaryButton}>
+            <a
+              href="mailto:shovon3000g@gmail.com"
+              className={styles.secondaryButton}
+            >
               Get in touch <span aria-hidden="true">↗</span>
             </a>
           </div>

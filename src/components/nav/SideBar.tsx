@@ -15,41 +15,53 @@ const navItems: {
   { id: "home", label: "Home", href: "#home" },
   { id: "work", label: "Work", href: "#work" },
   { id: "about", label: "About", href: "#about" },
-  { id: "contact", label: "Contact", href: "#contact" },
 ];
 
 export const SideBar = () => {
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === "/" || pathname === "/home";
 
   const [selected, setSelected] = useState<Section>("home");
 
   useEffect(() => {
     if (!isHomePage) {
-      setSelected("about");
+      setSelected(pathname.startsWith("/work") ? "work" : "about");
       return;
     }
 
-    const sections = document.querySelectorAll<HTMLElement>(
-      "#home.section-wrapper, #work.section-wrapper, #about.section-wrapper, #contact.section-wrapper",
-    );
+    const updateActiveSection = () => {
+      // Explicitly reset to Home when near the top.
+      if (window.scrollY < 100) {
+        setSelected("home");
+        return;
+      }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setSelected(entry.target.id as Section);
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
+      const sections: Section[] = ["home", "work", "about"];
+      let current: Section = "home";
 
-    sections.forEach((section) => observer.observe(section));
+      for (const id of sections) {
+        const element = document.getElementById(id);
 
-    return () => observer.disconnect();
-  }, [isHomePage]);
+        if (element && element.getBoundingClientRect().top <= 180) {
+          current = id;
+        }
+      }
 
+      setSelected(current);
+    };
+
+    updateActiveSection();
+
+    window.addEventListener("scroll", updateActiveSection, {
+      passive: true,
+    });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, [isHomePage, pathname]);
   return (
     <motion.nav
       initial={{ x: -70 }}
@@ -71,7 +83,7 @@ export const SideBar = () => {
               ? item.href
               : item.id === "about"
                 ? "/about"
-                : `/${item.href}`
+                : `/#${item.id}`
           }
           onClick={() => setSelected(item.id)}
           className={selected === item.id ? styles.selected : ""}

@@ -1,0 +1,53 @@
+.section {
+  --exp-paper: #ede8df;
+  --exp-ink: #142c25;
+  --exp-muted: #5d6a61;
+  --exp-border: rgba(20, 44, 37, 0.18);
+  --exp-copper: #9c7859;
+
+  position: relative; // Keep above the atmospheric Night Garden layers.
+  background: var(--exp-paper);
+  color: var(--exp-ink);
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 7rem)
+    clamp(3rem, 6vw, 5.5rem);
+  scroll-margin-top: 5rem;
+}
+
+:global(html[data-theme="dark"]) .section {
+  --exp-paper: #102820;
+  --exp-ink: #f4ede3;
+  --exp-muted: #bbc8bd;
+  --exp-border: rgba(244, 237, 227, 0.18);
+  --exp-copper: #d8ac8a;
+}
+
+.inner { width: min(1080px, 100%); margin-inline: auto; border-top: 1px solid var(--exp-border); padding-top: clamp(2.5rem, 4vw, 3.5rem); }
+.heading { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.kicker { margin: 0 0 .65rem; color: var(--exp-copper); font-size: .98rem; font-weight: 700; letter-spacing: .2em; }
+.heading h2 { margin: 0 0 .5rem; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2.7rem, 4vw, 3.8rem); line-height: 1.05; font-weight: 500; letter-spacing: -.025em; }
+.heading h2 em { color: var(--exp-copper); font-weight: 400; }
+.heading > p:last-child { margin: 0; max-width: 660px; color: var(--exp-muted); font-size: 1.3rem; line-height: 1.5; }
+
+.role { display: grid; grid-template-columns: minmax(115px, .38fr) minmax(0, 2fr); gap: clamp(1.5rem, 4vw, 4rem); padding: 1.55rem 0; border-top: 1px solid var(--exp-border); }
+.role:last-child { border-bottom: 1px solid var(--exp-border); }
+.date { padding-top: .4rem; color: var(--exp-copper); font-size: 1.3rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.roleHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.role h3 { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.9rem, 2.3vw, 2rem); font-weight: 600; line-height: 1.15; }
+.jobTitle { margin: .3rem 0 0; font-size: 1.2rem; color: var(--exp-muted); }
+.summary { margin: .8rem 0 0; max-width: 690px; font-size: 1.3rem; line-height: 1.65; }
+.toggle { flex: none; display: inline-flex; align-items: center; gap: .65rem; padding: .35rem 0; border: 0; background: transparent; color: var(--exp-copper); font: inherit; font-size: 1.1rem; cursor: pointer; }
+.toggle:hover { text-decoration: underline; }
+.toggle:focus-visible { outline: 2px solid var(--exp-copper); outline-offset: 5px; }
+.toggle span { font-size: 1.3rem; line-height: 1; }
+.expanded { margin-top: 1rem; padding-top: .85rem; border-top: 1px dashed var(--exp-border); }
+.expanded ul { margin: 0; padding-left: 1.2rem; }
+.expanded li { margin-bottom: .6rem; font-size: 1.3rem; line-height: 1.65; }
+.tech { margin: 1rem 0 0; color: var(--exp-copper); font-size: 1.1rem; line-height: 1.8; }
+.featured h3 { font-weight: 700; }
+
+@media (max-width: 760px) {
+  .role { grid-template-columns: 1fr; gap: .5rem; }
+  .roleHeader { flex-wrap: wrap; }
+  .date { padding-top: 0; }
+  .toggle { margin-top: .2rem; }
+}

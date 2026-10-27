@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { Github } from "lucide-react";
-import { FiLinkedin, FiFileText } from "react-icons/fi";
+import { FiLinkedin, FiFileText, FiMail } from "react-icons/fi";
 import { Parisienne } from "next/font/google";
 import styles from "./headinglinks.module.scss";
 
@@ -56,6 +56,14 @@ export const MyLinks = () => {
           transition={{ duration: 0.2 }}
         >
           <FiFileText size={19} strokeWidth={1.7} />
+        </motion.a>
+        <motion.a
+          href="mailto:shovon3000g@gmail.com"
+          aria-label="Send me an email"
+          whileHover={{ y: -3 }}
+          transition={{ duration: 0.2 }}
+        >
+          <FiMail size={19} strokeWidth={1.7} />
         </motion.a>
       </div>
     </div>
