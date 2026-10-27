@@ -16,7 +16,8 @@ export const metadata: Metadata = {
     "Software engineer specializing in scientific applications, computational biology, interactive data visualization, and intuitive research tools.",
   openGraph: {
     title: "Aisha Evering | Scientific Software Engineer",
-    description: "I write code. I analyze data. I ask biological questions.",
+    description:
+      "Explore the portfolio of Aisha Evering, a scientific software engineer building interactive applications, visualization tools, and computational solutions for biological research.",
     url: "https://aishaeportfolio.com",
     siteName: "Aisha Evering",
     type: "website",
